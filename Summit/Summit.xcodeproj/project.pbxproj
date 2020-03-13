@@ -1,0 +1,593 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1350BAA8241BCB6F0077AC3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1350BAA7241BCB6F0077AC3D /* AppDelegate.swift */; };
+		1350BAAA241BCB6F0077AC3D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1350BAA9241BCB6F0077AC3D /* SceneDelegate.swift */; };
+		1350BAAC241BCB6F0077AC3D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1350BAAB241BCB6F0077AC3D /* ContentView.swift */; };
+		1350BAAE241BCB700077AC3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1350BAAD241BCB700077AC3D /* Assets.xcassets */; };
+		1350BAB1241BCB700077AC3D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1350BAB0241BCB700077AC3D /* Preview Assets.xcassets */; };
+		1350BAB4241BCB700077AC3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1350BAB2241BCB700077AC3D /* LaunchScreen.storyboard */; };
+		1350BABF241BCB700077AC3D /* SummitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1350BABE241BCB700077AC3D /* SummitTests.swift */; };
+		1350BACA241BCB700077AC3D /* SummitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1350BAC9241BCB700077AC3D /* SummitUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1350BABB241BCB700077AC3D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1350BA9C241BCB6F0077AC3D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1350BAA3241BCB6F0077AC3D;
+			remoteInfo = Summit;
+		};
+		1350BAC6241BCB700077AC3D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1350BA9C241BCB6F0077AC3D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1350BAA3241BCB6F0077AC3D;
+			remoteInfo = Summit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1350BAA4241BCB6F0077AC3D /* Summit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Summit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1350BAA7241BCB6F0077AC3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1350BAA9241BCB6F0077AC3D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		1350BAAB241BCB6F0077AC3D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1350BAAD241BCB700077AC3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1350BAB0241BCB700077AC3D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1350BAB3241BCB700077AC3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1350BAB5241BCB700077AC3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1350BABA241BCB700077AC3D /* SummitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SummitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1350BABE241BCB700077AC3D /* SummitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummitTests.swift; sourceTree = "<group>"; };
+		1350BAC0241BCB700077AC3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1350BAC5241BCB700077AC3D /* SummitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SummitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1350BAC9241BCB700077AC3D /* SummitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummitUITests.swift; sourceTree = "<group>"; };
+		1350BACB241BCB700077AC3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1350BAA1241BCB6F0077AC3D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1350BAB7241BCB700077AC3D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1350BAC2241BCB700077AC3D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1350BA9B241BCB6F0077AC3D = {
+			isa = PBXGroup;
+			children = (
+				1350BAA6241BCB6F0077AC3D /* Summit */,
+				1350BABD241BCB700077AC3D /* SummitTests */,
+				1350BAC8241BCB700077AC3D /* SummitUITests */,
+				1350BAA5241BCB6F0077AC3D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1350BAA5241BCB6F0077AC3D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1350BAA4241BCB6F0077AC3D /* Summit.app */,
+				1350BABA241BCB700077AC3D /* SummitTests.xctest */,
+				1350BAC5241BCB700077AC3D /* SummitUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1350BAA6241BCB6F0077AC3D /* Summit */ = {
+			isa = PBXGroup;
+			children = (
+				1350BAA7241BCB6F0077AC3D /* AppDelegate.swift */,
+				1350BAA9241BCB6F0077AC3D /* SceneDelegate.swift */,
+				1350BAAB241BCB6F0077AC3D /* ContentView.swift */,
+				1350BAAD241BCB700077AC3D /* Assets.xcassets */,
+				1350BAB2241BCB700077AC3D /* LaunchScreen.storyboard */,
+				1350BAB5241BCB700077AC3D /* Info.plist */,
+				1350BAAF241BCB700077AC3D /* Preview Content */,
+			);
+			path = Summit;
+			sourceTree = "<group>";
+		};
+		1350BAAF241BCB700077AC3D /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				1350BAB0241BCB700077AC3D /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1350BABD241BCB700077AC3D /* SummitTests */ = {
+			isa = PBXGroup;
+			children = (
+				1350BABE241BCB700077AC3D /* SummitTests.swift */,
+				1350BAC0241BCB700077AC3D /* Info.plist */,
+			);
+			path = SummitTests;
+			sourceTree = "<group>";
+		};
+		1350BAC8241BCB700077AC3D /* SummitUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1350BAC9241BCB700077AC3D /* SummitUITests.swift */,
+				1350BACB241BCB700077AC3D /* Info.plist */,
+			);
+			path = SummitUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1350BAA3241BCB6F0077AC3D /* Summit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1350BACE241BCB700077AC3D /* Build configuration list for PBXNativeTarget "Summit" */;
+			buildPhases = (
+				1350BAA0241BCB6F0077AC3D /* Sources */,
+				1350BAA1241BCB6F0077AC3D /* Frameworks */,
+				1350BAA2241BCB6F0077AC3D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Summit;
+			productName = Summit;
+			productReference = 1350BAA4241BCB6F0077AC3D /* Summit.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1350BAB9241BCB700077AC3D /* SummitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1350BAD1241BCB700077AC3D /* Build configuration list for PBXNativeTarget "SummitTests" */;
+			buildPhases = (
+				1350BAB6241BCB700077AC3D /* Sources */,
+				1350BAB7241BCB700077AC3D /* Frameworks */,
+				1350BAB8241BCB700077AC3D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1350BABC241BCB700077AC3D /* PBXTargetDependency */,
+			);
+			name = SummitTests;
+			productName = SummitTests;
+			productReference = 1350BABA241BCB700077AC3D /* SummitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1350BAC4241BCB700077AC3D /* SummitUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1350BAD4241BCB700077AC3D /* Build configuration list for PBXNativeTarget "SummitUITests" */;
+			buildPhases = (
+				1350BAC1241BCB700077AC3D /* Sources */,
+				1350BAC2241BCB700077AC3D /* Frameworks */,
+				1350BAC3241BCB700077AC3D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1350BAC7241BCB700077AC3D /* PBXTargetDependency */,
+			);
+			name = SummitUITests;
+			productName = SummitUITests;
+			productReference = 1350BAC5241BCB700077AC3D /* SummitUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1350BA9C241BCB6F0077AC3D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Reagan Wood";
+				TargetAttributes = {
+					1350BAA3241BCB6F0077AC3D = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					1350BAB9241BCB700077AC3D = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = 1350BAA3241BCB6F0077AC3D;
+					};
+					1350BAC4241BCB700077AC3D = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = 1350BAA3241BCB6F0077AC3D;
+					};
+				};
+			};
+			buildConfigurationList = 1350BA9F241BCB6F0077AC3D /* Build configuration list for PBXProject "Summit" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1350BA9B241BCB6F0077AC3D;
+			productRefGroup = 1350BAA5241BCB6F0077AC3D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1350BAA3241BCB6F0077AC3D /* Summit */,
+				1350BAB9241BCB700077AC3D /* SummitTests */,
+				1350BAC4241BCB700077AC3D /* SummitUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1350BAA2241BCB6F0077AC3D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1350BAB4241BCB700077AC3D /* LaunchScreen.storyboard in Resources */,
+				1350BAB1241BCB700077AC3D /* Preview Assets.xcassets in Resources */,
+				1350BAAE241BCB700077AC3D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1350BAB8241BCB700077AC3D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1350BAC3241BCB700077AC3D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1350BAA0241BCB6F0077AC3D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1350BAA8241BCB6F0077AC3D /* AppDelegate.swift in Sources */,
+				1350BAAA241BCB6F0077AC3D /* SceneDelegate.swift in Sources */,
+				1350BAAC241BCB6F0077AC3D /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1350BAB6241BCB700077AC3D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1350BABF241BCB700077AC3D /* SummitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1350BAC1241BCB700077AC3D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1350BACA241BCB700077AC3D /* SummitUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1350BABC241BCB700077AC3D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1350BAA3241BCB6F0077AC3D /* Summit */;
+			targetProxy = 1350BABB241BCB700077AC3D /* PBXContainerItemProxy */;
+		};
+		1350BAC7241BCB700077AC3D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1350BAA3241BCB6F0077AC3D /* Summit */;
+			targetProxy = 1350BAC6241BCB700077AC3D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1350BAB2241BCB700077AC3D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1350BAB3241BCB700077AC3D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1350BACC241BCB700077AC3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1350BACD241BCB700077AC3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1350BACF241BCB700077AC3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Summit/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Summit/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = RWSoftware.Summit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1350BAD0241BCB700077AC3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Summit/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Summit/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = RWSoftware.Summit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1350BAD2241BCB700077AC3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SummitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = RWSoftware.SummitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Summit.app/Summit";
+			};
+			name = Debug;
+		};
+		1350BAD3241BCB700077AC3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SummitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = RWSoftware.SummitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Summit.app/Summit";
+			};
+			name = Release;
+		};
+		1350BAD5241BCB700077AC3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SummitUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = RWSoftware.SummitUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Summit;
+			};
+			name = Debug;
+		};
+		1350BAD6241BCB700077AC3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SummitUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = RWSoftware.SummitUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Summit;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1350BA9F241BCB6F0077AC3D /* Build configuration list for PBXProject "Summit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1350BACC241BCB700077AC3D /* Debug */,
+				1350BACD241BCB700077AC3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1350BACE241BCB700077AC3D /* Build configuration list for PBXNativeTarget "Summit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1350BACF241BCB700077AC3D /* Debug */,
+				1350BAD0241BCB700077AC3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1350BAD1241BCB700077AC3D /* Build configuration list for PBXNativeTarget "SummitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1350BAD2241BCB700077AC3D /* Debug */,
+				1350BAD3241BCB700077AC3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1350BAD4241BCB700077AC3D /* Build configuration list for PBXNativeTarget "SummitUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1350BAD5241BCB700077AC3D /* Debug */,
+				1350BAD6241BCB700077AC3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1350BA9C241BCB6F0077AC3D /* Project object */;
+}
