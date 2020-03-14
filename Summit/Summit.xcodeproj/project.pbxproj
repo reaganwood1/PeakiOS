@@ -14,6 +14,7 @@
 		1393BB36241D60DF004703DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1393BB34241D60DF004703DD /* LaunchScreen.storyboard */; };
 		1393BB41241D60DF004703DD /* SummitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1393BB40241D60DF004703DD /* SummitTests.swift */; };
 		1393BB4C241D60DF004703DD /* SummitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1393BB4B241D60DF004703DD /* SummitUITests.swift */; };
+		1393BB5C241D64E3004703DD /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1393BB5B241D64E3004703DD /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		1393BB47241D60DF004703DD /* SummitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SummitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1393BB4B241D60DF004703DD /* SummitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummitUITests.swift; sourceTree = "<group>"; };
 		1393BB4D241D60DF004703DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1393BB5B241D64E3004703DD /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1393BB5C241D64E3004703DD /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +84,7 @@
 				1393BB3F241D60DF004703DD /* SummitTests */,
 				1393BB4A241D60DF004703DD /* SummitUITests */,
 				1393BB27241D60DD004703DD /* Products */,
+				1393BB5A241D64E3004703DD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +101,7 @@
 		1393BB28241D60DD004703DD /* Summit */ = {
 			isa = PBXGroup;
 			children = (
+				1393BB5D241D6739004703DD /* Utilities */,
 				1393BB29241D60DD004703DD /* AppDelegate.swift */,
 				1393BB2D241D60DD004703DD /* ViewController.swift */,
 				1393BB2F241D60DD004703DD /* Main.storyboard */,
@@ -125,6 +130,21 @@
 			path = SummitUITests;
 			sourceTree = "<group>";
 		};
+		1393BB5A241D64E3004703DD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1393BB5B241D64E3004703DD /* Alamofire.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1393BB5D241D6739004703DD /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,6 +155,7 @@
 				1393BB22241D60DD004703DD /* Sources */,
 				1393BB23241D60DD004703DD /* Frameworks */,
 				1393BB24241D60DD004703DD /* Resources */,
+				1393BB59241D647E004703DD /* Copy Carthage Frameworks */,
 			);
 			buildRules = (
 			);
@@ -250,6 +271,29 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1393BB59241D647E004703DD /* Copy Carthage Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+			);
+			name = "Copy Carthage Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1393BB22241D60DD004703DD /* Sources */ = {
@@ -431,6 +475,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Summit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -449,6 +497,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Summit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
