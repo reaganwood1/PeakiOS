@@ -31,6 +31,7 @@ class SplashScreenViewController: GenericViewController<SplashScreenView> {
             launchSession(from: accessTokenAndUser.0, for: accessTokenAndUser.1)
         } else {
             // TODO: send the user to the landing screen
+            loginUser()
         }
     }
     
@@ -46,6 +47,18 @@ class SplashScreenViewController: GenericViewController<SplashScreenView> {
         loginService.userFrom(accessToken, for: userID) { (result) in
             switch result {
             case .success(_):
+                break
+            case .failure(_):
+                break
+            }
+        }
+    }
+    
+    private func loginUser() {
+        loginService.login(username: username, password: password) { (result) in
+            switch result {
+            case .success(_):
+                
                 break
             case .failure(_):
                 break

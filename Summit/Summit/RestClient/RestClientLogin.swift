@@ -23,15 +23,20 @@ public typealias StandardRestResponse = (StandardRestResponseParams) -> Void
 
 public struct RestClientLogin {
     public static func Login(username: String, password: String, response: @escaping StandardRestResponse) {
-        SessionManager.unauthorized.request(RestConstants.BaseURL, method: .post, parameters: nil).responseJSON(completionHandler: RestClientGeneral.JsonResponseValidator(response: response)) // TODO: finish
+        let parameters = [
+            RestConstants.Parameters.Username: username,
+            RestConstants.Parameters.Password: password
+        ]
+        
+        SessionManager.unauthorized.request(RestConstants.BaseURL + "login/", method: .post, parameters: parameters).responseJSON(completionHandler: RestClientGeneral.JsonResponseValidator(response: response))
     }
     
     public static func LoginFromAccessToken(accessToken: String, userID: String, response: @escaping StandardRestResponse) {
         let parameters = [
-            RestConstants.Parameters.Token: accessToken,
+            RestConstants.Parameters.AccessToken: accessToken,
             RestConstants.Parameters.UserId: userID
         ]
         
-        SessionManager.unauthorized.request(RestConstants.BaseURL + "login/access-token", method: .post, parameters: parameters).responseJSON(completionHandler: RestClientGeneral.JsonResponseValidator(response: response)) // TODO: finish
+        SessionManager.unauthorized.request(RestConstants.BaseURL + "login/access-token", method: .post, parameters: parameters).responseJSON(completionHandler: RestClientGeneral.JsonResponseValidator(response: response))
     }
 }

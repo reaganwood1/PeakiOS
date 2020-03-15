@@ -27,8 +27,12 @@ public struct RestConstants {
     }
     
     public struct Parameters {
-        public static var Token = "access_token"
+        public static var AccessToken = "access_token"
         public static var UserId = "user_id"
+        public static var Username = "user_name"
+        public static var Password = "password"
+        public static var User = "user"
+        public static var Token = "token"
     }
     
     public struct StatusCode {
