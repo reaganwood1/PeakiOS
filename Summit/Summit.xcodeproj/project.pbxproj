@@ -15,6 +15,13 @@
 		1393BB41241D60DF004703DD /* SummitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1393BB40241D60DF004703DD /* SummitTests.swift */; };
 		1393BB4C241D60DF004703DD /* SummitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1393BB4B241D60DF004703DD /* SummitUITests.swift */; };
 		1393BB5C241D64E3004703DD /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1393BB5B241D64E3004703DD /* Alamofire.framework */; };
+		1393BB63241D75AA004703DD /* SwiftKeychainWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1393BB62241D75AA004703DD /* SwiftKeychainWrapper.framework */; };
+		1393BB66241D7632004703DD /* RestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1393BB65241D7632004703DD /* RestConstants.swift */; };
+		1393BB68241D780E004703DD /* RestClientLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1393BB67241D780E004703DD /* RestClientLogin.swift */; };
+		1393BB6B241D7ADB004703DD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1393BB6A241D7ADB004703DD /* User.swift */; };
+		1393BB6D241D8440004703DD /* RestClientGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1393BB6C241D8440004703DD /* RestClientGeneral.swift */; };
+		1393BB6F241D878F004703DD /* JsonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1393BB6E241D878F004703DD /* JsonFactory.swift */; };
+		1393BB71241DBA51004703DD /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1393BB70241DBA51004703DD /* SnapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +56,13 @@
 		1393BB4B241D60DF004703DD /* SummitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummitUITests.swift; sourceTree = "<group>"; };
 		1393BB4D241D60DF004703DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1393BB5B241D64E3004703DD /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		1393BB62241D75AA004703DD /* SwiftKeychainWrapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftKeychainWrapper.framework; path = Carthage/Build/iOS/SwiftKeychainWrapper.framework; sourceTree = "<group>"; };
+		1393BB65241D7632004703DD /* RestConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestConstants.swift; sourceTree = "<group>"; };
+		1393BB67241D780E004703DD /* RestClientLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestClientLogin.swift; sourceTree = "<group>"; };
+		1393BB6A241D7ADB004703DD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1393BB6C241D8440004703DD /* RestClientGeneral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestClientGeneral.swift; sourceTree = "<group>"; };
+		1393BB6E241D878F004703DD /* JsonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonFactory.swift; sourceTree = "<group>"; };
+		1393BB70241DBA51004703DD /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1393BB71241DBA51004703DD /* SnapKit.framework in Frameworks */,
+				1393BB63241D75AA004703DD /* SwiftKeychainWrapper.framework in Frameworks */,
 				1393BB5C241D64E3004703DD /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,6 +117,8 @@
 		1393BB28241D60DD004703DD /* Summit */ = {
 			isa = PBXGroup;
 			children = (
+				1393BB69241D7AD4004703DD /* Models */,
+				1393BB64241D7615004703DD /* RestClient */,
 				1393BB5D241D6739004703DD /* Utilities */,
 				1393BB29241D60DD004703DD /* AppDelegate.swift */,
 				1393BB2D241D60DD004703DD /* ViewController.swift */,
@@ -133,6 +151,8 @@
 		1393BB5A241D64E3004703DD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1393BB70241DBA51004703DD /* SnapKit.framework */,
+				1393BB62241D75AA004703DD /* SwiftKeychainWrapper.framework */,
 				1393BB5B241D64E3004703DD /* Alamofire.framework */,
 			);
 			name = Frameworks;
@@ -143,6 +163,25 @@
 			children = (
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		1393BB64241D7615004703DD /* RestClient */ = {
+			isa = PBXGroup;
+			children = (
+				1393BB65241D7632004703DD /* RestConstants.swift */,
+				1393BB67241D780E004703DD /* RestClientLogin.swift */,
+				1393BB6C241D8440004703DD /* RestClientGeneral.swift */,
+				1393BB6E241D878F004703DD /* JsonFactory.swift */,
+			);
+			path = RestClient;
+			sourceTree = "<group>";
+		};
+		1393BB69241D7AD4004703DD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1393BB6A241D7ADB004703DD /* User.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,12 +321,16 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftKeychainWrapper.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/Alamofire.framework",
+				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/SwiftKeychainWrapper.framework",
+				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -302,6 +345,11 @@
 			files = (
 				1393BB2E241D60DD004703DD /* ViewController.swift in Sources */,
 				1393BB2A241D60DD004703DD /* AppDelegate.swift in Sources */,
+				1393BB6F241D878F004703DD /* JsonFactory.swift in Sources */,
+				1393BB68241D780E004703DD /* RestClientLogin.swift in Sources */,
+				1393BB6B241D7ADB004703DD /* User.swift in Sources */,
+				1393BB66241D7632004703DD /* RestConstants.swift in Sources */,
+				1393BB6D241D8440004703DD /* RestClientGeneral.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
