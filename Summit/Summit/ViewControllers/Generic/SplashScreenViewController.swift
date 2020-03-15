@@ -55,6 +55,8 @@ class SplashScreenViewController: GenericViewController<SplashScreenView> {
     }
     
     private func loginUser() {
+        let username = ""
+        let password = ""
         loginService.login(username: username, password: password) { (result) in
             switch result {
             case .success(_):
