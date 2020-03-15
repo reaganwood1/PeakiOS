@@ -18,10 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func presentRootView() {
-        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "ViewController") as UIViewController
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = initialViewControlleripad
+        self.window?.rootViewController = SplashScreenViewController()
         self.window?.makeKeyAndVisible()
     }
 }
