@@ -22,6 +22,7 @@
 		1393BB6D241D8440004703DD /* RestClientGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1393BB6C241D8440004703DD /* RestClientGeneral.swift */; };
 		1393BB6F241D878F004703DD /* JsonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1393BB6E241D878F004703DD /* JsonFactory.swift */; };
 		1393BB71241DBA51004703DD /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1393BB70241DBA51004703DD /* SnapKit.framework */; };
+		1393BB75241DBE2B004703DD /* GenericViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1393BB74241DBE2B004703DD /* GenericViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		1393BB6C241D8440004703DD /* RestClientGeneral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestClientGeneral.swift; sourceTree = "<group>"; };
 		1393BB6E241D878F004703DD /* JsonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonFactory.swift; sourceTree = "<group>"; };
 		1393BB70241DBA51004703DD /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		1393BB74241DBE2B004703DD /* GenericViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 		1393BB28241D60DD004703DD /* Summit */ = {
 			isa = PBXGroup;
 			children = (
+				1393BB72241DBE11004703DD /* ViewControllers */,
 				1393BB69241D7AD4004703DD /* Models */,
 				1393BB64241D7615004703DD /* RestClient */,
 				1393BB5D241D6739004703DD /* Utilities */,
@@ -182,6 +185,22 @@
 				1393BB6A241D7ADB004703DD /* User.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		1393BB72241DBE11004703DD /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1393BB73241DBE1E004703DD /* Generic */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		1393BB73241DBE1E004703DD /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				1393BB74241DBE2B004703DD /* GenericViewController.swift */,
+			);
+			path = Generic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -345,6 +364,7 @@
 			files = (
 				1393BB2E241D60DD004703DD /* ViewController.swift in Sources */,
 				1393BB2A241D60DD004703DD /* AppDelegate.swift in Sources */,
+				1393BB75241DBE2B004703DD /* GenericViewController.swift in Sources */,
 				1393BB6F241D878F004703DD /* JsonFactory.swift in Sources */,
 				1393BB68241D780E004703DD /* RestClientLogin.swift in Sources */,
 				1393BB6B241D7ADB004703DD /* User.swift in Sources */,

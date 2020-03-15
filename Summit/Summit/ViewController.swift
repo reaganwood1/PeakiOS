@@ -15,7 +15,7 @@ class ViewController: UIViewController {
 
     private let imageView: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "landingImage"))
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
