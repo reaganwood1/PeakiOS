@@ -21,8 +21,8 @@ class SplashScreenViewController: GenericViewController<SplashScreenView> {
         return nil
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         determineLaunchScreen()
     }
     
@@ -30,8 +30,8 @@ class SplashScreenViewController: GenericViewController<SplashScreenView> {
         if let accessTokenAndUser = getPersistedUserToken() {
             launchSession(from: accessTokenAndUser.0, for: accessTokenAndUser.1)
         } else {
-            // TODO: send the user to the landing screen
-            loginUser()
+            launchLandingScreen()
+            
         }
     }
     
@@ -51,6 +51,15 @@ class SplashScreenViewController: GenericViewController<SplashScreenView> {
             case .failure(_):
                 break
             }
+        }
+    }
+    
+    private func launchLandingScreen() {
+        let vc = LandingScreenViewController()
+        let navController = UINavigationController(rootViewController: vc)
+        DispatchQueue.main.async { [weak self] in
+            navController.modalPresentationStyle = .overFullScreen
+            self?.present(navController, animated: false, completion: nil)
         }
     }
     
