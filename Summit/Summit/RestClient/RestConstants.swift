@@ -26,6 +26,11 @@ public struct RestConstants {
         }
     }
     
+    public struct Parameters {
+        public static var Token = "access_token"
+        public static var UserId = "user_id"
+    }
+    
     public struct StatusCode {
         public static var OK = 200
         public static var NoNetwork = -1

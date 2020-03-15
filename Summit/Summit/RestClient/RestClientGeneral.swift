@@ -6,7 +6,6 @@
 //  Copyright © 2020 Reagan Wood. All rights reserved.
 //
 
-import Foundation
 import Alamofire
 
 public struct RestClientGeneral {
@@ -14,27 +13,21 @@ public struct RestClientGeneral {
         let afResponse: (AFDataResponse<Any>) -> Void = {
             alamofireResponse in
             let statusCode = alamofireResponse.response?.statusCode ?? -1
-            
-            guard let data = alamofireResponse.value as? Data else {
-                print("NO DATA RETURNED")
-                response(false, statusCode, nil)
-                return
-            }
-            
-            let json = JsonFactory.convertToJSON(from: data)
+
+            let json = alamofireResponse.value as? Json
             
             print(String(describing: alamofireResponse.request?.url))
             print(statusCode)
             
             if statusCode >= RestConstants.StatusCode.OK && statusCode < 300 {
-                response(true, statusCode, json)
+                response(StandardRestResponseParams(success: true, statusCode: statusCode, json: json))
             } else if let error = alamofireResponse.error {
                 print("STATUS CODE: \(statusCode)")
                 print(String(describing: error))
                 print("THE REQUEST FAILED with ALOFIRE ERROR")
-                response(false, statusCode, json)
+                response(StandardRestResponseParams(success: false, statusCode: statusCode, json: json))
             } else {
-                response(false, statusCode, json)
+                response(StandardRestResponseParams(success: false, statusCode: statusCode, json: json))
             }
         }
         

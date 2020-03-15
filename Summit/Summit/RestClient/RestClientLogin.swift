@@ -12,24 +12,26 @@ public typealias Json = [String : Any]
 public typealias Success = Bool
 public typealias StatusCode = Int
 
-public typealias StandardRestResponse = (Success, StatusCode, Json?) -> Void
+//public typealias StandardRestResponseParams = (Success, StatusCode, Json?)
+public struct StandardRestResponseParams {
+    public var success: Bool
+    public var statusCode: Int
+    public var json: Json?
+}
+
+public typealias StandardRestResponse = (StandardRestResponseParams) -> Void
 
 public struct RestClientLogin {
     public static func Login(username: String, password: String, response: @escaping StandardRestResponse) {
-        Requester.unauthorized.request(RestConstants.BaseURL, method: .post, parameters: nil).responseJSON(completionHandler: RestClientGeneral.JsonResponseValidator(response: response))
+        SessionManager.unauthorized.request(RestConstants.BaseURL, method: .post, parameters: nil).responseJSON(completionHandler: RestClientGeneral.JsonResponseValidator(response: response)) // TODO: finish
     }
-}
-
-public class Requester {
-    private static let unauthorizedSessionManager: Session = {
-        let configuration = URLSessionConfiguration.default
-        let session = Session(configuration: configuration)
-        return session
-    }()
     
-    public static var unauthorized: Session {
-        get {
-            return unauthorizedSessionManager
-        }
+    public static func LoginFromAccessToken(accessToken: String, userID: String, response: @escaping StandardRestResponse) {
+        let parameters = [
+            RestConstants.Parameters.Token: accessToken,
+            RestConstants.Parameters.UserId: userID
+        ]
+        
+        SessionManager.unauthorized.request(RestConstants.BaseURL + "login/access-token", method: .post, parameters: parameters).responseJSON(completionHandler: RestClientGeneral.JsonResponseValidator(response: response)) // TODO: finish
     }
 }
