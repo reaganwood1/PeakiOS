@@ -20,7 +20,7 @@ public class User: Codable {
 //    }
     
     public let id: Int
-    public let lastLogin: String
+    public let lastLogin: String?
     public let username: String
     public let firstName: String
     public let lastName: String

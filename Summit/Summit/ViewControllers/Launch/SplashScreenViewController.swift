@@ -44,14 +44,21 @@ class SplashScreenViewController: GenericViewController<SplashScreenView> {
     }
     
     private func launchSession(from accessToken: String, for userID: String) {
-        loginService.userFrom(accessToken, for: userID) { (result) in
+        loginService.userFrom(accessToken, for: userID) { [weak self] (result) in
             switch result {
             case .success(_):
-                break
+                self?.launchRootView()
             case .failure(_):
                 break
             }
         }
+    }
+    
+    private func launchRootView() {
+        let vc = GoalCollectionViewController()
+        let navController = UINavigationController(rootViewController: vc)
+        navController.modalPresentationStyle = .fullScreen
+        present(navController, animated: true, completion: nil)
     }
     
     private func launchLandingScreen() {
