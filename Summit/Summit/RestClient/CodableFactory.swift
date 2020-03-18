@@ -25,10 +25,24 @@ public class ResponseFactory {
             return nil
         }
         
+        return decodeFrom(serializedJson)
+    }
+    
+    public func parseObjectArray<T: Decodable>(from jsonArrray: [Json], to Type: T.Type, parseWithSnakeCase: Bool = true) -> T? {
+        guard let serializedJson = try? JSONSerialization.data(withJSONObject: jsonArrray, options: [.prettyPrinted]) else {
+            print("could not serialize the json response")
+            return nil
+        }
+        
+        return decodeFrom(serializedJson)
+    }
+    
+    private func decodeFrom<T: Decodable>(_ data: Data, parseWithSnakeCase: Bool = true) -> T? {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = parseWithSnakeCase ? .convertFromSnakeCase : .useDefaultKeys
+        
         do {
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = parseWithSnakeCase ? .convertFromSnakeCase : .useDefaultKeys
-            return try decoder.decode(T.self, from: serializedJson)
+            return try decoder.decode(T.self, from: data)
         } catch let error {
             print("Decoding json failed with the following message \(String(describing: error))")
             return nil

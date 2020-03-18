@@ -15,9 +15,27 @@ public class SessionManager {
         return session
     }()
     
+    private static var authorizedSessionManager: Session = Session(configuration: .default, interceptor: AuthorizedRequestIntercepter())
+    
     public static var unauthorized: Session {
+        return unauthorizedSessionManager
+    }
+    
+    public static var authorized: Session {
         get {
-            return unauthorizedSessionManager
+            return authorizedSessionManager
         }
+    }
+}
+
+public class AuthorizedRequestIntercepter: RequestInterceptor {
+    public func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
+        var adaptedRequest = urlRequest
+        guard let token = User.user?.accessToken else {
+            completion(.success(adaptedRequest))
+            return
+        }
+        adaptedRequest.setValue("Token \(token)", forHTTPHeaderField: "Authorization")
+        completion(.success(adaptedRequest))
     }
 }

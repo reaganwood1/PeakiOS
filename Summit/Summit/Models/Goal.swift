@@ -6,16 +6,12 @@
 //  Copyright © 2020 Reagan Wood. All rights reserved.
 //
 
-struct Goal: Codable {
+class Goal: Codable {
     public enum CodingKeys: String, CodingKey {
+        case id
         case title
-        case pk
     }
     
+    public let id: Int
     public let title: String
-    public let pk: Int
-}
-
-struct BaseObject: Codable {
-    
 }
