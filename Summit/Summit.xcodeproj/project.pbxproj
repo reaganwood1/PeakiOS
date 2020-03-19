@@ -11,6 +11,8 @@
 		13185044241FB6C800001B96 /* IGListKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13185042241FB6C800001B96 /* IGListKit.framework */; };
 		13185045241FB6C800001B96 /* IGListDiffKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13185043241FB6C800001B96 /* IGListDiffKit.framework */; };
 		135C63DA2421B92F009D6CA7 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135C63D92421B92F009D6CA7 /* UIColor+Extensions.swift */; };
+		135C63DC2421C75C009D6CA7 /* RestClientGoals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135C63DB2421C75C009D6CA7 /* RestClientGoals.swift */; };
+		135C63DE2421CA5C009D6CA7 /* GoalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135C63DD2421CA5C009D6CA7 /* GoalService.swift */; };
 		1393BB2A241D60DD004703DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1393BB29241D60DD004703DD /* AppDelegate.swift */; };
 		1393BB2E241D60DD004703DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1393BB2D241D60DD004703DD /* ViewController.swift */; };
 		1393BB31241D60DD004703DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1393BB2F241D60DD004703DD /* Main.storyboard */; };
@@ -65,6 +67,8 @@
 		13185042241FB6C800001B96 /* IGListKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IGListKit.framework; path = Carthage/Build/iOS/IGListKit.framework; sourceTree = "<group>"; };
 		13185043241FB6C800001B96 /* IGListDiffKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IGListDiffKit.framework; path = Carthage/Build/iOS/IGListDiffKit.framework; sourceTree = "<group>"; };
 		135C63D92421B92F009D6CA7 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		135C63DB2421C75C009D6CA7 /* RestClientGoals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestClientGoals.swift; sourceTree = "<group>"; };
+		135C63DD2421CA5C009D6CA7 /* GoalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalService.swift; sourceTree = "<group>"; };
 		1393BB26241D60DD004703DD /* Summit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Summit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1393BB29241D60DD004703DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1393BB2D241D60DD004703DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -222,6 +226,7 @@
 				1393BB6C241D8440004703DD /* RestClientGeneral.swift */,
 				1393BB6E241D878F004703DD /* CodableFactory.swift */,
 				1393BB84241DD612004703DD /* SessionManager.swift */,
+				135C63DB2421C75C009D6CA7 /* RestClientGoals.swift */,
 			);
 			path = RestClient;
 			sourceTree = "<group>";
@@ -285,6 +290,7 @@
 				1393BB80241DD4CB004703DD /* LoginService.swift */,
 				1393BB82241DD530004703DD /* ServiceUtilities.swift */,
 				13DF5933241DE10300BB1A35 /* GenericService.swift */,
+				135C63DD2421CA5C009D6CA7 /* GoalService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -482,6 +488,7 @@
 				1393BB2E241D60DD004703DD /* ViewController.swift in Sources */,
 				13DF5937241E84A500BB1A35 /* LandingScreenViewController.swift in Sources */,
 				13DF5942241F210000BB1A35 /* GoalCollectionViewController.swift in Sources */,
+				135C63DC2421C75C009D6CA7 /* RestClientGoals.swift in Sources */,
 				1393BB7E241DD3AF004703DD /* Strings.swift in Sources */,
 				1393BB87241DD8AD004703DD /* Typealiases.swift in Sources */,
 				1393BB2A241D60DD004703DD /* AppDelegate.swift in Sources */,
@@ -495,6 +502,7 @@
 				13DF593E241E917E00BB1A35 /* UIButton+Extensions.swift in Sources */,
 				13DF5940241E928D00BB1A35 /* SigninViewController.swift in Sources */,
 				13DF5939241E875400BB1A35 /* UIView+Extensions.swift in Sources */,
+				135C63DE2421CA5C009D6CA7 /* GoalService.swift in Sources */,
 				1393BB6B241D7ADB004703DD /* User.swift in Sources */,
 				1393BB7B241DC18C004703DD /* SplashScreenView.swift in Sources */,
 				135C63DA2421B92F009D6CA7 /* UIColor+Extensions.swift in Sources */,

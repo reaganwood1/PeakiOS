@@ -11,15 +11,27 @@ import IGListKit
 
 class GoalCollectionViewController: GenericViewController<GoalCollectionView> {
     private var adapter: ListAdapter?
-    private var filteredRange = [MockGoal(with: "11"), MockGoal(with: "1"), MockGoal(with: "1111"), MockGoal(with: "3"), MockGoal(with: "21"), MockGoal(with: "33333"), MockGoal(with: "3333"), MockGoal(with: "33"), MockGoal(with: "333"), MockGoal(with: "3312")]
-    private var allObjects = [MockGoal(with: "11"), MockGoal(with: "1"), MockGoal(with: "1111"), MockGoal(with: "3"), MockGoal(with: "21"), MockGoal(with: "33333"), MockGoal(with: "3333"), MockGoal(with: "33"), MockGoal(with: "333"), MockGoal(with: "3312")]
+
+    private var goals = [Goal]()
+    private var filteredGoals = [Goal]()
+    
+    private let goalService: IGoalService
+    
+    init(goalService: IGoalService = GoalService()) {
+        self.goalService = goalService
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        return nil
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
         hideNavBar()
-        filteredRange = allObjects
         contentView.searchBarDelegate = self
+        loadGoals()
     }
     
     private func setupCollectionView() {
@@ -33,21 +45,18 @@ class GoalCollectionViewController: GenericViewController<GoalCollectionView> {
     private func hideNavBar() {
         navigationController?.navigationBar.isHidden = true
     }
-}
-
-class MockGoal: ListDiffable { // TODO: remove
-    public var id: String
     
-    init(with id: String) {
-        self.id = id
-    }
-    
-    func diffIdentifier() -> NSObjectProtocol {
-        return id as NSObjectProtocol
-    }
-    
-    func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
-        return false
+    private func loadGoals() {
+        goalService.getGoals { [weak self] (result) in
+            switch result {
+            case .success(let goals):
+                self?.goals = goals
+                self?.filteredGoals = goals
+                self?.adapter?.performUpdates(animated: true, completion: nil)
+            case .failure(let error):
+                break // TODO: handle the error
+            }
+        }
     }
 }
 
@@ -58,9 +67,9 @@ extension GoalCollectionViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
-            filteredRange = allObjects
+            filteredGoals = goals
         } else {
-            filteredRange = allObjects.filter({ $0.id.contains(searchText) })
+            filteredGoals = goals.filter({ $0.title.contains(searchText) })
         }
         reloadCollection()
     }
@@ -85,7 +94,7 @@ extension GoalCollectionViewController: UISearchBarDelegate {
 
 extension GoalCollectionViewController: ListAdapterDataSource {
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-        return filteredRange
+        return filteredGoals
     }
 
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
@@ -98,7 +107,7 @@ extension GoalCollectionViewController: ListAdapterDataSource {
 }
 
 class GoalSectionController: ListSectionController {
-    private var object: Goal? = nil // TODO: implement
+    private var goal: Goal? = nil
     
     override init() {
         super.init()
@@ -118,13 +127,18 @@ class GoalSectionController: ListSectionController {
         guard let cell: GoalCollectionViewCell = collectionContext?.dequeueReusableCell(of: GoalCollectionViewCell.self, for: self, at: index) as? GoalCollectionViewCell else {
             return UICollectionViewCell()
         }
+        guard let goal = goal else { return cell }
+        
+        cell.set(titleTo: goal.title, andSubtitleTo: "25 goals!")
         
         return cell
     }
     
     override func didUpdate(to object: Any) {
         super.didUpdate(to: object)
-        // TODO: finish
+        if let object = object as? Goal {
+            goal = object
+        }
     }
 }
 
@@ -190,7 +204,6 @@ class GoalCollectionViewCell: UICollectionViewCell {
     private let titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.textColor = .offWhite
-        titleLabel.text = "Meditation"
         titleLabel.font = .systemFont(ofSize: 16.0, weight: .bold)
         return titleLabel
     }()
@@ -198,7 +211,6 @@ class GoalCollectionViewCell: UICollectionViewCell {
     private let subtitleLabel: UILabel = {
         let subtitleLabel = UILabel()
         subtitleLabel.textColor = .offWhite
-        subtitleLabel.text = "25 Goal to choose from!"
         subtitleLabel.font = .systemFont(ofSize: 14.0, weight: .medium)
         return subtitleLabel
     }()
@@ -234,5 +246,10 @@ class GoalCollectionViewCell: UICollectionViewCell {
             make.bottom.equalToSuperview().inset(15)
             make.left.equalTo(titleLabel.snp.left)
         }
+    }
+    
+    public func set(titleTo title: String, andSubtitleTo subtitle: String) {
+        titleLabel.text = title
+        subtitleLabel.text = subtitle
     }
 }
