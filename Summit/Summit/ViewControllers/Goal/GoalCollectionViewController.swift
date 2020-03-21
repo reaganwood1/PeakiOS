@@ -106,6 +106,7 @@ extension GoalCollectionViewController: ListAdapterDataSource {
     }
 }
 
+// TODO: own class
 class GoalSectionController: ListSectionController {
     private var goal: Goal? = nil
     
@@ -142,6 +143,7 @@ class GoalSectionController: ListSectionController {
     }
 }
 
+// TODO: own class
 class GoalCollectionView: GenericView {
     weak public var searchBarDelegate: UISearchBarDelegate? {
         didSet {
@@ -200,6 +202,7 @@ class GoalCollectionView: GenericView {
     }
 }
 
+// TODO: own class
 class GoalCollectionViewCell: UICollectionViewCell {
     private let titleLabel: UILabel = {
         let titleLabel = UILabel()
