@@ -8,6 +8,7 @@
 
 import UIKit
 import IGListKit
+import Charts
 
 class MockAttempt: ListDiffable {
     public let title: String
