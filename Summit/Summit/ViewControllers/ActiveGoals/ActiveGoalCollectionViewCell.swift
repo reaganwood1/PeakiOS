@@ -121,7 +121,7 @@ class ActiveGoalCollectionViewCell: UICollectionViewCell {
         difficultyLabel.text = difficulty
         let chartConfiguer = ChartConfigurer()
         let dataSet = ChartDataSet(title: "Days", minY: 0.0, maxY: 50.0, startY: 0.0, startX: 0.0, endY: 25.0, endX: 15.0, goalY: 35.0, lineColor: .darkBlue, labelColor: .offWhite)
-        chartConfiguer.configureUserChart(chart: lineViewChart, chartDataSet: dataSet, withAnimation: true)
+        chartConfiguer.configureUserChart(chart: lineViewChart, chartDataSet: dataSet, withAnimation: false)
         
         remakeLineViewConstraints()
     }
