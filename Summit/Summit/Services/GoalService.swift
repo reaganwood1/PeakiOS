@@ -9,12 +9,40 @@
 protocol IGoalService: class {
     func getGoals(completion: @escaping (Result<[Goal], GenericServiceError>) -> Void)
     func getActiveUserGoalAttemps(userID: Int, completion: @escaping (Result<[Attempt], GenericServiceError>) -> Void)
+    func getGoalChallenges(completion: @escaping (Result<[Challenge], GenericServiceError>) -> Void)
 }
 public class GoalService: GenericService, IGoalService {
     private let responseFactory: ResponseFactory
     
     init(with responseFactory: ResponseFactory = ResponseFactory()) {
         self.responseFactory = responseFactory
+    }
+    
+    func getGoalChallenges(completion: @escaping (Result<[Challenge], GenericServiceError>) -> Void) {
+        RestClientGoals.GetAllGoalChallenges { [weak self] (standardRestResponse) in
+            guard let self = self else { return }
+            let error = self.validate(standardRestResponse)
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let json = standardRestResponse.json, let goalsJson = json["challenges"] as? [Json] else { // TODO: constants
+                print("JSON :\(standardRestResponse.json ?? [:])")
+                print("Unable to parse the response from the json")
+                completion(.failure(.serverError))
+                return
+            }
+            
+            guard let challenges = self.responseFactory.parseObjectArray(from: goalsJson, to: [Challenge].self) else {
+                print("JSON :\(json)")
+                print("Unable to parse the response from the json")
+                completion(.failure(.serverError))
+                return
+            }
+            
+            completion(.success(challenges))
+        }
     }
     
     func getGoals(completion: @escaping (Result<[Goal], GenericServiceError>) -> Void) {

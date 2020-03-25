@@ -10,6 +10,9 @@ import UIKit
 
 // TODO: own class
 class AttemptCollectionViewCell: UICollectionViewCell {
+    private let topContainerHeight: CGFloat = 45
+    private let contentPadding: CGFloat = 15
+    
     private let topContainerView: UIView = {
         let view = UIView()
         view.backgroundColor = .secondaryBlack
@@ -27,6 +30,8 @@ class AttemptCollectionViewCell: UICollectionViewCell {
         let subtitleLabel = UILabel()
         subtitleLabel.textColor = .offWhite
         subtitleLabel.font = .systemFont(ofSize: 14.0, weight: .medium)
+        subtitleLabel.numberOfLines = 0
+        subtitleLabel.lineBreakMode = .byWordWrapping
         return subtitleLabel
     }()
     
@@ -34,7 +39,6 @@ class AttemptCollectionViewCell: UICollectionViewCell {
         let actionButton = UIButton()
         actionButton.setTitle("Add", for: .normal)
         actionButton.setTitleColor(.darkBlue, for: .normal)
-        actionButton.backgroundColor = .backgroundBlack
         actionButton.layer.cornerRadius = 10.0 // TODO: Implement as a global constant
         return actionButton
     }()
@@ -72,7 +76,7 @@ class AttemptCollectionViewCell: UICollectionViewCell {
         topContainerView.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.left.right.equalToSuperview()
-            make.height.equalTo(75)
+            make.height.equalTo(topContainerHeight)
         }
         
         difficultyLabel.snp.makeConstraints { (make) in
@@ -82,14 +86,18 @@ class AttemptCollectionViewCell: UICollectionViewCell {
 
         descriptionLabel.snp.makeConstraints { (make) in
             make.top.equalTo(topContainerView.snp.bottom).offset(10)
-            make.left.equalToSuperview().inset(15)
+            make.right.left.equalToSuperview().inset(15)
         }
         
         actionButton.snp.makeConstraints { (make) in
             make.right.equalToSuperview().inset(15)
             make.centerY.equalToSuperview()
-            make.height.width.equalTo(50)
         }
+    }
+    
+    public func getHeightForCell(withWidthOf width: CGFloat) -> CGFloat {
+        let descriptionHeight = descriptionLabel.text?.height(withWidth: width, font: descriptionLabel.font) ?? 0
+        return topContainerHeight + (contentPadding * 3) + descriptionHeight
     }
     
     public func set(titleTo title: String, andSubtitleTo subtitle: String) {
