@@ -13,6 +13,10 @@ class AttemptCollectionViewCell: UICollectionViewCell {
     private let topContainerHeight: CGFloat = 45
     private let contentPadding: CGFloat = 15
     
+    weak private var delegate: AvailableGoalChallengeDelegate?
+    
+    public var challengeId: Int?
+    
     private let topContainerView: UIView = {
         let view = UIView()
         view.backgroundColor = .secondaryBlack
@@ -59,6 +63,7 @@ class AttemptCollectionViewCell: UICollectionViewCell {
         addAllSubviews([topContainerView, descriptionLabel])
         createConstraints()
         roundCorners()
+        actionButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
     }
     
     override func layoutSubviews() {
@@ -95,13 +100,24 @@ class AttemptCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    @objc private func addButtonTapped() {
+        guard let challengeId = challengeId else {
+            print("challenge id had not been set")
+            return
+        }
+        
+        delegate?.didSelect(challengeId)
+    }
+    
     public func getHeightForCell(withWidthOf width: CGFloat) -> CGFloat {
         let descriptionHeight = descriptionLabel.text?.height(withWidth: width, font: descriptionLabel.font) ?? 0
         return topContainerHeight + (contentPadding * 3) + descriptionHeight
     }
     
-    public func set(titleTo title: String, andSubtitleTo subtitle: String) {
+    public func set(titleTo title: String, andSubtitleTo subtitle: String, challengeId: Int, and delegate: AvailableGoalChallengeDelegate?) {
+        self.delegate = delegate
         difficultyLabel.text = title
         descriptionLabel.text = subtitle
+        self.challengeId = challengeId
     }
 }

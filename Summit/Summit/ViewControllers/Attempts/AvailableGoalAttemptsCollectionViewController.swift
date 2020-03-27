@@ -19,13 +19,14 @@ class AvailableGoalAttemptsCollectionViewController: GenericViewController<Avail
     init(goalService: IGoalService = GoalService()) {
         self.goalService = goalService
         super.init(nibName: nil, bundle: nil)
+        availableAttemptsSectionController = AvailableGoalAttemptSectionController(with: self)
     }
     
     required init?(coder: NSCoder) {
         return nil
     }
     
-    private var availableAttemptsSectionController = AvailableGoalAttemptSectionController()
+    private var availableAttemptsSectionController: AvailableGoalAttemptSectionController? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +62,10 @@ extension AvailableGoalAttemptsCollectionViewController: ListAdapterDataSource {
     }
 
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
+        guard let availableAttemptsSectionController = availableAttemptsSectionController else {
+            return AvailableGoalAttemptSectionController(with: self)
+        }
+        
         return availableAttemptsSectionController
     }
 
@@ -70,3 +75,20 @@ extension AvailableGoalAttemptsCollectionViewController: ListAdapterDataSource {
 }
 
 // TODO: medium, hard, easy color
+extension AvailableGoalAttemptsCollectionViewController: AvailableGoalChallengeDelegate {
+    func didSelect(_ challengeId: Int) {
+        // TODO: add challenge id
+        goalService.postGoalChallenge(withIDOf: challengeId) { (result) in
+            switch result {
+            case .success:
+                // TODO: display alert
+                // TODO: implement banner system
+                // TODO: show loading indicators
+                break
+            case .failure(let error):
+                // TODO: handle error
+                break
+            }
+        }
+    }
+}

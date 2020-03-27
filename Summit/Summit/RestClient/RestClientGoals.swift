@@ -20,4 +20,8 @@ public struct RestClientGoals {
     public static func GetActiveUserAttempts(userID: Int, response: @escaping StandardRestResponse) {
         SessionManager.authorized.request(RestConstants.BaseURL + "user/\(userID)/attempts/", method: .get, parameters: nil).responseJSON(completionHandler: RestClientGeneral.JsonResponseValidator(response: response))
     }
+    
+    public static func PostChallengeAttempt(challengeId: Int, response: @escaping StandardRestResponse) {
+        SessionManager.authorized.request(RestConstants.BaseURL + "goal/attempt/\(challengeId)/", method: .post, parameters: nil).responseJSON(completionHandler: RestClientGeneral.JsonResponseValidator(response: response))
+    }
 }

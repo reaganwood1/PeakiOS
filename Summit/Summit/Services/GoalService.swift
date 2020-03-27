@@ -10,6 +10,7 @@ protocol IGoalService: class {
     func getGoals(completion: @escaping (Result<[Goal], GenericServiceError>) -> Void)
     func getActiveUserGoalAttemps(userID: Int, completion: @escaping (Result<[Attempt], GenericServiceError>) -> Void)
     func getGoalChallenges(completion: @escaping (Result<[Challenge], GenericServiceError>) -> Void)
+    func postGoalChallenge(withIDOf challengeId: Int, completion: @escaping (Result<Void, GenericServiceError>) -> Void)
 }
 public class GoalService: GenericService, IGoalService {
     private let responseFactory: ResponseFactory
@@ -96,6 +97,19 @@ public class GoalService: GenericService, IGoalService {
             }
             
             completion(.success(attempts))
+        }
+    }
+    
+    public func postGoalChallenge(withIDOf challengeId: Int, completion: @escaping (Result<Void, GenericServiceError>) -> Void) {
+        RestClientGoals.PostChallengeAttempt(challengeId: challengeId) { [weak self] (standardRestResponse) in
+            guard let self = self else { return }
+            let error = self.validate(standardRestResponse)
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            completion(.success(()))
         }
     }
 }

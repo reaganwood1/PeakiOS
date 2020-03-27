@@ -8,11 +8,21 @@
 
 import IGListKit
 
+protocol AvailableGoalChallengeDelegate: class {
+    func didSelect(_ challengeId: Int)
+}
+
 class AvailableGoalAttemptSectionController: ListSectionController {
     private var challenges: CollectionChallenges? = nil
     
     private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     private let itemsPerRow = 2
+    
+    weak private var delegate: AvailableGoalChallengeDelegate?
+    
+    init(with delegate: AvailableGoalChallengeDelegate) {
+        self.delegate = delegate
+    }
     
     override func numberOfItems() -> Int {
         return challenges?.goalChallenges.count ?? 0
@@ -25,7 +35,7 @@ class AvailableGoalAttemptSectionController: ListSectionController {
         guard let challenges = challenges else { return cell }
         
         let challenge = challenges.goalChallenges[index]
-        cell.set(titleTo: "Hard", andSubtitleTo: challenge.title)
+        cell.set(titleTo: "Hard", andSubtitleTo: challenge.title, challengeId: challenge.id, and: delegate)
         
         return cell
     }
