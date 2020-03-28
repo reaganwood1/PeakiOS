@@ -8,11 +8,23 @@
 
 protocol IGoalService: class {
     func getGoals(completion: @escaping (Result<[Goal], GenericServiceError>) -> Void)
-    func getActiveUserGoalAttemps(userID: Int, completion: @escaping (Result<[Attempt], GenericServiceError>) -> Void)
+    func getActiveUserGoalAttemps(userID: Int, completion: @escaping (Result<UserAttemptsResponse, GenericServiceError>) -> Void)
     func getGoalChallenges(completion: @escaping (Result<[Challenge], GenericServiceError>) -> Void)
     func getAvailableChallenges(for topic: Goal, completion: @escaping (Result<[Challenge], GenericServiceError>) -> Void)
     func postGoalChallenge(withIDOf challengeId: Int, completion: @escaping (Result<Void, GenericServiceError>) -> Void)
 }
+
+public class UserAttemptsResponse: Codable {
+    var dueSoon: [Attempt] = []
+    var completedToday: [Attempt] = []
+    
+    convenience init(dueSoon: [Attempt] = [], completedToday: [Attempt] = []) {
+        self.init()
+        self.dueSoon = dueSoon
+        self.completedToday = completedToday
+    }
+}
+
 public class GoalService: GenericService, IGoalService {
     private let responseFactory: ResponseFactory
     
@@ -101,7 +113,7 @@ public class GoalService: GenericService, IGoalService {
         }
     }
     
-    public func getActiveUserGoalAttemps(userID: Int, completion: @escaping (Result<[Attempt], GenericServiceError>) -> Void) {
+    public func getActiveUserGoalAttemps(userID: Int, completion: @escaping (Result<UserAttemptsResponse, GenericServiceError>) -> Void) {
         RestClientGoals.GetActiveUserAttempts(userID: userID) { [weak self] (standardRestResponse) in
             guard let self = self else { return }
             let error = self.validate(standardRestResponse)
@@ -110,21 +122,21 @@ public class GoalService: GenericService, IGoalService {
                 return
             }
             
-            guard let json = standardRestResponse.json, let attemptsJson = json["attempts"] as? [Json] else { // TODO: constants
+            guard let json = standardRestResponse.json else {
                 print("JSON :\(standardRestResponse.json ?? [:])")
                 print("Unable to parse the response from the json")
                 completion(.failure(.serverError))
                 return
             }
             
-            guard let attempts = self.responseFactory.parseObjectArray(from: attemptsJson, to: [Attempt].self) else {
+            guard let userAttempts = self.responseFactory.parse(json, to: UserAttemptsResponse.self) else {
                 print("JSON :\(json)")
                 print("Unable to parse the response from the json")
                 completion(.failure(.serverError))
                 return
             }
             
-            completion(.success(attempts))
+            completion(.success(userAttempts))
         }
     }
     

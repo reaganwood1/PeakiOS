@@ -55,12 +55,9 @@ class SplashScreenViewController: GenericViewController<SplashScreenView> {
     }
     
     private func launchRootView() {
-//        let vc = GoalCollectionViewController()
-//        let vc = AvailableGoalAttemptsCollectionViewController()
-        let vc = ActiveAttemptsViewController()
-        let navController = UINavigationController(rootViewController: vc)
-        navController.modalPresentationStyle = .fullScreen
-        present(navController, animated: true, completion: nil)
+        let rootVC = RootTabController()
+        rootVC.modalPresentationStyle = .fullScreen
+        present(rootVC, animated: true, completion: nil)
     }
     
     private func launchLandingScreen() {

@@ -14,4 +14,12 @@ extension UIViewController {
         navigationController?.navigationBar.topItem?.backBarButtonItem = barButton
         self.title = title
     }
+    
+    public func hideNavBar() {
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+    public func showNavBar() {
+        navigationController?.navigationBar.isHidden = false
+    }
 }

@@ -13,7 +13,7 @@ import Charts
 class ActiveAttemptsViewController: GenericViewController<ActiveAttemptCollectionView> {
     private var adapter: ListAdapter?
 
-    private var activeAttempts = [Attempt]()
+    private var activeAttempts = UserAttemptsResponse()
     
     private let goalService: IGoalService
     
@@ -29,8 +29,18 @@ class ActiveAttemptsViewController: GenericViewController<ActiveAttemptCollectio
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-        hideNavBar()
         loadAttempts()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        hideNavBar() // TODO: make extension
+        changeNavBack(to: "Active") // TODO: constants
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+//        showNavBar() // TODO: make as an extension
     }
     
     private func setupCollectionView() {
@@ -39,10 +49,6 @@ class ActiveAttemptsViewController: GenericViewController<ActiveAttemptCollectio
         adapter.collectionView = contentView.collectionView
         adapter.dataSource = self
         self.adapter = adapter
-    }
-    
-    private func hideNavBar() {
-        navigationController?.navigationBar.isHidden = true
     }
     
     private func loadAttempts() {
@@ -65,13 +71,31 @@ class ActiveAttemptsViewController: GenericViewController<ActiveAttemptCollectio
     }
 }
 
-extension ActiveAttemptsViewController: ListAdapterDataSource {
+extension ActiveAttemptsViewController: ListAdapterDataSource, ActivateAttemptsSectionControllerDelegate {
+    func shouldShowHeader(for attempt: Attempt) -> Bool {
+        if let firstCompleted = activeAttempts.completedToday.first, firstCompleted.id == attempt.id {
+            return true
+        } else if let firstNeedsCompletedToday = activeAttempts.dueSoon.first, firstNeedsCompletedToday.id == attempt.id {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func getHeaderText(for attempt: Attempt) -> String {
+        if let firstCompleted = activeAttempts.completedToday.first, firstCompleted.id == attempt.id {
+            return "Completed today" // TODO: constants
+        } else {
+            return "Due soon" // TODO: constants
+        }
+    }
+    
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-        return activeAttempts
+        return activeAttempts.completedToday + activeAttempts.dueSoon
     }
 
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
-        return ActiveAttemptsSectionController()
+        return ActiveAttemptsSectionController(withDelegate: self)
     }
 
     func emptyView(for listAdapter: ListAdapter) -> UIView? {

@@ -52,14 +52,6 @@ class GoalCollectionViewController: GenericViewController<GoalCollectionView> {
         self.adapter = adapter
     }
     
-    private func hideNavBar() {
-        navigationController?.navigationBar.isHidden = true
-    }
-    
-    private func showNavBar() {
-        navigationController?.navigationBar.isHidden = false
-    }
-    
     private func loadGoals() {
         goalService.getGoals { [weak self] (result) in
             switch result {

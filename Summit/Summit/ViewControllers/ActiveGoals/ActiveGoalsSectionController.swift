@@ -8,13 +8,23 @@
 
 import IGListKit
 
-class ActiveAttemptsSectionController: ListSectionController {
+protocol ActivateAttemptsSectionControllerDelegate: class {
+    func shouldShowHeader(for attempt: Attempt) -> Bool
+    func getHeaderText(for attempt: Attempt) -> String
+}
+class ActiveAttemptsSectionController: ListSectionController, ListSupplementaryViewSource {
+    weak private var delegate: ActivateAttemptsSectionControllerDelegate?
+    
     private var attempt: Attempt? = nil // TODO: get another type of item in here.
     
     private var offsetFromScreenEdges: CGFloat = 30.0
-    override init() {
+    private let headerHeight: CGFloat = 65.0
+    
+    init(withDelegate delegate: ActivateAttemptsSectionControllerDelegate) {
+        self.delegate = delegate
         super.init()
         self.inset = UIEdgeInsets(top: 20.0, left: 0, bottom: 0.0, right: 0.0)
+        supplementaryViewSource = self
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
@@ -49,6 +59,31 @@ class ActiveAttemptsSectionController: ListSectionController {
         super.didUpdate(to: object)
         if let object = object as? Attempt {
             attempt = object
+        }
+    }
+    
+    func sizeForSupplementaryView(ofKind elementKind: String, at index: Int) -> CGSize {
+        return CGSize(width: getCellWidth(), height: headerHeight)
+    }
+    
+    func viewForSupplementaryElement(ofKind elementKind: String, at index: Int) -> UICollectionReusableView {
+        guard let header = collectionContext?.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, for: self, class: ActiveAttemptCollectionViewHeader.self, at: index) as? ActiveAttemptCollectionViewHeader else {
+            fatalError()
+        }
+        guard let delegate = delegate, let attempt = attempt else { return header }
+        let text = delegate.getHeaderText(for: attempt)
+        header.headerText = text
+        
+        return header
+    }
+    
+    func supportedElementKinds() -> [String] {
+        guard let delegate = delegate, let attempt = attempt else { return [] }
+        
+        if delegate.shouldShowHeader(for: attempt) {
+             return [UICollectionView.elementKindSectionHeader]
+        } else {
+            return []
         }
     }
 }
