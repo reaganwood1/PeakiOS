@@ -58,7 +58,7 @@ class AttemptCollectionViewCell: UICollectionViewCell {
     }
     
     private func initializeUI() {
-        backgroundColor = .backgroundBlack
+        backgroundColor = .objectBlack
         topContainerView.addAllSubviews([difficultyLabel, actionButton])
         addAllSubviews([topContainerView, descriptionLabel])
         createConstraints()

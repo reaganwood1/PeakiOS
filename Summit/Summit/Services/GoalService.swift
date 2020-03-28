@@ -10,6 +10,7 @@ protocol IGoalService: class {
     func getGoals(completion: @escaping (Result<[Goal], GenericServiceError>) -> Void)
     func getActiveUserGoalAttemps(userID: Int, completion: @escaping (Result<[Attempt], GenericServiceError>) -> Void)
     func getGoalChallenges(completion: @escaping (Result<[Challenge], GenericServiceError>) -> Void)
+    func getAvailableChallenges(for topic: Goal, completion: @escaping (Result<[Challenge], GenericServiceError>) -> Void)
     func postGoalChallenge(withIDOf challengeId: Int, completion: @escaping (Result<Void, GenericServiceError>) -> Void)
 }
 public class GoalService: GenericService, IGoalService {
@@ -21,6 +22,33 @@ public class GoalService: GenericService, IGoalService {
     
     func getGoalChallenges(completion: @escaping (Result<[Challenge], GenericServiceError>) -> Void) {
         RestClientGoals.GetAllGoalChallenges { [weak self] (standardRestResponse) in
+            guard let self = self else { return }
+            let error = self.validate(standardRestResponse)
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let json = standardRestResponse.json, let goalsJson = json["challenges"] as? [Json] else { // TODO: constants
+                print("JSON :\(standardRestResponse.json ?? [:])")
+                print("Unable to parse the response from the json")
+                completion(.failure(.serverError))
+                return
+            }
+            
+            guard let challenges = self.responseFactory.parseObjectArray(from: goalsJson, to: [Challenge].self) else {
+                print("JSON :\(json)")
+                print("Unable to parse the response from the json")
+                completion(.failure(.serverError))
+                return
+            }
+            
+            completion(.success(challenges))
+        }
+    }
+    
+    func getAvailableChallenges(for topic: Goal, completion: @escaping (Result<[Challenge], GenericServiceError>) -> Void) {
+        RestClientGoals.GetAvailableChallenges(for: topic) { [weak self] (standardRestResponse) in
             guard let self = self else { return }
             let error = self.validate(standardRestResponse)
             if let error = error {

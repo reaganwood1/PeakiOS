@@ -8,12 +8,12 @@
 
 import IGListKit
 
-class Goal: Codable, ListDiffable {
-    func diffIdentifier() -> NSObjectProtocol {
+public class Goal: Codable, ListDiffable {
+    public func diffIdentifier() -> NSObjectProtocol {
         return id as NSObjectProtocol
     }
     
-    func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
+    public func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
         if let object = object as? Goal {
             return object.id == id
         }

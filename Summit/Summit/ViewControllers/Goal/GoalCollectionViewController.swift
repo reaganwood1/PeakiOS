@@ -34,6 +34,16 @@ class GoalCollectionViewController: GenericViewController<GoalCollectionView> {
         loadGoals()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        hideNavBar() // TODO: make extension
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        showNavBar() // TODO: make as an extension
+    }
+    
     private func setupCollectionView() {
         let updater = ListAdapterUpdater()
         let adapter = ListAdapter(updater: updater, viewController: self)
@@ -44,6 +54,10 @@ class GoalCollectionViewController: GenericViewController<GoalCollectionView> {
     
     private func hideNavBar() {
         navigationController?.navigationBar.isHidden = true
+    }
+    
+    private func showNavBar() {
+        navigationController?.navigationBar.isHidden = false
     }
     
     private func loadGoals() {
@@ -98,7 +112,7 @@ extension GoalCollectionViewController: ListAdapterDataSource {
     }
 
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
-        return GoalSectionController()
+        return GoalSectionController(withDelegate: self)
     }
 
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
@@ -106,11 +120,26 @@ extension GoalCollectionViewController: ListAdapterDataSource {
     }
 }
 
+extension GoalCollectionViewController: GoalSectionControllerDelegate {
+    func didSelect(_ topic: Goal) {
+        let vc = AvailableGoalAttemptsCollectionViewController(with: topic)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
 // TODO: own class
+
+protocol GoalSectionControllerDelegate: class {
+    func didSelect(_ topic: Goal)
+}
+
 class GoalSectionController: ListSectionController {
-    private var goal: Goal? = nil
+    weak public var delegate: GoalSectionControllerDelegate?
     
-    override init() {
+    private var topic: Goal? = nil
+    
+    init(withDelegate delegate: GoalSectionControllerDelegate) {
+        self.delegate = delegate
         super.init()
         self.inset = UIEdgeInsets(top: 20.0, left: 0, bottom: 0.0, right: 0.0)
     }
@@ -124,13 +153,22 @@ class GoalSectionController: ListSectionController {
         return 1
     }
     
+    override func didSelectItem(at index: Int) {
+        guard let topic = topic else {
+            print("TOPIC NILL WHEN TAPPED")
+            return
+        }
+        
+        delegate?.didSelect(topic)
+    }
+    
     override func cellForItem(at index: Int) -> UICollectionViewCell {
         guard let cell: GoalCollectionViewCell = collectionContext?.dequeueReusableCell(of: GoalCollectionViewCell.self, for: self, at: index) as? GoalCollectionViewCell else {
             return UICollectionViewCell()
         }
-        guard let goal = goal else { return cell }
+        guard let topic = topic else { return cell }
         
-        cell.set(titleTo: goal.title, andSubtitleTo: "25 goals!")
+        cell.set(titleTo: topic.title, andSubtitleTo: "25 goals!") // TODO: need to get a description for the given topic
         
         return cell
     }
@@ -138,7 +176,7 @@ class GoalSectionController: ListSectionController {
     override func didUpdate(to object: Any) {
         super.didUpdate(to: object)
         if let object = object as? Goal {
-            goal = object
+            topic = object
         }
     }
 }

@@ -11,6 +11,7 @@ import UIKit
 class AvailableGoalAttemptsView: GenericView {
     private let itemsPerRow: Int = 2
     private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+    private let collectionViewInsetFromTop: CGFloat = 15.0
     
     weak public var delegate: PinterestLayoutDelegate? {
         didSet{
@@ -32,14 +33,16 @@ class AvailableGoalAttemptsView: GenericView {
     override func initializeUI() {
         super.initializeUI()
         initializeCollectionView()
+        backgroundColor = .backgroundBlack
         if let collectionView = collectionView {
             addAllSubviews([collectionView])
         }
-        
+        changeTopCollectionViewInsets()
     }
     
     private func initializeCollectionView() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView?.backgroundColor = .backgroundBlack
     }
     
     override func createConstraints() {
@@ -47,5 +50,9 @@ class AvailableGoalAttemptsView: GenericView {
         collectionView?.snp.makeConstraints { (make) in
             make.left.right.top.bottom.equalToSuperview()
         }
+    }
+    
+    private func changeTopCollectionViewInsets() {
+        collectionView?.contentInset.top = collectionViewInsetFromTop
     }
 }

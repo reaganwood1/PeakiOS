@@ -15,9 +15,11 @@ class AvailableGoalAttemptsCollectionViewController: GenericViewController<Avail
     private var adapter: ListAdapter?
     
     private let goalService: IGoalService
+    private let topic: Goal
     
-    init(goalService: IGoalService = GoalService()) {
+    init(with topic: Goal, goalService: IGoalService = GoalService()) {
         self.goalService = goalService
+        self.topic = topic
         super.init(nibName: nil, bundle: nil)
         availableAttemptsSectionController = AvailableGoalAttemptSectionController(with: self)
     }
@@ -34,8 +36,13 @@ class AvailableGoalAttemptsCollectionViewController: GenericViewController<Avail
         retrieveChallengeAttempts()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        changeNavBack(to: "Challenges") // TODO: constantsx
+    }
+    
     private func retrieveChallengeAttempts() {
-        goalService.getGoalChallenges { [weak self] (result) in
+        goalService.getAvailableChallenges(for: topic) { [weak self] (result) in
             switch result {
             case .success(let challenges):
                 self?.collectionChallenges.goalChallenges.append(contentsOf: challenges)
