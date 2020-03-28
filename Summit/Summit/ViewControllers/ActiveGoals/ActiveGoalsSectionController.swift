@@ -23,7 +23,7 @@ class ActiveAttemptsSectionController: ListSectionController, ListSupplementaryV
     init(withDelegate delegate: ActivateAttemptsSectionControllerDelegate) {
         self.delegate = delegate
         super.init()
-        self.inset = UIEdgeInsets(top: 20.0, left: 0, bottom: 0.0, right: 0.0)
+        self.inset = UIEdgeInsets(top: 0.0, left: 0, bottom: 20.0, right: 0.0)
         supplementaryViewSource = self
     }
     
