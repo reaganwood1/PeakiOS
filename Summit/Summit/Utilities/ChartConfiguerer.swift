@@ -11,18 +11,18 @@ import Charts
 class ChartConfigurer {
     // TODO: clean up
     public func configureUserChart(chart: LineChartView, chartDataSet: ChartDataSet, withAnimation shouldAnimate: Bool) {
-        let ll1 = ChartLimitLine(limit: 150, label: "Goal") // TODO: constants
+        let ll1 = ChartLimitLine(limit: chartDataSet.goalY, label: "Goal") // TODO: constants
         ll1.lineWidth = 2
         ll1.lineDashLengths = [0, 0]
         ll1.labelPosition = .topRight
         ll1.valueFont = .systemFont(ofSize: 10)
         ll1.valueTextColor = .offWhite
-        ll1.lineColor = .darkBlue // TODO: make whatever the color that is necessary
+        ll1.lineColor = chartDataSet.lineColor
         
         let rightAxis = chart.rightAxis
         rightAxis.removeAllLimitLines()
         rightAxis.addLimitLine(ll1)
-        rightAxis.axisMaximum = chartDataSet.goalY
+        rightAxis.axisMaximum = chartDataSet.goalY + (chartDataSet.goalY * 0.25)
         rightAxis.axisMinimum = chartDataSet.minY
         rightAxis.gridColor = .clear
         rightAxis.axisLineColor = .clear
@@ -63,8 +63,8 @@ class ChartConfigurer {
         
         set1.lineDashLengths = [0, 0]
         set1.highlightLineDashLengths = [0, 0]
-        set1.setColor(.darkBlue)
-        set1.setCircleColor(.darkBlue)
+        set1.setColor(dataSet.lineColor)
+        set1.setCircleColor(dataSet.lineColor)
         set1.valueTextColor = .clear
         set1.lineWidth = 1
         set1.circleRadius = 1
@@ -74,7 +74,7 @@ class ChartConfigurer {
         set1.formLineWidth = 1
         set1.formSize = 15
         
-        let gradientColors = [UIColor.darkBlue.withAlphaComponent(0.5).cgColor, UIColor.darkBlue.cgColor]
+        let gradientColors = [dataSet.lineColor.withAlphaComponent(0.5).cgColor, dataSet.lineColor.cgColor]
         let gradient = CGGradient(colorsSpace: nil, colors: gradientColors as CFArray, locations: nil)!
         
         set1.fillAlpha = 1

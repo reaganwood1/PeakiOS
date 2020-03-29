@@ -116,7 +116,7 @@ extension ActiveAttemptsViewController: ListAdapterDataSource, ActivateAttemptsS
         if let firstCompleted = activeAttempts.completedToday.first, firstCompleted.id == attempt.id {
             return "Completed today" // TODO: constants
         } else {
-            return "Due soon" // TODO: constants
+            return "Due by end of day" // TODO: constants
         }
     }
     

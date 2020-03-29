@@ -16,4 +16,5 @@ extension UIColor {
     @nonobjc static var darkPurple = UIColor(red: 187.0 / 255.0, green: 134.0 / 255.0, blue: 252.0 / 255.0, alpha: 1.0)
     @nonobjc static var secondaryBlack = UIColor(red: 54.0 / 255.0, green: 54.0 / 255.0, blue: 54.0 / 255.0, alpha: 1.0)
     @nonobjc static var darkBlue = UIColor(red: 132.0 / 255.0, green: 201.0 / 255.0, blue: 251.0 / 255.0, alpha: 1.0)
+    @nonobjc static var darkGreen = UIColor(red: 3.0 / 255.0, green: 218.0 / 255.0, blue: 197.0 / 255.0, alpha: 1.0)
 }

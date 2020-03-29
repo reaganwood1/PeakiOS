@@ -8,7 +8,6 @@
 
 import UIKit
 
-// TODO: own class
 class AttemptCollectionViewCell: UICollectionViewCell {
     private let topContainerHeight: CGFloat = 45
     private let contentPadding: CGFloat = 15
@@ -114,10 +113,13 @@ class AttemptCollectionViewCell: UICollectionViewCell {
         return topContainerHeight + (contentPadding * 3) + descriptionHeight
     }
     
-    public func set(titleTo title: String, andSubtitleTo subtitle: String, challengeId: Int, and delegate: AvailableGoalChallengeDelegate?) {
+    public func set(difficultyTo title: String, andSubtitleTo subtitle: String, challengeId: Int, and delegate: AvailableGoalChallengeDelegate?, andTextColorOf textColor: UIColor) {
         self.delegate = delegate
         difficultyLabel.text = title
         descriptionLabel.text = subtitle
+        difficultyLabel.textColor = textColor
+        descriptionLabel.textColor = textColor
+        actionButton.setTitleColor(textColor, for: .normal)
         self.challengeId = challengeId
     }
 }
