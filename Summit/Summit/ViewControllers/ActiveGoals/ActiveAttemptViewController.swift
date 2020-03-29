@@ -63,15 +63,45 @@ class ActiveAttemptsViewController: GenericViewController<ActiveAttemptCollectio
             switch result {
             case .success(let attempts):
                 self.activeAttempts = attempts
-                self.adapter?.performUpdates(animated: true, completion: nil)
+                self.updateCollection()
             case .failure(let error):
                 break // TODO: handle error
             }
         }
     }
+    
+    private func updateCollection() {
+        adapter?.performUpdates(animated: true, completion: nil)
+    }
 }
 
 extension ActiveAttemptsViewController: ListAdapterDataSource, ActivateAttemptsSectionControllerDelegate {
+    func didSelect(_ attempt: Attempt) {
+        let presenter = CompleteAttemptPresenter()
+        presenter.present(with: self, { [weak self] in
+            self?.completeDaily(attempt)
+        })
+    }
+    
+    private func presentAttemptCompletedToday() {
+        
+    }
+    
+    private func completeDaily(_ attempt: Attempt) {
+        goalService.postUserAttemptEntry(withIDOf: attempt.id, completedToday: true) { [weak self] (result) in
+            guard let self = self else { return }
+            switch result {
+            case .success(let attempt):
+                self.activeAttempts.dueSoon = self.activeAttempts.dueSoon.filter({ $0.id != attempt.id })
+                self.activeAttempts.completedToday.append(attempt)
+                self.updateCollection()
+                // TODO: alert for completed
+            case .failure(let error):
+                break // TODO: complete error
+            }
+        }
+    }
+    
     func shouldShowHeader(for attempt: Attempt) -> Bool {
         if let firstCompleted = activeAttempts.completedToday.first, firstCompleted.id == attempt.id {
             return true

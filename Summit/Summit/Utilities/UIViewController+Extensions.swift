@@ -22,4 +22,16 @@ extension UIViewController {
     public func showNavBar() {
         navigationController?.navigationBar.isHidden = false
     }
+    
+    public func presentActionSheet(withTitleOf title: String?, andMessageOf message: String?, withActions actions: [UIAlertAction], addCancelAction: Bool = false) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        actions.forEach { alertController.addAction($0) }
+        
+        if addCancelAction {
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil) // TODO: constants
+            alertController.addAction(cancelAction)
+        }
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
 }

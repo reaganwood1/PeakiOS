@@ -42,6 +42,7 @@ class AvailableGoalAttemptsView: GenericView {
     
     private func initializeCollectionView() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView?.alwaysBounceVertical = true
         collectionView?.backgroundColor = .backgroundBlack
     }
     

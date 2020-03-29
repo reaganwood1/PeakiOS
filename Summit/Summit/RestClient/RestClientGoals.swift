@@ -28,4 +28,9 @@ public struct RestClientGoals {
     public static func PostChallengeAttempt(challengeId: Int, response: @escaping StandardRestResponse) {
         SessionManager.authorized.request(RestConstants.BaseURL + "goal/attempt/\(challengeId)/", method: .post, parameters: nil).responseJSON(completionHandler: RestClientGeneral.JsonResponseValidator(response: response))
     }
+    
+    public static func PostGoalEntry(completedInTimePeriod: Bool, attemptId: Int, response: @escaping StandardRestResponse) {
+        let parameters = ["completed_in_time_period" : completedInTimePeriod] // TODO: constants
+        SessionManager.authorized.request(RestConstants.BaseURL + "user/attempt/\(attemptId)/entry/", method: .post, parameters: parameters).responseJSON(completionHandler: RestClientGeneral.JsonResponseValidator(response: response))
+    }
 }

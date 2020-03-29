@@ -12,6 +12,7 @@ protocol IGoalService: class {
     func getGoalChallenges(completion: @escaping (Result<[Challenge], GenericServiceError>) -> Void)
     func getAvailableChallenges(for topic: Goal, completion: @escaping (Result<[Challenge], GenericServiceError>) -> Void)
     func postGoalChallenge(withIDOf challengeId: Int, completion: @escaping (Result<Void, GenericServiceError>) -> Void)
+    func postUserAttemptEntry(withIDOf attemptId: Int, completedToday: Bool, completion: @escaping (Result<Attempt, GenericServiceError>) -> Void)
 }
 
 public class UserAttemptsResponse: Codable {
@@ -150,6 +151,33 @@ public class GoalService: GenericService, IGoalService {
             }
             
             completion(.success(()))
+        }
+    }
+    
+    public func postUserAttemptEntry(withIDOf attemptId: Int, completedToday: Bool, completion: @escaping (Result<Attempt, GenericServiceError>) -> Void) {
+        RestClientGoals.PostGoalEntry(completedInTimePeriod: completedToday, attemptId: attemptId) { [weak self] (standardRestResponse) in
+            guard let self = self else { return }
+            let error = self.validate(standardRestResponse)
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let attemptJson = standardRestResponse.json?["attempt"] as? Json else {
+                print("JSON :\(standardRestResponse.json ?? [:])")
+                print("Unable to parse the response from the json")
+                completion(.failure(.serverError))
+                return
+            }
+            
+            guard let attempt = self.responseFactory.parse(attemptJson, to: Attempt.self) else {
+                print("JSON :\(attemptJson)")
+                print("Unable to parse the response from the json")
+                completion(.failure(.serverError))
+                return
+            }
+            
+            completion(.success(attempt))
         }
     }
 }

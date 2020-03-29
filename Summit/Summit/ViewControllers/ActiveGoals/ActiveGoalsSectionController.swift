@@ -11,6 +11,7 @@ import IGListKit
 protocol ActivateAttemptsSectionControllerDelegate: class {
     func shouldShowHeader(for attempt: Attempt) -> Bool
     func getHeaderText(for attempt: Attempt) -> String
+    func didSelect(_ attempt: Attempt)
 }
 class ActiveAttemptsSectionController: ListSectionController, ListSupplementaryViewSource {
     weak private var delegate: ActivateAttemptsSectionControllerDelegate?
@@ -42,6 +43,11 @@ class ActiveAttemptsSectionController: ListSectionController, ListSupplementaryV
     
     override func numberOfItems() -> Int {
         return 1
+    }
+    
+    override func didSelectItem(at index: Int) {
+        guard let attempt = attempt else { return }
+        delegate?.didSelect(attempt)
     }
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {
