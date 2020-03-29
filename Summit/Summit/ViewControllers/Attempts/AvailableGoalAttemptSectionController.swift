@@ -9,19 +9,18 @@
 import IGListKit
 
 protocol AvailableGoalChallengeDelegate: class {
-    func didSelect(_ challengeId: Int)
+    func didSelect(_ challengeId: Int, itemAddedCompletion: @escaping (Date) -> Void)
 }
 
 class AvailableGoalAttemptSectionController: ListSectionController {
     private var challenges: CollectionChallenges? = nil
-    
     private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     private let itemsPerRow = 2
     
-    weak private var delegate: AvailableGoalChallengeDelegate?
+    private let goalService: IGoalService
     
-    init(with delegate: AvailableGoalChallengeDelegate) {
-        self.delegate = delegate
+    init(goalService: IGoalService = GoalService()) {
+        self.goalService = goalService
     }
     
     override func numberOfItems() -> Int {
@@ -36,7 +35,7 @@ class AvailableGoalAttemptSectionController: ListSectionController {
         
         
         let challenge = challenges.goalChallenges[index]
-        cell.set(difficultyTo: challenge.difficulty.rawValue, andSubtitleTo: challenge.title, challengeId: challenge.id, and: delegate, andTextColorOf: challenge.difficulty.color)
+        cell.set(difficultyTo: challenge.difficulty.rawValue, andSubtitleTo: challenge.title, challengeId: challenge.id, isAdded: challenge.added ?? false, and: self, andTextColorOf: challenge.difficulty.color)
         
         return cell
     }
@@ -45,6 +44,33 @@ class AvailableGoalAttemptSectionController: ListSectionController {
         super.didUpdate(to: object)
         if let object = object as? CollectionChallenges {
             challenges = object
+        }
+    }
+    
+    private func handleUserAdded(_ challengeId: Int) {
+        for challenge in challenges?.goalChallenges ?? [] {
+            if challengeId == challenge.id {
+                challenge.added = true
+            }
+        }
+        // TODO: figure out how to reload the section controller, this is a sub optimal solution being used in the meantime to change the text and disable the button
+    }
+}
+
+extension AvailableGoalAttemptSectionController: AvailableGoalChallengeDelegate {
+    func didSelect(_ challengeId: Int, itemAddedCompletion: @escaping (Date) -> Void) {
+        goalService.postGoalChallenge(withIDOf: challengeId) { [weak self] (result) in
+            switch result {
+            case .success:
+                itemAddedCompletion(Date())
+                self?.handleUserAdded(challengeId)
+                // TODO: display alert
+                // TODO: implement banner system
+                // TODO: show loading indicators
+            case .failure(let error):
+                // TODO: handle error
+                break
+            }
         }
     }
 }

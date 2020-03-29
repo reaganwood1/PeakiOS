@@ -11,6 +11,7 @@ import UIKit
 class AttemptCollectionViewCell: UICollectionViewCell {
     private let topContainerHeight: CGFloat = 45
     private let contentPadding: CGFloat = 15
+    private var lastReuse = Date()
     
     weak private var delegate: AvailableGoalChallengeDelegate?
     
@@ -41,6 +42,7 @@ class AttemptCollectionViewCell: UICollectionViewCell {
     private let actionButton: UIButton = {
         let actionButton = UIButton()
         actionButton.setTitle("Add", for: .normal)
+        actionButton.setTitle("Added", for: .disabled)
         actionButton.setTitleColor(.darkBlue, for: .normal)
         actionButton.layer.cornerRadius = 10.0 // TODO: Implement as a global constant
         return actionButton
@@ -105,7 +107,12 @@ class AttemptCollectionViewCell: UICollectionViewCell {
             return
         }
         
-        delegate?.didSelect(challengeId)
+        delegate?.didSelect(challengeId, itemAddedCompletion: { [weak self] (addedAt) in
+            guard let self = self else { return }
+            guard self.lastReuse < addedAt else { return }
+            
+            self.actionButton.isEnabled = false
+        })
     }
     
     public func getHeightForCell(withWidthOf width: CGFloat) -> CGFloat {
@@ -113,13 +120,19 @@ class AttemptCollectionViewCell: UICollectionViewCell {
         return topContainerHeight + (contentPadding * 3) + descriptionHeight
     }
     
-    public func set(difficultyTo title: String, andSubtitleTo subtitle: String, challengeId: Int, and delegate: AvailableGoalChallengeDelegate?, andTextColorOf textColor: UIColor) {
+    public func set(difficultyTo title: String, andSubtitleTo subtitle: String, challengeId: Int, isAdded: Bool, and delegate: AvailableGoalChallengeDelegate?, andTextColorOf textColor: UIColor) {
         self.delegate = delegate
         difficultyLabel.text = title
         descriptionLabel.text = subtitle
         difficultyLabel.textColor = textColor
         descriptionLabel.textColor = textColor
+        actionButton.isEnabled = !isAdded
         actionButton.setTitleColor(textColor, for: .normal)
         self.challengeId = challengeId
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        lastReuse = Date()
     }
 }

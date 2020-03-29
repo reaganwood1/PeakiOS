@@ -11,11 +11,11 @@ import UIKit
 public class CompleteAttemptPresenter {
     public init () { }
     public func present(with viewController: UIViewController, _ completion: @escaping () -> Void) {
-        let completeTodayAction = UIAlertAction(title: "Complete today", style: .default) { (_) in
+        let completeTodayAction = UIAlertAction(title: "Complete today", style: .default) { (_) in // TODO: constants
             completion()
         }
         
-        viewController.presentActionSheet(withTitleOf: "Complete attempt", andMessageOf: nil, withActions: [completeTodayAction], addCancelAction: true)
+        viewController.presentActionSheet(withTitleOf: "Complete attempt", andMessageOf: nil, withActions: [completeTodayAction], addCancelAction: true) // TODO: constants
     }
     
     

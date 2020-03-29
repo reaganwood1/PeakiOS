@@ -15,6 +15,7 @@ public class Challenge: Codable {
     public let failureAmount: Int
     public let goal: Int
     public let difficulty: Difficulty
+    public var added: Bool? = false
 }
 
 public enum Difficulty: String, Codable {

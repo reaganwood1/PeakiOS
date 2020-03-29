@@ -84,7 +84,7 @@ extension ActiveAttemptsViewController: ListAdapterDataSource, ActivateAttemptsS
     }
     
     private func presentAttemptCompletedToday() {
-        
+        // TODO: show that it's already been completed
     }
     
     private func completeDaily(_ attempt: Attempt) {

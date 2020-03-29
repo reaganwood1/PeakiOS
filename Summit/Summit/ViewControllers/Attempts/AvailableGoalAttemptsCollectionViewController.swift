@@ -11,17 +11,18 @@ import IGListKit
 import Charts
 
 class AvailableGoalAttemptsCollectionViewController: GenericViewController<AvailableGoalAttemptsView> {
-    private var collectionChallenges = CollectionChallenges() // TODO: fix
     private var adapter: ListAdapter?
     
     private let goalService: IGoalService
     private let topic: Goal
     
+    private var challenges = CollectionChallenges()
+    
     init(with topic: Goal, goalService: IGoalService = GoalService()) {
         self.goalService = goalService
         self.topic = topic
         super.init(nibName: nil, bundle: nil)
-        availableAttemptsSectionController = AvailableGoalAttemptSectionController(with: self)
+        availableAttemptsSectionController = AvailableGoalAttemptSectionController()
     }
     
     required init?(coder: NSCoder) {
@@ -45,12 +46,16 @@ class AvailableGoalAttemptsCollectionViewController: GenericViewController<Avail
         goalService.getAvailableChallenges(for: topic) { [weak self] (result) in
             switch result {
             case .success(let challenges):
-                self?.collectionChallenges.goalChallenges.append(contentsOf: challenges)
-                self?.adapter?.performUpdates(animated: true, completion: nil)
+                self?.challenges.goalChallenges = challenges
+                self?.reloadCollectionView()
             case .failure(let error):
                 break // TODO: handle the error
             }
         }
+    }
+    
+    private func reloadCollectionView() {
+        adapter?.performUpdates(animated: true, completion: nil)
     }
     
     private func setupCollectionView() {
@@ -65,12 +70,12 @@ class AvailableGoalAttemptsCollectionViewController: GenericViewController<Avail
 
 extension AvailableGoalAttemptsCollectionViewController: ListAdapterDataSource {
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-        return [collectionChallenges]
+        return [challenges]
     }
 
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         guard let availableAttemptsSectionController = availableAttemptsSectionController else {
-            return AvailableGoalAttemptSectionController(with: self)
+            return AvailableGoalAttemptSectionController()
         }
         
         return availableAttemptsSectionController
@@ -78,24 +83,5 @@ extension AvailableGoalAttemptsCollectionViewController: ListAdapterDataSource {
 
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
         return nil
-    }
-}
-
-// TODO: medium, hard, easy color
-extension AvailableGoalAttemptsCollectionViewController: AvailableGoalChallengeDelegate {
-    func didSelect(_ challengeId: Int) {
-        // TODO: add challenge id
-        goalService.postGoalChallenge(withIDOf: challengeId) { (result) in
-            switch result {
-            case .success:
-                // TODO: display alert
-                // TODO: implement banner system
-                // TODO: show loading indicators
-                break
-            case .failure(let error):
-                // TODO: handle error
-                break
-            }
-        }
     }
 }
