@@ -40,7 +40,7 @@ class ChartConfigurer {
         xAxis.labelPosition = .bottom
         xAxis.labelTextColor = chartDataSet.labelColor
         xAxis.axisMinimum = 0
-        xAxis.axisMaximum = chartDataSet.endX
+        xAxis.axisMaximum = chartDataSet.maxX
         xAxis.drawLabelsEnabled = false
 
         leftAxis.drawGridLinesEnabled = false

@@ -56,7 +56,7 @@ class ActiveAttemptsSectionController: ListSectionController, ListSupplementaryV
         }
         guard let attempt = attempt else { return cell }
         
-        cell.set(attemptDescription: attempt.goalChallenge.title, andDifficultyTo: "HARD", currentCompleted: attempt.currentCompleted, withCellWidth: getCellWidth())
+        cell.set(attemptDescription: attempt.goalChallenge.title, andDifficultyTo: "HARD", currentCompleted: attempt.currentCompleted, goalY: attempt.goalChallenge.attemptsToComplete, currentY: attempt.currentCompleted, withCellWidth: getCellWidth())
         
         return cell
     }

@@ -12,6 +12,7 @@ struct ChartDataSet {
     var title: String
     var minY: Double
     var maxY: Double
+    var maxX: Double
     var startY: Double
     var startX: Double
     var endY: Double

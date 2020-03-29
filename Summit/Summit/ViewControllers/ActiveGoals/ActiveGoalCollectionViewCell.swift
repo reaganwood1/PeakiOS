@@ -115,12 +115,12 @@ class ActiveGoalCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    public func set(attemptDescription attempt: String, andDifficultyTo difficulty: String, currentCompleted: Int, withCellWidth cellWidth: CGFloat) {
+    public func set(attemptDescription attempt: String, andDifficultyTo difficulty: String, currentCompleted: Int, goalY: Int, currentY: Int, withCellWidth cellWidth: CGFloat) {
         self.cellWidth = cellWidth
         attemptDescriptionLabel.text = attempt
         difficultyLabel.text = difficulty
         let chartConfiguer = ChartConfigurer()
-        let dataSet = ChartDataSet(title: "Days", minY: 0.0, maxY: 50.0, startY: 0.0, startX: 0.0, endY: 25.0, endX: 15.0, goalY: 35.0, lineColor: .darkBlue, labelColor: .offWhite)
+        let dataSet = ChartDataSet(title: "Days", minY: 0.0, maxY: Double(goalY), maxX: Double(goalY), startY: 0.0, startX: 0.0, endY: Double(currentY), endX: Double(currentCompleted), goalY: Double(goalY), lineColor: .darkBlue, labelColor: .offWhite)
         chartConfiguer.configureUserChart(chart: lineViewChart, chartDataSet: dataSet, withAnimation: false)
         
         remakeLineViewConstraints()
