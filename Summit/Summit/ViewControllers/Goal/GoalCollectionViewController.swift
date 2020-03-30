@@ -160,7 +160,7 @@ class GoalSectionController: ListSectionController {
         }
         guard let topic = topic else { return cell }
         
-        cell.set(titleTo: topic.title, andSubtitleTo: "25 goals!") // TODO: need to get a description for the given topic
+        cell.set(titleTo: topic.title, andSubtitleTo: "Tap to see challenges") // TODO: need to get a description for the given topic
         
         return cell
     }

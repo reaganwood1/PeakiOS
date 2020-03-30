@@ -46,4 +46,9 @@ class ActiveAttemptCollectionViewHeader: UICollectionReusableView {
             make.centerY.equalToSuperview()
         }
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        headerText = ""
+    }
 }

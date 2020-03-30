@@ -77,14 +77,24 @@ class ActiveAttemptsViewController: GenericViewController<ActiveAttemptCollectio
 
 extension ActiveAttemptsViewController: ListAdapterDataSource, ActivateAttemptsSectionControllerDelegate {
     func didSelect(_ attempt: Attempt) {
-        let presenter = CompleteAttemptPresenter()
-        presenter.present(with: self, { [weak self] in
-            self?.completeDaily(attempt)
-        })
+        let isAlreadyCompleted = activeAttempts.completedToday.filter({ $0.id == attempt.id }).first != nil
+        guard !isAlreadyCompleted else {
+            presentAttemptCompletedToday()
+            return
+        }
+        
+        presentCompleteActionSheet(for: attempt)
     }
     
     private func presentAttemptCompletedToday() {
         // TODO: show that it's already been completed
+    }
+    
+    private func presentCompleteActionSheet(for attempt: Attempt) {
+        let presenter = CompleteAttemptPresenter()
+        presenter.present(with: self, { [weak self] in
+            self?.completeDaily(attempt)
+        })
     }
     
     private func completeDaily(_ attempt: Attempt) {
