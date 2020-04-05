@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftKeychainWrapper
 
 class SplashScreenViewController: GenericViewController<SplashScreenView> {
     private let loginService: ILoginService

@@ -9,7 +9,6 @@
 import UIKit
 import FBSDKLoginKit
 import FBSDKCoreKit
-import SwiftKeychainWrapper
 
 class LandingScreenViewController: GenericViewController<LandingScreenView> {
     private let loginService: ILoginService
