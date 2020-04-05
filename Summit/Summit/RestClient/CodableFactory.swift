@@ -9,6 +9,8 @@
 import Foundation
 
 public class ResponseFactory {
+    public init() { }
+    
     public func convertToJSON(from data: Data?) -> Json? {
         guard let data = data else { return nil }
         

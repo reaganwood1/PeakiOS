@@ -31,6 +31,10 @@ public struct RestClientLogin {
         SessionManager.unauthorized.request(RestConstants.BaseURL + "login/", method: .post, parameters: parameters).responseJSON(completionHandler: RestClientGeneral.JsonResponseValidator(response: response))
     }
     
+    public static func Logout(response: @escaping StandardRestResponse) {
+        SessionManager.authorized.request(RestConstants.BaseURL + "logout/", method: .post, parameters: nil).responseJSON(completionHandler: RestClientGeneral.JsonResponseValidator(response: response))
+    }
+    
     public static func LoginFromAccessToken(accessToken: String, userID: UserId, response: @escaping StandardRestResponse) {
         let parameters: [String: Any] = [
             RestConstants.Parameters.AccessToken: accessToken,

@@ -13,7 +13,7 @@ public enum CachedToken {
     case standard((PeakAccessToken, UserId))
 }
 
-protocol ITokenCache: class {
+public protocol ITokenCache: class {
     func getCachedLoginToken() -> (PeakAccessToken, UserId)?
     func getCachedSocialToken() -> String?
     func cacheToken(token: CachedToken)
@@ -21,11 +21,13 @@ protocol ITokenCache: class {
 }
 
 public class TokenCache: ITokenCache {
-    func getCachedSocialToken() -> String? {
+    public init() {}
+    
+    public func getCachedSocialToken() -> String? {
         return KeychainWrapper.standard.string(forKey: Strings.Code.FacebookToken)
     }
     
-    func getCachedLoginToken() -> (PeakAccessToken, UserId)? {
+    public func getCachedLoginToken() -> (PeakAccessToken, UserId)? {
         if let peakToken = KeychainWrapper.standard.string(forKey: Strings.Code.AccessToken), let userId = KeychainWrapper.standard.integer(forKey: Strings.Code.UserId) {
             return (peakToken, userId)
         } else {
@@ -33,7 +35,7 @@ public class TokenCache: ITokenCache {
         }
     }
     
-    func cacheToken(token: CachedToken) {
+    public func cacheToken(token: CachedToken) {
         switch token {
         case .facebookToken(let token):
             KeychainWrapper.standard.set(token, forKey: Strings.Code.FacebookToken)
@@ -43,7 +45,7 @@ public class TokenCache: ITokenCache {
         }
     }
     
-    func invalidateUserCache() {
+    public func invalidateUserCache() {
         KeychainWrapper.standard.removeObject(forKey: Strings.Code.FacebookToken)
         KeychainWrapper.standard.removeObject(forKey: Strings.Code.AccessToken)
         KeychainWrapper.standard.removeObject(forKey: Strings.Code.UserId)

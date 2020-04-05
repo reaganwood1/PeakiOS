@@ -24,18 +24,28 @@ public class LoginService: GenericService, ILoginService {
     private let responseFactory: ResponseFactory
     private let tokenCache: ITokenCache
     
-    init(responseFactory: ResponseFactory = ResponseFactory(), tokenCache: ITokenCache = TokenCache()) {
+    public init(responseFactory: ResponseFactory = ResponseFactory(), tokenCache: ITokenCache = TokenCache()) {
         self.tokenCache = tokenCache
         self.responseFactory = responseFactory
     }
     
     public func logout(completion: @escaping (Result<Void, GenericServiceError>) -> Void) {
-        if let socialCache = tokenCache.getCachedSocialToken() {
+        if tokenCache.getCachedSocialToken() != nil {
             LoginManager().logOut()
         }
         tokenCache.invalidateUserCache()
         
-        // TODO: implement logout
+        RestClientLogin.Logout { [weak self] (standardRestResponse) in
+            guard let self = self else { return }
+            
+            let error = self.validate(standardRestResponse)
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            completion(.success(()))
+        }
     }
     
     public func socialUserFrom(_ accessToken: String, provider: SocialProviders, completion: @escaping (Result<User, GenericServiceError>) -> Void) {
