@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftKeychainWrapper
 import SnapKit
 
 class ViewController: UIViewController {

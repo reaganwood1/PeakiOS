@@ -11,5 +11,6 @@ public struct Strings {
     public struct Code {
         public static var AccessToken = "AccessToken"
         public static var UserId = "UserId"
+        public static var FacebookToken = "FacebookToken"
     }
 }

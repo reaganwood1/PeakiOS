@@ -6,21 +6,53 @@
 //  Copyright © 2020 Reagan Wood. All rights reserved.
 //
 
-import Foundation
+import FBSDKCoreKit
+import FBSDKLoginKit
+
+public enum SocialProviders: String {
+    case facebook = "facebook"
+}
 
 public protocol ILoginService: class {
-    func userFrom(_ accessToken: String, for userID: String, completion: @escaping (Result<User, GenericServiceError>) -> Void)
+    func userFrom(_ accessToken: String, for userID: UserId, completion: @escaping (Result<User, GenericServiceError>) -> Void)
     func login(username: String, password: String, completion: @escaping (Result<User, GenericServiceError>) -> Void)
+    func socialUserFrom(_ accessToken: String, provider: SocialProviders, completion: @escaping (Result<User, GenericServiceError>) -> Void)
+    func logout(completion: @escaping (Result<Void, GenericServiceError>) -> Void)
 }
 
 public class LoginService: GenericService, ILoginService {
     private let responseFactory: ResponseFactory
+    private let tokenCache: ITokenCache
     
-    init(responseFactory: ResponseFactory = ResponseFactory()) {
+    init(responseFactory: ResponseFactory = ResponseFactory(), tokenCache: ITokenCache = TokenCache()) {
+        self.tokenCache = tokenCache
         self.responseFactory = responseFactory
     }
     
-    public func userFrom(_ accessToken: String, for userID: String, completion: @escaping (Result<User, GenericServiceError>) -> Void) {
+    public func logout(completion: @escaping (Result<Void, GenericServiceError>) -> Void) {
+        if let socialCache = tokenCache.getCachedSocialToken() {
+            LoginManager().logOut()
+        }
+        tokenCache.invalidateUserCache()
+        
+        // TODO: implement logout
+    }
+    
+    public func socialUserFrom(_ accessToken: String, provider: SocialProviders, completion: @escaping (Result<User, GenericServiceError>) -> Void) {
+        RestClientLogin.LoginFromSocialAccessToken(accessToken: accessToken, provider: provider) { [weak self] (standardRestResponse) in // TODO: constants
+            guard let self = self else { return }
+            
+            let error = self.validate(standardRestResponse)
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            self.parseUser(from: standardRestResponse, completion: completion)
+        }
+    }
+    
+    public func userFrom(_ accessToken: String, for userID: UserId, completion: @escaping (Result<User, GenericServiceError>) -> Void) {
         RestClientLogin.LoginFromAccessToken(accessToken: accessToken, userID: userID) { [weak self] standardRestResponse in
             guard let self = self else { return }
             
@@ -61,6 +93,7 @@ public class LoginService: GenericService, ILoginService {
             return
         }
         
+        tokenCache.cacheToken(token: .standard((token, user.id)))
         user.accessToken = token
         User.SetInstance(user: user)
         completion(.success(user))

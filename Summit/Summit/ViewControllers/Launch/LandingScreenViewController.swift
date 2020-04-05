@@ -7,13 +7,32 @@
 //
 
 import UIKit
+import FBSDKLoginKit
+import FBSDKCoreKit
+import SwiftKeychainWrapper
 
 class LandingScreenViewController: GenericViewController<LandingScreenView> {
+    private let loginService: ILoginService
+    private let tokenCache: ITokenCache
+    
+    init(loginService: ILoginService = LoginService(), tokenCache: ITokenCache = TokenCache()) {
+        self.loginService = loginService
+        self.tokenCache = tokenCache
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        return nil
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // TODO: handle one button press that launches a screen to proceed into the app
+        logoutExistingData()
         setDelegate()
+    }
+    
+    private func logoutExistingData() {
+        loginService.logout(completion: {_ in })
     }
     
     private func setDelegate() {
@@ -22,21 +41,50 @@ class LandingScreenViewController: GenericViewController<LandingScreenView> {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = true
+        hideNavBar()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.navigationBar.isHidden = false
+        showNavBar()
     }
 }
 
-extension LandingScreenViewController: LandingScreenViewDelegate {
-    func didPressGetStarted() {
-        // TODO: present the main signin view.
+extension LandingScreenViewController: LoginButtonDelegate {
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        guard let result = result else { return }
+        if let error = error {
+            // TODO: handle error
+            return
+        }
+        
+        guard let token = result.token else {
+            // TODO: configure view
+            return
+        }
+        
+        tokenCache.cacheToken(token: .facebookToken(token.tokenString))
+        
+        contentView.configureForNetwork()
+        
+        loginService.socialUserFrom(token.tokenString, provider: .facebook) { [weak self] (result) in
+            switch result {
+            case .success(_):
+                self?.launchRootView()
+            case .failure(_):
+                self?.contentView.configureForNetworkComplete()
+                break // TODO: handle error
+            }
+        }
     }
-}
-
-protocol LandingScreenViewDelegate: class {
-    func didPressGetStarted()
+    
+    private func launchRootView() {
+        let rootVC = RootTabController()
+        rootVC.modalPresentationStyle = .fullScreen
+        present(rootVC, animated: true, completion: nil)
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        // TODO: handle logout in your app
+    }
 }

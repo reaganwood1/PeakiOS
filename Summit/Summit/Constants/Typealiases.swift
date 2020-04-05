@@ -6,5 +6,5 @@
 //  Copyright © 2020 Reagan Wood. All rights reserved.
 //
 
-public typealias AccessToken = String
-public typealias UserId = String
+public typealias PeakAccessToken = String
+public typealias UserId = Int

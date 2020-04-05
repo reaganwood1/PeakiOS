@@ -11,9 +11,11 @@ import SwiftKeychainWrapper
 
 class SplashScreenViewController: GenericViewController<SplashScreenView> {
     private let loginService: ILoginService
+    private let tokenCache: ITokenCache
     
-    init(loginService: ILoginService = LoginService()) {
+    init(loginService: ILoginService = LoginService(), tokenCache: ITokenCache = TokenCache()) {
         self.loginService = loginService
+        self.tokenCache = tokenCache
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -27,29 +29,21 @@ class SplashScreenViewController: GenericViewController<SplashScreenView> {
     }
     
     private func determineLaunchScreen() {
-        if let accessTokenAndUser = getPersistedUserToken() {
-            launchSession(from: accessTokenAndUser.0, for: accessTokenAndUser.1)
-        } else {
+        guard let cachedCredentials = tokenCache.getCachedLoginToken() else {
             launchLandingScreen()
-            
-        }
-    }
-    
-    private func getPersistedUserToken() -> (AccessToken, UserId)? {
-        if let accessToken = KeychainWrapper.standard.string(forKey: Strings.Code.AccessToken), let userId = KeychainWrapper.standard.string(forKey: Strings.Code.UserId) {
-            return (accessToken, userId)
+            return
         }
         
-        return nil
+        launchSession(from: cachedCredentials.0, for: cachedCredentials.1)
     }
     
-    private func launchSession(from accessToken: String, for userID: String) {
+    private func launchSession(from accessToken: String, for userID: UserId) {
         loginService.userFrom(accessToken, for: userID) { [weak self] (result) in
             switch result {
             case .success(_):
                 self?.launchRootView()
             case .failure(_):
-                break
+                self?.launchLandingScreen()
             }
         }
     }

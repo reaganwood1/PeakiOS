@@ -65,6 +65,11 @@
 		13DF593E241E917E00BB1A35 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DF593D241E917E00BB1A35 /* UIButton+Extensions.swift */; };
 		13DF5940241E928D00BB1A35 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DF593F241E928D00BB1A35 /* SigninViewController.swift */; };
 		13DF5942241F210000BB1A35 /* GoalCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DF5941241F210000BB1A35 /* GoalCollectionViewController.swift */; };
+		13F80F6F24390B5800F22F53 /* FBSDKPlacesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F80F6B24390B5800F22F53 /* FBSDKPlacesKit.framework */; };
+		13F80F7024390B5800F22F53 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F80F6C24390B5800F22F53 /* FBSDKLoginKit.framework */; };
+		13F80F7124390B5800F22F53 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F80F6D24390B5800F22F53 /* FBSDKShareKit.framework */; };
+		13F80F7224390B5800F22F53 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F80F6E24390B5800F22F53 /* FBSDKCoreKit.framework */; };
+		13F80F7D243A48E400F22F53 /* TokenCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F80F7C243A48E400F22F53 /* TokenCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,11 +149,16 @@
 		1393BB86241DD8AD004703DD /* Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 		13DF5933241DE10300BB1A35 /* GenericService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericService.swift; sourceTree = "<group>"; };
 		13DF5936241E84A500BB1A35 /* LandingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingScreenViewController.swift; sourceTree = "<group>"; };
-		13DF5938241E875400BB1A35 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		13DF5938241E875400BB1A35 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIView+Extensions.swift"; path = "../New Group/UIView+Extensions.swift"; sourceTree = "<group>"; };
 		13DF593B241E914200BB1A35 /* LandingScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingScreenView.swift; sourceTree = "<group>"; };
 		13DF593D241E917E00BB1A35 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		13DF593F241E928D00BB1A35 /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
 		13DF5941241F210000BB1A35 /* GoalCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCollectionViewController.swift; sourceTree = "<group>"; };
+		13F80F6B24390B5800F22F53 /* FBSDKPlacesKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKPlacesKit.framework; path = Carthage/Build/iOS/FBSDKPlacesKit.framework; sourceTree = "<group>"; };
+		13F80F6C24390B5800F22F53 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = Carthage/Build/iOS/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		13F80F6D24390B5800F22F53 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = Carthage/Build/iOS/FBSDKShareKit.framework; sourceTree = "<group>"; };
+		13F80F6E24390B5800F22F53 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = Carthage/Build/iOS/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		13F80F7C243A48E400F22F53 /* TokenCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +166,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13F80F6F24390B5800F22F53 /* FBSDKPlacesKit.framework in Frameworks */,
+				13F80F7024390B5800F22F53 /* FBSDKLoginKit.framework in Frameworks */,
+				13F80F7124390B5800F22F53 /* FBSDKShareKit.framework in Frameworks */,
+				13F80F7224390B5800F22F53 /* FBSDKCoreKit.framework in Frameworks */,
 				1377C05D2426C85A00F29658 /* Charts.framework in Frameworks */,
 				13185044241FB6C800001B96 /* IGListKit.framework in Frameworks */,
 				13185045241FB6C800001B96 /* IGListDiffKit.framework in Frameworks */,
@@ -308,6 +322,10 @@
 		1393BB5A241D64E3004703DD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				13F80F6E24390B5800F22F53 /* FBSDKCoreKit.framework */,
+				13F80F6C24390B5800F22F53 /* FBSDKLoginKit.framework */,
+				13F80F6B24390B5800F22F53 /* FBSDKPlacesKit.framework */,
+				13F80F6D24390B5800F22F53 /* FBSDKShareKit.framework */,
 				1377C05C2426C85A00F29658 /* Charts.framework */,
 				13185043241FB6C800001B96 /* IGListDiffKit.framework */,
 				13185042241FB6C800001B96 /* IGListKit.framework */,
@@ -321,13 +339,9 @@
 		1393BB5D241D6739004703DD /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				13DF5938241E875400BB1A35 /* UIView+Extensions.swift */,
-				13DF593D241E917E00BB1A35 /* UIButton+Extensions.swift */,
-				135C63D92421B92F009D6CA7 /* UIColor+Extensions.swift */,
-				1377C0672428493700F29658 /* Extensions+String.swift */,
-				1377C06B2429A26100F29658 /* ChartConfiguerer.swift */,
-				1377C0742429A3C600F29658 /* ChartDataSet.swift */,
-				138964C5242FF6320051ED33 /* UIViewController+Extensions.swift */,
+				13F80F7B243A48D100F22F53 /* Caches */,
+				13F80F78243A48A900F22F53 /* Charts */,
+				13F80F77243A489700F22F53 /* Extensions */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -442,6 +456,35 @@
 				13DF5941241F210000BB1A35 /* GoalCollectionViewController.swift */,
 			);
 			path = Goal;
+			sourceTree = "<group>";
+		};
+		13F80F77243A489700F22F53 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				138964C5242FF6320051ED33 /* UIViewController+Extensions.swift */,
+				1377C0672428493700F29658 /* Extensions+String.swift */,
+				135C63D92421B92F009D6CA7 /* UIColor+Extensions.swift */,
+				13DF593D241E917E00BB1A35 /* UIButton+Extensions.swift */,
+				13DF5938241E875400BB1A35 /* UIView+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		13F80F78243A48A900F22F53 /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				1377C0742429A3C600F29658 /* ChartDataSet.swift */,
+				1377C06B2429A26100F29658 /* ChartConfiguerer.swift */,
+			);
+			path = Charts;
+			sourceTree = "<group>";
+		};
+		13F80F7B243A48D100F22F53 /* Caches */ = {
+			isa = PBXGroup;
+			children = (
+				13F80F7C243A48E400F22F53 /* TokenCache.swift */,
+			);
+			path = Caches;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -574,7 +617,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		1393BB59241D647E004703DD /* Copy Carthage Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -586,6 +629,10 @@
 				"$(SRCROOT)/Carthage/Build/iOS/IGListKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/IGListDiffKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Charts.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FBSDKPlacesKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FBSDKLoginKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FBSDKShareKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FBSDKCoreKit.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputFileListPaths = (
@@ -597,8 +644,12 @@
 				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/IGListKit.framework",
 				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/IGListDiffKit.framework",
 				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/Charts.framework",
+				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/FBSDKPlacesKit.framework",
+				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/FBSDKLoginKit.framework",
+				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/FBSDKShareKit.framework",
+				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/FBSDKCoreKit.framework",
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
 		};
@@ -609,6 +660,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13F80F7D243A48E400F22F53 /* TokenCache.swift in Sources */,
 				13DF593C241E914200BB1A35 /* LandingScreenView.swift in Sources */,
 				1393BB2E241D60DD004703DD /* ViewController.swift in Sources */,
 				1377C05B2426BD9600F29658 /* AvailableGoalAttemptSectionController.swift in Sources */,
@@ -839,7 +891,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = RWSoftware.Summit;
+				PRODUCT_BUNDLE_IDENTIFIER = RWSoftware.Peak;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -861,7 +913,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = RWSoftware.Summit;
+				PRODUCT_BUNDLE_IDENTIFIER = RWSoftware.Peak;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

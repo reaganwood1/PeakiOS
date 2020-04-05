@@ -7,63 +7,77 @@
 //
 
 import UIKit
+import FBSDKLoginKit
+import FBSDKCoreKit
 
 class LandingScreenView: GenericView {
-    weak public var delegate: LandingScreenViewDelegate?
+    weak public var delegate: LoginButtonDelegate? {
+        didSet {
+            facebookLoginButton.delegate = delegate
+        }
+    }
     
-    private let backroundImageView: UIImageView = {
+    private let backgroundImageView: UIImageView = {
         let backroundImageView = UIImageView(image: #imageLiteral(resourceName: "landingImage"))
         backroundImageView.contentMode = .scaleAspectFill
         return backroundImageView
     }()
     
-    private let landingButton: UIButton = {
-        let landingButton = UIButton()
-        landingButton.setTitle("Lets get started", for: .normal)
-        landingButton.setTitleColor(.black, for: .normal)
-        landingButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
-        landingButton.backgroundColor = .white
-        landingButton.layer.cornerRadius = 10.0
-        landingButton.addButtonShadow()
-        landingButton.addTarget(self, action: #selector(getStartedButtonPressed), for: .touchUpInside)
-        return landingButton
+    private let facebookLoginButton: FBLoginButton = {
+        let facebookLoginButton = FBLoginButton()
+        facebookLoginButton.layer.cornerRadius = 10.0
+        facebookLoginButton.addButtonShadow()
+        return facebookLoginButton
     }()
     
     public override func initializeUI() {
         super.initializeUI()
-        addAllSubviews([backroundImageView, landingButton])
-        sendSubviewToBack(backroundImageView)
-    }
-    
-    @objc private func getStartedButtonPressed() {
-        delegate?.didPressGetStarted()
+        addAllSubviews([backgroundImageView, facebookLoginButton])
+        sendSubviewToBack(backgroundImageView)
     }
     
     public override func createConstraints() {
         super.createConstraints()
-        createBackroundImageViewConstraints()
-        createConstraintsForLandingButton()
+        createBackgroundImageViewConstraints()
+        removeFacebookButtonHeightConstraint()
+        createConstraintsForFacebookButton()
     }
     
-    private func createBackroundImageViewConstraints() {
-        backroundImageView.snp.makeConstraints { (make) in
+    private func createBackgroundImageViewConstraints() {
+        backgroundImageView.snp.makeConstraints { (make) in
             make.top.left.right.bottom.equalToSuperview()
         }
     }
     
-    private func createConstraintsForLandingButton() {
+    private func removeFacebookButtonHeightConstraint() {
+        if let buttonHeightConstraint = facebookLoginButton.constraints.first(where: { $0.firstAttribute == .height }) {
+            facebookLoginButton.removeConstraint(buttonHeightConstraint)
+        }
+    }
+    
+    private func createConstraintsForFacebookButton() {
         if #available(iOS 11.0, *) {
-            landingButton.snp.makeConstraints { (make) in
+            facebookLoginButton.snp.makeConstraints { (make) in
                 make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(15)
                 make.left.right.equalToSuperview().inset(15)
                 make.height.equalTo(50)
             }
         } else {
-            landingButton.snp.makeConstraints { (make) in
+            facebookLoginButton.snp.makeConstraints { (make) in
                 make.bottom.equalToSuperview()
                 make.left.right.equalToSuperview().inset(15)
                 make.height.equalTo(50)
             }
         }
+    }
+    
+    public func configureForNetwork() {
+        // TODO: add an activity indicator
+        facebookLoginButton.isHidden = true
+    }
+    
+    public func configureForNetworkComplete() {
+        // TODO: remove an activity indicator
+        facebookLoginButton.isHidden = false
     }
 }

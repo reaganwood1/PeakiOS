@@ -31,12 +31,21 @@ public struct RestClientLogin {
         SessionManager.unauthorized.request(RestConstants.BaseURL + "login/", method: .post, parameters: parameters).responseJSON(completionHandler: RestClientGeneral.JsonResponseValidator(response: response))
     }
     
-    public static func LoginFromAccessToken(accessToken: String, userID: String, response: @escaping StandardRestResponse) {
-        let parameters = [
+    public static func LoginFromAccessToken(accessToken: String, userID: UserId, response: @escaping StandardRestResponse) {
+        let parameters: [String: Any] = [
             RestConstants.Parameters.AccessToken: accessToken,
             RestConstants.Parameters.UserId: userID
         ]
         
         SessionManager.unauthorized.request(RestConstants.BaseURL + "login/access-token", method: .post, parameters: parameters).responseJSON(completionHandler: RestClientGeneral.JsonResponseValidator(response: response))
+    }
+    
+    public static func LoginFromSocialAccessToken(accessToken: String, provider: SocialProviders, response: @escaping StandardRestResponse) {
+        let parameters = [
+            "provider": provider.rawValue,
+            "access_token": accessToken
+        ] // TODO: constants
+        
+        SessionManager.unauthorized.request(RestConstants.BaseURL + "oauth/login/", method: .post, parameters: parameters).responseJSON(completionHandler: RestClientGeneral.JsonResponseValidator(response: response))
     }
 }
