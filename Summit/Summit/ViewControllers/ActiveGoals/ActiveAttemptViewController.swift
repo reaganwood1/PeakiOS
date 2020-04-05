@@ -29,18 +29,17 @@ class ActiveAttemptsViewController: GenericViewController<ActiveAttemptCollectio
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
+        subscribeForUpdateAttempts()
         loadAttempts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        hideNavBar() // TODO: make extension
         changeNavBack(to: "Active") // TODO: constants
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        showNavBar() // TODO: make as an extension
     }
     
     private func setupCollectionView() {
@@ -140,5 +139,13 @@ extension ActiveAttemptsViewController: ListAdapterDataSource, ActivateAttemptsS
 
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
         return nil
+    }
+    
+    private func subscribeForUpdateAttempts() {
+        NotificationCenter.default.addObserver(self, selector: #selector(shouldUpdateAttempts), name: .reloadActiveAttempts, object: nil)
+    }
+    
+    @objc func shouldUpdateAttempts() {
+        loadAttempts()
     }
 }

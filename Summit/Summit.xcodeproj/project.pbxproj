@@ -70,6 +70,7 @@
 		13F80F7124390B5800F22F53 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F80F6D24390B5800F22F53 /* FBSDKShareKit.framework */; };
 		13F80F7224390B5800F22F53 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F80F6E24390B5800F22F53 /* FBSDKCoreKit.framework */; };
 		13F80F7D243A48E400F22F53 /* TokenCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F80F7C243A48E400F22F53 /* TokenCache.swift */; };
+		13F80F81243A866F00F22F53 /* Notification+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F80F80243A866F00F22F53 /* Notification+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,6 +160,7 @@
 		13F80F6D24390B5800F22F53 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = Carthage/Build/iOS/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		13F80F6E24390B5800F22F53 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = Carthage/Build/iOS/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		13F80F7C243A48E400F22F53 /* TokenCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenCache.swift; sourceTree = "<group>"; };
+		13F80F80243A866F00F22F53 /* Notification+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -466,6 +468,7 @@
 				135C63D92421B92F009D6CA7 /* UIColor+Extensions.swift */,
 				13DF593D241E917E00BB1A35 /* UIButton+Extensions.swift */,
 				13DF5938241E875400BB1A35 /* UIView+Extensions.swift */,
+				13F80F80243A866F00F22F53 /* Notification+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -691,6 +694,7 @@
 				13DF593E241E917E00BB1A35 /* UIButton+Extensions.swift in Sources */,
 				1377C0542426BBD400F29658 /* PinterestLayout.swift in Sources */,
 				13DF5940241E928D00BB1A35 /* SigninViewController.swift in Sources */,
+				13F80F81243A866F00F22F53 /* Notification+Extensions.swift in Sources */,
 				13DF5939241E875400BB1A35 /* UIView+Extensions.swift in Sources */,
 				138964C6242FF6320051ED33 /* UIViewController+Extensions.swift in Sources */,
 				135C63DE2421CA5C009D6CA7 /* GoalService.swift in Sources */,

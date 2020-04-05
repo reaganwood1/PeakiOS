@@ -64,6 +64,7 @@ extension AvailableGoalAttemptSectionController: AvailableGoalChallengeDelegate 
             case .success:
                 itemAddedCompletion(Date())
                 self?.handleUserAdded(challengeId)
+                self?.postAttemptAdded()
                 // TODO: display alert
                 // TODO: implement banner system
                 // TODO: show loading indicators
@@ -72,6 +73,10 @@ extension AvailableGoalAttemptSectionController: AvailableGoalChallengeDelegate 
                 break
             }
         }
+    }
+    
+    private func postAttemptAdded() {
+        NotificationCenter.default.post(name: .reloadActiveAttempts, object: nil)
     }
 }
 
