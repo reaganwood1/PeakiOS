@@ -19,7 +19,7 @@ class ActiveAttemptCollectionViewHeader: UICollectionReusableView {
     private let headerLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
-        label.textColor = .offWhite
+        label.textColor = .textColor
         return label
     }()
 
@@ -35,7 +35,7 @@ class ActiveAttemptCollectionViewHeader: UICollectionReusableView {
 
     private func initializeUI() {
         self.addSubview(headerLabel)
-        backgroundColor = .backgroundBlack
+        backgroundColor = .summitBackground
         createConstraints()
     }
 

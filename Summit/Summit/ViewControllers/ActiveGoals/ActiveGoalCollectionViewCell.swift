@@ -23,7 +23,7 @@ class ActiveGoalCollectionViewCell: UICollectionViewCell {
     
     private let attemptTitleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.textColor = .offWhite
+        titleLabel.textColor = .textColor
         titleLabel.text = "Attempt"
         titleLabel.font = .systemFont(ofSize: 16.0, weight: .bold)
         return titleLabel
@@ -31,8 +31,8 @@ class ActiveGoalCollectionViewCell: UICollectionViewCell {
     
     private let attemptDescriptionLabel: UILabel = {
         let attemptDescription = UILabel()
-        attemptDescription.textColor = .darkBlue
-        attemptDescription.font = .systemFont(ofSize: 14.0, weight: .medium)
+        attemptDescription.textColor = .summitBlue
+        attemptDescription.font = .systemFont(ofSize: 14.0, weight: .bold)
         attemptDescription.numberOfLines = 0
         attemptDescription.lineBreakMode = .byWordWrapping
         return attemptDescription
@@ -40,16 +40,16 @@ class ActiveGoalCollectionViewCell: UICollectionViewCell {
     
     private let difficultyLabel: UILabel = {
         let difficultyLabel = UILabel()
-        difficultyLabel.textColor = .darkBlue
+        difficultyLabel.textColor = .summitBlue
         difficultyLabel.font = .systemFont(ofSize: 14.0, weight: .bold)
         return difficultyLabel
     }()
     
     private let difficultyTitleLabel: UILabel = {
         let difficultyLabel = UILabel()
-        difficultyLabel.textColor = .offWhite
+        difficultyLabel.textColor = .textColor
         difficultyLabel.text = "Difficulty: "
-        difficultyLabel.font = .systemFont(ofSize: 14.0, weight: .medium)
+        difficultyLabel.font = .systemFont(ofSize: 14.0, weight: .bold)
         return difficultyLabel
     }()
     
@@ -70,7 +70,7 @@ class ActiveGoalCollectionViewCell: UICollectionViewCell {
     }
     
     private func initializeUI() {
-        backgroundColor = .objectBlack
+        backgroundColor = .summitObjeckBackground
         addAllSubviews([attemptTitleLabel, attemptDescriptionLabel, difficultyTitleLabel, difficultyLabel, lineViewChart])
         createConstraints()
         roundCorners()
@@ -123,7 +123,7 @@ class ActiveGoalCollectionViewCell: UICollectionViewCell {
         attemptDescriptionLabel.textColor = difficultyColor
         
         let chartConfiguer = ChartConfigurer()
-        let dataSet = ChartDataSet(title: "Days", minY: 0.0, maxY: Double(goalY), maxX: Double(goalY), startY: 0.0, startX: 0.0, endY: Double(currentY), endX: Double(currentCompleted), goalY: Double(goalY), lineColor: difficultyColor, labelColor: .offWhite)
+        let dataSet = ChartDataSet(title: "Days", minY: 0.0, maxY: Double(goalY), maxX: Double(goalY), startY: 0.0, startX: 0.0, endY: Double(currentY), endX: Double(currentCompleted), goalY: Double(goalY), lineColor: difficultyColor, labelColor: .summitBackground)
         chartConfiguer.configureUserChart(chart: lineViewChart, chartDataSet: dataSet, withAnimation: false)
         
         remakeLineViewConstraints()

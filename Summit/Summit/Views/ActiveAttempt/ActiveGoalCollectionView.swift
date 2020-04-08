@@ -13,7 +13,7 @@ class ActiveAttemptCollectionView: GenericView {
         let layout = UICollectionViewFlowLayout()
         var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.alwaysBounceVertical = true
-        collectionView.backgroundColor = .backgroundBlack
+        collectionView.backgroundColor = .summitBackground
         return collectionView
     }()
     

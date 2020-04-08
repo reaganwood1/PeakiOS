@@ -26,11 +26,11 @@ public enum Difficulty: String, Codable {
     var color: UIColor {
         switch self {
         case .easy:
-            return .darkBlue
+            return .summitBlue
         case .medium:
-            return .darkGreen
+            return .summitGreen
         case .hard:
-            return .darkPurple
+            return .summitPurple
         }
     }
 }

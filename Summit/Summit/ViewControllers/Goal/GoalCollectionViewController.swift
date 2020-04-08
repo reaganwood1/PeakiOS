@@ -184,11 +184,12 @@ class GoalCollectionView: GenericView {
     private var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
-            textfield.textColor = .darkGray
-            textfield.backgroundColor = .offWhite
+            textfield.textColor = .textColor
+            textfield.backgroundColor = .summitObjeckBackground
         }
-        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.offWhite], for: .normal)
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.summitBackground], for: .normal)
         searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+        searchBar.placeholder = "Search topics..."
         return searchBar
     }()
     
@@ -198,7 +199,7 @@ class GoalCollectionView: GenericView {
         let layout = UICollectionViewFlowLayout()
         var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.alwaysBounceVertical = true
-        collectionView.backgroundColor = .backgroundBlack
+        collectionView.backgroundColor = .summitBackground
         return collectionView
     }()
     
@@ -236,14 +237,14 @@ class GoalCollectionView: GenericView {
 class GoalCollectionViewCell: UICollectionViewCell {
     private let titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.textColor = .offWhite
+        titleLabel.textColor = .textColor
         titleLabel.font = .systemFont(ofSize: 16.0, weight: .bold)
         return titleLabel
     }()
     
     private let subtitleLabel: UILabel = {
         let subtitleLabel = UILabel()
-        subtitleLabel.textColor = .offWhite
+        subtitleLabel.textColor = .textColor
         subtitleLabel.font = .systemFont(ofSize: 14.0, weight: .medium)
         return subtitleLabel
     }()
@@ -259,7 +260,7 @@ class GoalCollectionViewCell: UICollectionViewCell {
     }
     
     private func initializeUI() {
-        backgroundColor = .objectBlack
+        backgroundColor = .summitObjeckBackground
         addAllSubviews([titleLabel, subtitleLabel])
         createConstraints()
         roundCorners()

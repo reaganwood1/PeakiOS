@@ -19,20 +19,20 @@ class AttemptCollectionViewCell: UICollectionViewCell {
     
     private let topContainerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .secondaryBlack
+        view.backgroundColor = .summitSecondaryObjectBackground
         return view
     }()
     
     private let difficultyLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.textColor = .darkBlue
+        titleLabel.textColor = .summitBlue
         titleLabel.font = .systemFont(ofSize: 20.0, weight: .bold)
         return titleLabel
     }()
     
     private let descriptionLabel: UILabel = {
         let subtitleLabel = UILabel()
-        subtitleLabel.textColor = .offWhite
+        subtitleLabel.textColor = .summitBackground
         subtitleLabel.font = .systemFont(ofSize: 14.0, weight: .medium)
         subtitleLabel.numberOfLines = 0
         subtitleLabel.lineBreakMode = .byWordWrapping
@@ -43,7 +43,7 @@ class AttemptCollectionViewCell: UICollectionViewCell {
         let actionButton = UIButton()
         actionButton.setTitle("Add", for: .normal)
         actionButton.setTitle("Added", for: .disabled)
-        actionButton.setTitleColor(.darkBlue, for: .normal)
+        actionButton.setTitleColor(.summitBlue, for: .normal)
         actionButton.layer.cornerRadius = 10.0 // TODO: Implement as a global constant
         return actionButton
     }()
@@ -59,7 +59,7 @@ class AttemptCollectionViewCell: UICollectionViewCell {
     }
     
     private func initializeUI() {
-        backgroundColor = .objectBlack
+        backgroundColor = .summitObjeckBackground
         topContainerView.addAllSubviews([difficultyLabel, actionButton])
         addAllSubviews([topContainerView, descriptionLabel])
         createConstraints()

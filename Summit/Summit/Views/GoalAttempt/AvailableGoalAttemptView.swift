@@ -33,7 +33,7 @@ class AvailableGoalAttemptsView: GenericView {
     override func initializeUI() {
         super.initializeUI()
         initializeCollectionView()
-        backgroundColor = .backgroundBlack
+        backgroundColor = .summitBackground
         if let collectionView = collectionView {
             addAllSubviews([collectionView])
         }
@@ -43,7 +43,7 @@ class AvailableGoalAttemptsView: GenericView {
     private func initializeCollectionView() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView?.alwaysBounceVertical = true
-        collectionView?.backgroundColor = .backgroundBlack
+        collectionView?.backgroundColor = .summitBackground
     }
     
     override func createConstraints() {

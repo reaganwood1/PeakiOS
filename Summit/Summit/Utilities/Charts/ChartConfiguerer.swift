@@ -16,7 +16,7 @@ class ChartConfigurer {
         ll1.lineDashLengths = [0, 0]
         ll1.labelPosition = .topRight
         ll1.valueFont = .systemFont(ofSize: 10)
-        ll1.valueTextColor = .offWhite
+        ll1.valueTextColor = .textColor
         ll1.lineColor = chartDataSet.lineColor
         
         let rightAxis = chart.rightAxis
@@ -28,7 +28,7 @@ class ChartConfigurer {
         rightAxis.axisLineColor = .clear
         rightAxis.gridLineDashLengths = [5, 5]
         rightAxis.drawLimitLinesBehindDataEnabled = true
-        rightAxis.labelTextColor = .offWhite
+        rightAxis.labelTextColor = .textColor
         
         let leftAxis = chart.leftAxis
         leftAxis.drawAxisLineEnabled = false

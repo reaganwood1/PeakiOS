@@ -42,12 +42,14 @@ public class SummitNavigationController: UINavigationController {
     private func configureNavBar() {
         let attributes: [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16, weight: .bold),
-            NSAttributedString.Key.foregroundColor: UIColor.offWhite
+            NSAttributedString.Key.foregroundColor: UIColor.summitBackground
         ]
         navigationBar.titleTextAttributes = attributes
         
-        navigationBar.tintColor = .offWhite
-        navigationBar.barTintColor = .black
-        navigationBar.backgroundColor = .black
+        navigationBar.tintColor = .summitBackground
+        navigationBar.barTintColor = .summitBackground
+        navigationBar.backgroundColor = .summitBackground
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.textColor]
+        navigationBar.tintColor = .textColor
     }
 }

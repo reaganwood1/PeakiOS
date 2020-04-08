@@ -51,8 +51,8 @@ class RootTabController: UITabBarController {
     }
     
     private func configureTab() {
-        tabBar.backgroundColor = .black
-        tabBar.tintColor = .offWhite
-        tabBar.barTintColor = .black
+        tabBar.backgroundColor = .summitBackground
+        tabBar.tintColor = .summitBackground
+        tabBar.barTintColor = .summitBackground
     }
 }
