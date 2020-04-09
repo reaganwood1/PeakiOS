@@ -50,6 +50,13 @@ class ActiveAttemptsSectionController: ListSectionController, ListSupplementaryV
         delegate?.didSelect(attempt)
     }
     
+    public func reloadSection() {
+        collectionContext?.performBatch(animated: true, updates: { [weak self] (context) in
+            guard let self = self else { return }
+            context.reload(self)
+        }, completion: nil)
+    }
+    
     override func cellForItem(at index: Int) -> UICollectionViewCell {
         guard let cell: ActiveGoalCollectionViewCell = collectionContext?.dequeueReusableCell(of: ActiveGoalCollectionViewCell.self, for: self, at: index) as? ActiveGoalCollectionViewCell else {
             return ActiveGoalCollectionViewCell()

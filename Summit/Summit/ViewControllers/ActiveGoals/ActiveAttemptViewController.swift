@@ -65,8 +65,22 @@ class ActiveAttemptsViewController: GenericViewController<ActiveAttemptCollectio
         }
     }
     
-    private func updateCollection() {
-        adapter?.performUpdates(animated: true, completion: nil)
+    private func updateCollection(reloadFirstCompleted: Bool = false) {
+        adapter?.performUpdates(animated: true, completion: { [weak self] (_) in
+            guard let self = self else { return }
+            if reloadFirstCompleted {
+                self.reloadFirstCompleted()
+            }
+        })
+    }
+    
+    private func reloadFirstCompleted() {
+        guard let firstCompleted = activeAttempts.completedToday.first, let firstSection = adapter?.sectionController(for: firstCompleted) as? ActiveAttemptsSectionController else {
+            print("FIRST SECTION NOT FOUND, EXPECTED TO FIND FIRST SECTION")
+            return
+        }
+        
+        firstSection.reloadSection()
     }
 }
 
@@ -98,13 +112,19 @@ extension ActiveAttemptsViewController: ListAdapterDataSource, ActivateAttemptsS
             switch result {
             case .success(let attempt):
                 self.activeAttempts.dueSoon = self.activeAttempts.dueSoon.filter({ $0.id != attempt.id })
-                self.activeAttempts.completedToday.append(attempt)
-                self.updateCollection()
+                self.handleCompleted(attempt)
                 // TODO: alert for completed
             case .failure(let error):
                 break // TODO: complete error
             }
         }
+    }
+    
+    private func handleCompleted(_ attempt: Attempt) {
+        let reloadForFirstCompleted = self.activeAttempts.completedToday.count == 0
+        activeAttempts.completedToday.append(attempt)
+        
+        updateCollection(reloadFirstCompleted: reloadForFirstCompleted)
     }
     
     func shouldShowHeader(for attempt: Attempt) -> Bool {
