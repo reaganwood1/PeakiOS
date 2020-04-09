@@ -17,6 +17,24 @@ class LandingScreenView: GenericView {
         }
     }
     
+    private let bannerLabel: UILabel = {
+        let bannerLabel = UILabel()
+        bannerLabel.textColor = .textColor
+        bannerLabel.font = .systemFont(ofSize: 50.0, weight: .bold)
+        bannerLabel.text = "Peak."
+        bannerLabel.alpha = 0.0
+        return bannerLabel
+    }()
+    
+    private let bannerSubLabel: UILabel = {
+        let bannerSubLabel = UILabel()
+        bannerSubLabel.textColor = .textColor
+        bannerSubLabel.font = .systemFont(ofSize: 25.0, weight: .bold)
+        bannerSubLabel.text = "Keep moving forward"
+        bannerSubLabel.alpha = 0.0
+        return bannerSubLabel
+    }()
+    
     private let backgroundImageView: UIImageView = {
         let backroundImageView = UIImageView(image: #imageLiteral(resourceName: "landingImage"))
         backroundImageView.contentMode = .scaleAspectFill
@@ -27,12 +45,13 @@ class LandingScreenView: GenericView {
         let facebookLoginButton = FBLoginButton()
         facebookLoginButton.layer.cornerRadius = 10.0
         facebookLoginButton.addButtonShadow()
+        facebookLoginButton.alpha = 0.0
         return facebookLoginButton
     }()
     
     public override func initializeUI() {
         super.initializeUI()
-        addAllSubviews([backgroundImageView, facebookLoginButton])
+        addAllSubviews([backgroundImageView, facebookLoginButton, bannerLabel, bannerSubLabel])
         sendSubviewToBack(backgroundImageView)
     }
     
@@ -41,6 +60,8 @@ class LandingScreenView: GenericView {
         createBackgroundImageViewConstraints()
         removeFacebookButtonHeightConstraint()
         createConstraintsForFacebookButton()
+        createConstraintsForBannerLabel()
+        createConstraintsForBannerSubLabel()
     }
     
     private func createBackgroundImageViewConstraints() {
@@ -71,6 +92,20 @@ class LandingScreenView: GenericView {
         }
     }
     
+    private func createConstraintsForBannerLabel() {
+        bannerLabel.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().inset(75)
+            make.left.equalToSuperview().inset(15)
+        }
+    }
+    
+    private func createConstraintsForBannerSubLabel() {
+        bannerSubLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(bannerLabel.snp.bottom).offset(5)
+            make.left.equalTo(bannerLabel.snp.left)
+        }
+    }
+    
     public func configureForNetwork() {
         // TODO: add an activity indicator
         facebookLoginButton.isHidden = true
@@ -79,5 +114,14 @@ class LandingScreenView: GenericView {
     public func configureForNetworkComplete() {
         // TODO: remove an activity indicator
         facebookLoginButton.isHidden = false
+    }
+    
+    public func animateToFinalPositions() {
+        UIView.animate(withDuration: 1.75) { [weak self] in
+            guard let self = self else { return }
+            self.bannerLabel.alpha = 1.0
+            self.bannerSubLabel.alpha = 1.0
+            self.facebookLoginButton.alpha = 1.0
+        }
     }
 }

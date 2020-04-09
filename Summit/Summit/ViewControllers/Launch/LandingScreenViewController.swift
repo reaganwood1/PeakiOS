@@ -43,6 +43,11 @@ class LandingScreenViewController: GenericViewController<LandingScreenView> {
         hideNavBar()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        contentView.animateToFinalPositions()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         showNavBar()
