@@ -16,11 +16,11 @@ extension UIViewController {
     }
     
     public func hideNavBar() {
-        navigationController?.navigationBar.isHidden = true
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     public func showNavBar() {
-        navigationController?.navigationBar.isHidden = false
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     public func presentActionSheet(withTitleOf title: String?, andMessageOf message: String?, withActions actions: [UIAlertAction], addCancelAction: Bool = false) {

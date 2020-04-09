@@ -38,10 +38,6 @@ class ActiveAttemptsViewController: GenericViewController<ActiveAttemptCollectio
         changeNavBack(to: "Active") // TODO: constants
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-    
     private func setupCollectionView() {
         let updater = ListAdapterUpdater()
         let adapter = ListAdapter(updater: updater, viewController: self)

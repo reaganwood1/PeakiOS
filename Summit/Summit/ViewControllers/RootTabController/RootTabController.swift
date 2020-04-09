@@ -30,7 +30,7 @@ class RootTabController: UITabBarController {
         let topicsVC = GoalCollectionViewController()
 
         let vc = SummitNavigationController(rootViewController: topicsVC)
-        let tabBarItem = UITabBarItem(title: "Topics", image: #imageLiteral(resourceName: "imgTopicsTabBarSelected"), selectedImage: nil) // TODO: l10
+        let tabBarItem = UITabBarItem(title: "Topics", image: #imageLiteral(resourceName: "imgTopicsTabBarSelected"), selectedImage: #imageLiteral(resourceName: "imgTopicsTabBarSelected")) // TODO: l10
         tabBarItem.setTitleTextAttributes([
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 11.0, weight: .semibold)
             ], for: UIControl.State())
@@ -42,7 +42,7 @@ class RootTabController: UITabBarController {
         let activeVC = ActiveAttemptsViewController()
 
         let vc = SummitNavigationController(rootViewController: activeVC, addLogoutButton: true)
-        let tabBarItem = UITabBarItem(title: "Active", image: #imageLiteral(resourceName: "imgActiveAttempts"), selectedImage: nil) // TODO: l10
+        let tabBarItem = UITabBarItem(title: "Active", image: #imageLiteral(resourceName: "imgActiveAttempts"), selectedImage: #imageLiteral(resourceName: "imgActiveAttempts")) // TODO: l10
         tabBarItem.setTitleTextAttributes([
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 11.0, weight: .semibold)
             ], for: UIControl.State())
@@ -51,8 +51,10 @@ class RootTabController: UITabBarController {
     }
     
     private func configureTab() {
-        tabBar.backgroundColor = .summitBackground
-        tabBar.tintColor = .summitBackground
-        tabBar.barTintColor = .summitBackground
+        tabBar.backgroundColor = .summitNavBarBackground
+        tabBar.tintColor = .textColor
+        tabBar.barTintColor = .summitNavBarBackground
+        tabBar.unselectedItemTintColor = .textColor
+        tabBar.isTranslucent = false
     }
 }

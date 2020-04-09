@@ -22,6 +22,7 @@ extension UIColor {
     @nonobjc private static var lightModeObjectBackground = UIColor(red: 238.0 / 255.0, green: 235.0 / 255.0, blue: 235.0 / 255.0, alpha: 1.0)
     @nonobjc private static var lightModePurple = UIColor(red: 98.0 / 255.0, green: 0.0 / 255.0, blue: 238.0 / 255.0, alpha: 1.0)
     @nonobjc private static var lightModeSecondaryBackground = UIColor(red: 224.0 / 255.0, green: 224.0 / 255.0, blue: 224.0 / 255.0, alpha: 1.0)
+    @nonobjc private static var lightModeNavBarBackground = UIColor(red: 224.0 / 255.0, green: 224.0 / 255.0, blue: 224.0 / 255.0, alpha: 1.0)
     @nonobjc private static var lightModeBlue = UIColor(red: 1.0 / 255.0, green: 87.0 / 255.0, blue: 155.0 / 255.0, alpha: 1.0)
     @nonobjc private static var lightModeGreen = UIColor(red: 46.0 / 255.0, green: 125.0 / 255.0, blue: 50.0 / 255.0, alpha: 1.0)
     
@@ -53,6 +54,13 @@ extension UIColor {
     @nonobjc static var summitBackground: UIColor {
         get {
             return UIColor(light: .white, dark: .darkModeBackground)
+        }
+    }
+
+    @nonobjc static var summitNavBarBackground: UIColor {
+        get {
+            // TODO: .lightModeNavBarBackground, not sure if I want this or the other background color
+            return UIColor(light: .white, dark: .summitObjeckBackground)
         }
     }
     

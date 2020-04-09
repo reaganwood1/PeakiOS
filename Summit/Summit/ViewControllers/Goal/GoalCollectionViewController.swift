@@ -29,7 +29,6 @@ class GoalCollectionViewController: GenericViewController<GoalCollectionView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-        hideNavBar()
         contentView.searchBarDelegate = self
         loadGoals()
     }

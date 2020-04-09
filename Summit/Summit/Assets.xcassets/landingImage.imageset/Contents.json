@@ -3,6 +3,26 @@
     {
       "idiom" : "universal",
       "filename" : "mountain-1245648_1920.jpg"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "mountain-1245648_1920-1.jpg",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "darkModeLanding.jpg",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
     }
   ],
   "info" : {

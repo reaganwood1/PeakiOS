@@ -46,10 +46,11 @@ public class SummitNavigationController: UINavigationController {
         ]
         navigationBar.titleTextAttributes = attributes
         
-        navigationBar.tintColor = .summitBackground
-        navigationBar.barTintColor = .summitBackground
-        navigationBar.backgroundColor = .summitBackground
+        navigationBar.tintColor = .summitNavBarBackground
+        navigationBar.barTintColor = .summitNavBarBackground
+        navigationBar.backgroundColor = .summitNavBarBackground
         navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.textColor]
         navigationBar.tintColor = .textColor
+        navigationBar.isTranslucent = false
     }
 }
