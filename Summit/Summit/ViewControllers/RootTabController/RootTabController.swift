@@ -24,6 +24,7 @@ class RootTabController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTab()
+        setRootVC(to: self)
     }
     
     private func makeTopicsViewController() -> UIViewController {

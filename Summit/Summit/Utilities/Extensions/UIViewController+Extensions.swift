@@ -34,4 +34,14 @@ extension UIViewController {
         
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    internal func setRootVC(to vc: UIViewController) {
+        guard let window = UIApplication.shared.delegate?.window, let rootWindow = window else {
+            print("Root window could not be replaced")
+            UIApplication.shared.keyWindow?.rootViewController = vc
+            return
+        }
+
+        rootWindow.rootViewController = vc
+    }
 }
