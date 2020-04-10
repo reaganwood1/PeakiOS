@@ -39,7 +39,7 @@ open class GenericView: UIView {
     
     private func sharedInit() {
         initializeUI()
-        backgroundColor = .white
+        backgroundColor = .summitBackground
         createConstraints()
     }
     

@@ -38,7 +38,7 @@ class EmptyStateView: GenericView {
         bottomButton.setTitleColor(.textColor, for: .normal)
         bottomButton.roundCorners(by: 10) // TODO: make this a standard amount in constants
         bottomButton.addTarget(self, action: #selector(buttonWasPressed), for: .touchUpInside)
-        bottomButton.backgroundColor = .summitSecondaryObjectBackground
+        bottomButton.backgroundColor = .summitObjeckBackground
         bottomButton.titleLabel?.font = .systemFont(ofSize: 16.0, weight: .medium) // TODO: add constants
         return bottomButton
     }()
@@ -87,6 +87,7 @@ class EmptyStateView: GenericView {
     
     override func initializeUI() {
         super.initializeUI()
+        backgroundColor = .summitBackground
         addAllSubviews([imageView, titleLabel])
     }
     

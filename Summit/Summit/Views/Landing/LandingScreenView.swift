@@ -79,7 +79,7 @@ class LandingScreenView: GenericView {
     private func createConstraintsForFacebookButton() {
         if #available(iOS 11.0, *) {
             facebookLoginButton.snp.makeConstraints { (make) in
-                make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(15)
+                make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
                 make.left.right.equalToSuperview().inset(15)
                 make.height.equalTo(50)
             }
