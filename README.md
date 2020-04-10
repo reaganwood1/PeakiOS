@@ -1,2 +1,2 @@
 # PeakiOS
-Peak Mobile Client for Habit Tracking
+iOS App written in swift for the Peak Application system
