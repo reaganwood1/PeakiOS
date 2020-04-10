@@ -20,4 +20,8 @@ extension UIView {
         UIGraphicsEndImageContext()
         return result
     }
+    
+    func roundCorners(by amount: CGFloat) {
+        layer.cornerRadius = amount
+    }
 }

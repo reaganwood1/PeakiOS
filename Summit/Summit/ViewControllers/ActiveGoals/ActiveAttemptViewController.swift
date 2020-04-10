@@ -12,6 +12,8 @@ import Charts
 
 class ActiveAttemptsViewController: GenericViewController<ActiveAttemptCollectionView> {
     private var adapter: ListAdapter?
+    
+    private var emptyStatePresenter = EmptyStatePresenter()
 
     private var activeAttempts = UserAttemptsResponse()
     
@@ -57,12 +59,33 @@ class ActiveAttemptsViewController: GenericViewController<ActiveAttemptCollectio
             
             switch result {
             case .success(let attempts):
-                self.activeAttempts = attempts
-                self.updateCollection()
-            case .failure(let error):
-                break // TODO: handle error
+                self.handleRetrieved(attempts)
+            case .failure(_):
+                self.addNoInternetEmptyState()
             }
         }
+    }
+    
+    private func handleRetrieved(_ attempts: UserAttemptsResponse) {
+        activeAttempts = attempts
+
+        updateCollection()
+        
+        if activeAttempts.completedToday.count == 0 && activeAttempts.dueSoon.count == 0 {
+            addErrorEmptyState()
+        } else {
+            emptyStatePresenter.removeEmptyState(from: contentView)
+        }
+    }
+    
+    private func addErrorEmptyState() {
+        let noAttemptsAttributes = PresenterAttributes(image: #imageLiteral(resourceName: "iconLandscape").recolor(to: .textColor), title: "Uh oh! Something went wrong", buttonText: "Try again") // TODO: constants
+        emptyStatePresenter.present(with: noAttemptsAttributes, on: contentView, with: self)
+    }
+    
+    private func addNoInternetEmptyState() {
+        let noAttemptsAttributes = PresenterAttributes(image: #imageLiteral(resourceName: "iconError").recolor(to: .textColor), title: "Uh Oh! No connection", buttonText: "Reload") // TODO: constants
+        emptyStatePresenter.present(with: noAttemptsAttributes, on: contentView, with: self)
     }
     
     private func updateCollection(reloadFirstCompleted: Bool = false) {
@@ -162,6 +185,12 @@ extension ActiveAttemptsViewController: ListAdapterDataSource, ActivateAttemptsS
     }
     
     @objc func shouldUpdateAttempts() {
+        loadAttempts()
+    }
+}
+
+extension ActiveAttemptsViewController: EmptyStateViewDelegate {
+    func didPressButton() {
         loadAttempts()
     }
 }

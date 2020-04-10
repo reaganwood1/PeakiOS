@@ -263,6 +263,12 @@ class GoalCollectionViewCell: UICollectionViewCell {
         addAllSubviews([titleLabel, subtitleLabel])
         createConstraints()
         roundCorners()
+        addBorder()
+    }
+    
+    private func addBorder() {
+        layer.borderWidth = 1.0
+        layer.borderColor = UIColor.summitSecondaryObjectBackground.cgColor
     }
     
     private func roundCorners() {

@@ -17,6 +17,7 @@ extension UIColor {
     @nonobjc private static var darkModeSecondaryBackground = UIColor(red: 54.0 / 255.0, green: 54.0 / 255.0, blue: 54.0 / 255.0, alpha: 1.0)
     @nonobjc private static var darkModeBlue = UIColor(red: 132.0 / 255.0, green: 201.0 / 255.0, blue: 251.0 / 255.0, alpha: 1.0)
     @nonobjc private static var darkModeGreen = UIColor(red: 3.0 / 255.0, green: 218.0 / 255.0, blue: 197.0 / 255.0, alpha: 1.0)
+    @nonobjc private static var darkModeErrorRed = UIColor(red: 207.0 / 255.0, green: 102.0 / 255.0, blue: 121.0 / 255.0, alpha: 1.0)
     
     // MARK: Light Mode Colors
     @nonobjc private static var lightModeObjectBackground = UIColor(red: 238.0 / 255.0, green: 235.0 / 255.0, blue: 235.0 / 255.0, alpha: 1.0)
@@ -25,6 +26,7 @@ extension UIColor {
     @nonobjc private static var lightModeNavBarBackground = UIColor(red: 224.0 / 255.0, green: 224.0 / 255.0, blue: 224.0 / 255.0, alpha: 1.0)
     @nonobjc private static var lightModeBlue = UIColor(red: 1.0 / 255.0, green: 87.0 / 255.0, blue: 155.0 / 255.0, alpha: 1.0)
     @nonobjc private static var lightModeGreen = UIColor(red: 46.0 / 255.0, green: 125.0 / 255.0, blue: 50.0 / 255.0, alpha: 1.0)
+    @nonobjc private static var lightModeErrorRed = UIColor(red: 176.0 / 255.0, green: 0.0 / 255.0, blue: 32.0 / 255.0, alpha: 1.0)
     
     // MARK: Public Colors
     @nonobjc static var textColor: UIColor {
@@ -73,6 +75,12 @@ extension UIColor {
     @nonobjc static var summitBlue: UIColor {
         get {
             return UIColor(light: .lightModeBlue, dark: .darkModeBlue)
+        }
+    }
+    
+    @nonobjc static var summitErrorRed: UIColor {
+        get {
+            return UIColor(light: .lightModeErrorRed, dark: .darkModeErrorRed)
         }
     }
     

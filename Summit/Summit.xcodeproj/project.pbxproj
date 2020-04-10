@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13060A3C2440122E00B38628 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13060A3B2440122E00B38628 /* EmptyStateView.swift */; };
+		13060A3E2440170A00B38628 /* EmptyStatePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13060A3D2440170A00B38628 /* EmptyStatePresenter.swift */; };
+		13060A402440218700B38628 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13060A3F2440218700B38628 /* UIImage+Extensions.swift */; };
 		13185041241F225100001B96 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13185040241F225100001B96 /* Goal.swift */; };
 		13185044241FB6C800001B96 /* IGListKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13185042241FB6C800001B96 /* IGListKit.framework */; };
 		13185045241FB6C800001B96 /* IGListDiffKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13185043241FB6C800001B96 /* IGListDiffKit.framework */; };
@@ -92,6 +95,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		13060A3B2440122E00B38628 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		13060A3D2440170A00B38628 /* EmptyStatePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStatePresenter.swift; sourceTree = "<group>"; };
+		13060A3F2440218700B38628 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		13185040241F225100001B96 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		13185042241FB6C800001B96 /* IGListKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IGListKit.framework; path = Carthage/Build/iOS/IGListKit.framework; sourceTree = "<group>"; };
 		13185043241FB6C800001B96 /* IGListDiffKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IGListDiffKit.framework; path = Carthage/Build/iOS/IGListDiffKit.framework; sourceTree = "<group>"; };
@@ -200,6 +206,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13060A3A2440121E00B38628 /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				13060A3B2440122E00B38628 /* EmptyStateView.swift */,
+				13060A3D2440170A00B38628 /* EmptyStatePresenter.swift */,
+			);
+			path = Generic;
+			sourceTree = "<group>";
+		};
 		1377C04C2425480D00F29658 /* Attempts */ = {
 			isa = PBXGroup;
 			children = (
@@ -399,6 +414,7 @@
 		1393BB78241DC177004703DD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				13060A3A2440121E00B38628 /* Generic */,
 				1377C06F2429A2F000F29658 /* ActiveAttempt */,
 				1377C0522426BBC700F29658 /* GoalAttempt */,
 				1377C04F2426A58300F29658 /* Components */,
@@ -472,6 +488,7 @@
 				13DF5938241E875400BB1A35 /* UIView+Extensions.swift */,
 				13F80F80243A866F00F22F53 /* Notification+Extensions.swift */,
 				13F80F82243A966C00F22F53 /* UIWindow+Extensions.swift */,
+				13060A3F2440218700B38628 /* UIImage+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -670,6 +687,7 @@
 				13DF593C241E914200BB1A35 /* LandingScreenView.swift in Sources */,
 				1393BB2E241D60DD004703DD /* ViewController.swift in Sources */,
 				13F80F83243A966C00F22F53 /* UIWindow+Extensions.swift in Sources */,
+				13060A3E2440170A00B38628 /* EmptyStatePresenter.swift in Sources */,
 				1377C05B2426BD9600F29658 /* AvailableGoalAttemptSectionController.swift in Sources */,
 				13DF5937241E84A500BB1A35 /* LandingScreenViewController.swift in Sources */,
 				13DF5942241F210000BB1A35 /* GoalCollectionViewController.swift in Sources */,
@@ -681,6 +699,7 @@
 				138964CD243119E00051ED33 /* CompleteAttemptPresenter.swift in Sources */,
 				1377C0582426BCB600F29658 /* AvailableGoalAttemptView.swift in Sources */,
 				1393BB75241DBE2B004703DD /* GenericViewController.swift in Sources */,
+				13060A3C2440122E00B38628 /* EmptyStateView.swift in Sources */,
 				1377C0602426D17100F29658 /* ActiveAttemptViewController.swift in Sources */,
 				1393BB6F241D878F004703DD /* CodableFactory.swift in Sources */,
 				1377C0662427F73B00F29658 /* Challenge.swift in Sources */,
@@ -700,6 +719,7 @@
 				13DF5940241E928D00BB1A35 /* SigninViewController.swift in Sources */,
 				13F80F81243A866F00F22F53 /* Notification+Extensions.swift in Sources */,
 				13DF5939241E875400BB1A35 /* UIView+Extensions.swift in Sources */,
+				13060A402440218700B38628 /* UIImage+Extensions.swift in Sources */,
 				138964C6242FF6320051ED33 /* UIViewController+Extensions.swift in Sources */,
 				135C63DE2421CA5C009D6CA7 /* GoalService.swift in Sources */,
 				1393BB6B241D7ADB004703DD /* User.swift in Sources */,
