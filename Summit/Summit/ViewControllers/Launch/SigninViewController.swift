@@ -81,6 +81,7 @@ class SigninView: GenericView {
         usernameField.placeholder = "Enter a username"
         usernameField.font = .systemFont(ofSize: 14.0)
         usernameField.textColor = .textColor
+        usernameField.tintColor = .textColor
         usernameField.autocapitalizationType = .none
         return usernameField
     }()
@@ -99,6 +100,7 @@ class SigninView: GenericView {
         passwordTextField.textColor = .textColor
         passwordTextField.font = .systemFont(ofSize: 14.0)
         passwordTextField.isSecureTextEntry = true
+        passwordTextField.tintColor = .textColor
         passwordTextField.autocapitalizationType = .none
         return passwordTextField
     }()
