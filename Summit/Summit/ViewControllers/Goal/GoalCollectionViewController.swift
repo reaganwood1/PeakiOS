@@ -221,7 +221,7 @@ class GoalCollectionView: GenericView {
     
     private func createSearchBarConstraints() {
         searchBar.snp.makeConstraints { (make) in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top)
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).inset(15)
             make.left.right.equalToSuperview().inset(20)
             make.height.equalTo(40)
         }

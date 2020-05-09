@@ -54,7 +54,11 @@ class LandingScreenViewController: GenericViewController<LandingScreenView> {
     }
 }
 
-extension LandingScreenViewController: LoginButtonDelegate {
+extension LandingScreenViewController: LoginButtonDelegate, LandingScreenViewDelegate {
+    func getStartedPressed() {
+        navigationController?.pushViewController(SigninViewController(), animated: true)
+    }
+    
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
         guard let result = result else { return }
         if let error = error {

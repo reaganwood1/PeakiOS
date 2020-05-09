@@ -652,7 +652,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		1393BB59241D647E004703DD /* Copy Carthage Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -690,7 +690,7 @@
 				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/NotificationBanner.framework",
 				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/NVActivityIndicatorView.framework",
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
 		};

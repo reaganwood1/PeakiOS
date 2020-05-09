@@ -11,6 +11,7 @@ import UIKit
 extension UIViewController {
     public func changeNavBack(to title: String) {
         let barButton = UIBarButtonItem()
+
         navigationController?.navigationBar.topItem?.backBarButtonItem = barButton
         self.title = title
     }
