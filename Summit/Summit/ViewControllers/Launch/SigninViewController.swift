@@ -106,8 +106,7 @@ class SigninView: GenericView {
     private let loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("Login", for: .normal)
-        button.backgroundColor = .summitObjeckBackground
-        button.addButtonShadow()
+        button.backgroundColor = .summitSecondaryObjectBackground
         button.layer.cornerRadius = 10.0
         button.setTitleColor(.textColor, for: .normal)
         button.addTarget(self, action: #selector(loginPressed), for: .touchUpInside)
