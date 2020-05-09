@@ -32,7 +32,8 @@ public class SummitNavigationController: UINavigationController {
         loginService?.logout(completion: { (result) in
             switch result {
             case .success:
-                UIApplication.shared.keyWindow?.replaceRootViewControllerWith(LandingScreenViewController(), animated: true, completion: nil)
+                let navController = SummitNavigationController(rootViewController: LandingScreenViewController())
+                UIApplication.shared.keyWindow?.replaceRootViewControllerWith(navController, animated: true, completion: nil)
             case .failure(let error):
                 break // TODO: display a banner
             }
