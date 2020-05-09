@@ -55,7 +55,7 @@ class SplashScreenViewController: GenericViewController<SplashScreenView> {
     
     private func launchLandingScreen() {
         let vc = LandingScreenViewController()
-        let navController = UINavigationController(rootViewController: vc)
+        let navController = SummitNavigationController(rootViewController: vc)
         DispatchQueue.main.async { [weak self] in
             navController.modalPresentationStyle = .overFullScreen
             self?.present(navController, animated: false, completion: nil)

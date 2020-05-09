@@ -56,10 +56,11 @@ class LandingScreenView: GenericView {
     private let getStartedButton: UIButton = {
         let button = UIButton()
         button.setTitle("Get started", for: .normal)
-        button.backgroundColor = UIColor(red: 59.0 / 255.0, green: 89 / 255.0, blue: 152 / 255.0, alpha: 1.0)
+        button.backgroundColor = .summitBackground
         button.addButtonShadow()
         button.layer.cornerRadius = 10.0
         button.setTitleColor(.textColor, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 16.0, weight: .bold)
         button.addTarget(self, action: #selector(getStartedPressed), for: .touchUpInside)
         button.alpha = 0.0
         return button
