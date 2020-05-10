@@ -8,10 +8,12 @@
 
 
 public class SummitEnvironment {
-    public static var IsProduction: Bool = false
-    
-    public static func SetEnvironment(isProd: Bool) {
-        IsProduction = isProd
+    public static var IsProduction: Bool {
+        #if PRODUCTION
+            return true
+        #else
+            return false
+        #endif
     }
 }
 
@@ -19,7 +21,7 @@ public struct RestConstants {
     public static var BaseURL: String {
         get {
             if SummitEnvironment.IsProduction {
-                return "TODO: implement prod url"
+                return "https://www.reagankwood.com/peakapi/"
             } else {
                 return "http://127.0.0.1:8000/"
             }

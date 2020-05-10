@@ -39,9 +39,9 @@ public class TokenCache: ITokenCache {
         switch token {
         case .facebookToken(let token):
             KeychainWrapper.standard.set(token, forKey: Strings.Code.FacebookToken)
-        case .standard(let peakAccessToken, let userId):
-            KeychainWrapper.standard.set(peakAccessToken, forKey: Strings.Code.AccessToken)
-            KeychainWrapper.standard.set(userId, forKey: Strings.Code.UserId)
+        case .standard(let token):
+            KeychainWrapper.standard.set(token.0, forKey: Strings.Code.AccessToken)
+            KeychainWrapper.standard.set(token.1, forKey: Strings.Code.UserId)
         }
     }
     
