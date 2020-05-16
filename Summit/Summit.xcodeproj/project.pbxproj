@@ -26,14 +26,14 @@
 		1377C0582426BCB600F29658 /* AvailableGoalAttemptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1377C0572426BCB600F29658 /* AvailableGoalAttemptView.swift */; };
 		1377C05B2426BD9600F29658 /* AvailableGoalAttemptSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1377C05A2426BD9600F29658 /* AvailableGoalAttemptSectionController.swift */; };
 		1377C05D2426C85A00F29658 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1377C05C2426C85A00F29658 /* Charts.framework */; };
-		1377C0602426D17100F29658 /* ActiveAttemptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1377C05F2426D17100F29658 /* ActiveAttemptViewController.swift */; };
+		1377C0602426D17100F29658 /* AllAttemptsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1377C05F2426D17100F29658 /* AllAttemptsViewController.swift */; };
 		1377C0642427D2B600F29658 /* Attempt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1377C0632427D2B600F29658 /* Attempt.swift */; };
 		1377C0662427F73B00F29658 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1377C0652427F73B00F29658 /* Challenge.swift */; };
 		1377C0682428493700F29658 /* Extensions+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1377C0672428493700F29658 /* Extensions+String.swift */; };
 		1377C06C2429A26100F29658 /* ChartConfiguerer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1377C06B2429A26100F29658 /* ChartConfiguerer.swift */; };
-		1377C06E2429A2A300F29658 /* ActiveGoalsSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1377C06D2429A2A300F29658 /* ActiveGoalsSectionController.swift */; };
+		1377C06E2429A2A300F29658 /* AllAttemptsSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1377C06D2429A2A300F29658 /* AllAttemptsSectionController.swift */; };
 		1377C0712429A30600F29658 /* ActiveGoalCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1377C0702429A30600F29658 /* ActiveGoalCollectionView.swift */; };
-		1377C0732429A33300F29658 /* ActiveGoalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1377C0722429A33300F29658 /* ActiveGoalCollectionViewCell.swift */; };
+		1377C0732429A33300F29658 /* UserAttemptCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1377C0722429A33300F29658 /* UserAttemptCollectionViewCell.swift */; };
 		1377C0752429A3C600F29658 /* ChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1377C0742429A3C600F29658 /* ChartDataSet.swift */; };
 		1377C077242B07DB00F29658 /* CollectionChallenges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1377C076242B07DB00F29658 /* CollectionChallenges.swift */; };
 		138964C4242FF31A0051ED33 /* SummitNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138964C3242FF31A0051ED33 /* SummitNavigationController.swift */; };
@@ -117,14 +117,14 @@
 		1377C0572426BCB600F29658 /* AvailableGoalAttemptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableGoalAttemptView.swift; sourceTree = "<group>"; };
 		1377C05A2426BD9600F29658 /* AvailableGoalAttemptSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableGoalAttemptSectionController.swift; sourceTree = "<group>"; };
 		1377C05C2426C85A00F29658 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Carthage/Build/iOS/Charts.framework; sourceTree = "<group>"; };
-		1377C05F2426D17100F29658 /* ActiveAttemptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAttemptViewController.swift; sourceTree = "<group>"; };
+		1377C05F2426D17100F29658 /* AllAttemptsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllAttemptsViewController.swift; sourceTree = "<group>"; };
 		1377C0632427D2B600F29658 /* Attempt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attempt.swift; sourceTree = "<group>"; };
 		1377C0652427F73B00F29658 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		1377C0672428493700F29658 /* Extensions+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+String.swift"; sourceTree = "<group>"; };
 		1377C06B2429A26100F29658 /* ChartConfiguerer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartConfiguerer.swift; sourceTree = "<group>"; };
-		1377C06D2429A2A300F29658 /* ActiveGoalsSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveGoalsSectionController.swift; sourceTree = "<group>"; };
+		1377C06D2429A2A300F29658 /* AllAttemptsSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllAttemptsSectionController.swift; sourceTree = "<group>"; };
 		1377C0702429A30600F29658 /* ActiveGoalCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveGoalCollectionView.swift; sourceTree = "<group>"; };
-		1377C0722429A33300F29658 /* ActiveGoalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveGoalCollectionViewCell.swift; sourceTree = "<group>"; };
+		1377C0722429A33300F29658 /* UserAttemptCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAttemptCollectionViewCell.swift; sourceTree = "<group>"; };
 		1377C0742429A3C600F29658 /* ChartDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDataSet.swift; sourceTree = "<group>"; };
 		1377C076242B07DB00F29658 /* CollectionChallenges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionChallenges.swift; sourceTree = "<group>"; };
 		138964C3242FF31A0051ED33 /* SummitNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummitNavigationController.swift; sourceTree = "<group>"; };
@@ -256,9 +256,9 @@
 			isa = PBXGroup;
 			children = (
 				138964CC243119E00051ED33 /* CompleteAttemptPresenter.swift */,
-				1377C05F2426D17100F29658 /* ActiveAttemptViewController.swift */,
-				1377C06D2429A2A300F29658 /* ActiveGoalsSectionController.swift */,
-				1377C0722429A33300F29658 /* ActiveGoalCollectionViewCell.swift */,
+				1377C05F2426D17100F29658 /* AllAttemptsViewController.swift */,
+				1377C06D2429A2A300F29658 /* AllAttemptsSectionController.swift */,
+				1377C0722429A33300F29658 /* UserAttemptCollectionViewCell.swift */,
 			);
 			path = ActiveGoals;
 			sourceTree = "<group>";
@@ -718,7 +718,7 @@
 				1377C0582426BCB600F29658 /* AvailableGoalAttemptView.swift in Sources */,
 				1393BB75241DBE2B004703DD /* GenericViewController.swift in Sources */,
 				13060A3C2440122E00B38628 /* EmptyStateView.swift in Sources */,
-				1377C0602426D17100F29658 /* ActiveAttemptViewController.swift in Sources */,
+				1377C0602426D17100F29658 /* AllAttemptsViewController.swift in Sources */,
 				1393BB6F241D878F004703DD /* CodableFactory.swift in Sources */,
 				1377C0662427F73B00F29658 /* Challenge.swift in Sources */,
 				1393BB85241DD612004703DD /* SessionManager.swift in Sources */,
@@ -728,7 +728,7 @@
 				1377C04E2425483100F29658 /* AvailableGoalAttemptsCollectionViewController.swift in Sources */,
 				1393BB81241DD4CB004703DD /* LoginService.swift in Sources */,
 				138964CB24300D190051ED33 /* ActiveAttemptCollectionViewHeader.swift in Sources */,
-				1377C06E2429A2A300F29658 /* ActiveGoalsSectionController.swift in Sources */,
+				1377C06E2429A2A300F29658 /* AllAttemptsSectionController.swift in Sources */,
 				138964C9242FFA490051ED33 /* RootTabController.swift in Sources */,
 				1393BB83241DD530004703DD /* ServiceUtilities.swift in Sources */,
 				1377C0512426A59000F29658 /* RoundButton.swift in Sources */,
@@ -752,7 +752,7 @@
 				1377C0562426BC8100F29658 /* AttemptCollectionViewCell.swift in Sources */,
 				1393BB6D241D8440004703DD /* RestClientGeneral.swift in Sources */,
 				1377C0642427D2B600F29658 /* Attempt.swift in Sources */,
-				1377C0732429A33300F29658 /* ActiveGoalCollectionViewCell.swift in Sources */,
+				1377C0732429A33300F29658 /* UserAttemptCollectionViewCell.swift in Sources */,
 				138964C4242FF31A0051ED33 /* SummitNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

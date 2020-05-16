@@ -45,4 +45,10 @@ extension UIViewController {
 
         rootWindow.rootViewController = vc
     }
+    
+    public func alert(with title: String, messageText: String, buttonText: String, completion: ((UIAlertAction) -> Void)?) {
+        let alertController = UIAlertController(title: title, message: messageText, preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: buttonText, style: .default, handler: completion))
+        self.present(alertController, animated: true, completion: nil)
+    }
 }

@@ -8,20 +8,20 @@
 
 import IGListKit
 
-protocol ActivateAttemptsSectionControllerDelegate: class {
+protocol AllAttemptsSectionControllerDelegate: class {
     func shouldShowHeader(for attempt: Attempt) -> Bool
     func getHeaderText(for attempt: Attempt) -> String
     func didSelect(_ attempt: Attempt)
 }
-class ActiveAttemptsSectionController: ListSectionController, ListSupplementaryViewSource {
-    weak private var delegate: ActivateAttemptsSectionControllerDelegate?
+class AllAttemptsSectionController: ListSectionController, ListSupplementaryViewSource {
+    weak private var delegate: AllAttemptsSectionControllerDelegate?
     
     private var attempt: Attempt? = nil // TODO: get another type of item in here.
     
     private var offsetFromScreenEdges: CGFloat = 30.0
     private let headerHeight: CGFloat = 65.0
     
-    init(withDelegate delegate: ActivateAttemptsSectionControllerDelegate) {
+    init(withDelegate delegate: AllAttemptsSectionControllerDelegate) {
         self.delegate = delegate
         super.init()
         self.inset = UIEdgeInsets(top: 0.0, left: 0, bottom: 20.0, right: 0.0)
@@ -29,7 +29,7 @@ class ActiveAttemptsSectionController: ListSectionController, ListSupplementaryV
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
-        guard let cell = cellForItem(at: index) as? ActiveGoalCollectionViewCell else {
+        guard let cell = cellForItem(at: index) as? UserAttemptCollectionViewCell else {
             return CGSize.zero
         }
         
@@ -58,8 +58,8 @@ class ActiveAttemptsSectionController: ListSectionController, ListSupplementaryV
     }
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {
-        guard let cell: ActiveGoalCollectionViewCell = collectionContext?.dequeueReusableCell(of: ActiveGoalCollectionViewCell.self, for: self, at: index) as? ActiveGoalCollectionViewCell else {
-            return ActiveGoalCollectionViewCell()
+        guard let cell: UserAttemptCollectionViewCell = collectionContext?.dequeueReusableCell(of: UserAttemptCollectionViewCell.self, for: self, at: index) as? UserAttemptCollectionViewCell else {
+            return UserAttemptCollectionViewCell()
         }
         guard let attempt = attempt else { return cell }
         

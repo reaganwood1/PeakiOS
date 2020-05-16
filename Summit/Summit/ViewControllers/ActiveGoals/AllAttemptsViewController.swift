@@ -10,12 +10,12 @@ import UIKit
 import IGListKit
 import Charts
 
-class ActiveAttemptsViewController: GenericViewController<ActiveAttemptCollectionView> {
+class AllAttemptsViewController: GenericViewController<ActiveAttemptCollectionView> {
     private var adapter: ListAdapter?
     
     private var emptyStatePresenter = EmptyStatePresenter()
 
-    private var activeAttempts = UserAttemptsResponse()
+    private var allAttempts = UserAttemptsResponse()
     
     private let goalService: IGoalService
     
@@ -37,7 +37,7 @@ class ActiveAttemptsViewController: GenericViewController<ActiveAttemptCollectio
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        changeNavBack(to: "Active") // TODO: constants
+        changeNavBack(to: "Attempts") // TODO: constants
     }
     
     private func setupCollectionView() {
@@ -54,7 +54,7 @@ class ActiveAttemptsViewController: GenericViewController<ActiveAttemptCollectio
             return
         }
         
-        goalService.getActiveUserGoalAttemps(userID: userID) { [weak self] (result) in
+        goalService.getAllUserGoalAttemps(userID: userID) { [weak self] (result) in
             guard let self = self else { return }
             
             switch result {
@@ -67,11 +67,11 @@ class ActiveAttemptsViewController: GenericViewController<ActiveAttemptCollectio
     }
     
     private func handleRetrieved(_ attempts: UserAttemptsResponse) {
-        activeAttempts = attempts
+        allAttempts = attempts
 
         updateCollection()
         
-        if activeAttempts.completedToday.count == 0 && activeAttempts.dueSoon.count == 0 {
+        if allAttempts.completedToday.count == 0 && allAttempts.dueSoon.count == 0 && allAttempts.failed.count == 0 && allAttempts.completed.count == 0 {
             addErrorEmptyState()
         } else {
             emptyStatePresenter.removeEmptyState(from: contentView)
@@ -98,7 +98,7 @@ class ActiveAttemptsViewController: GenericViewController<ActiveAttemptCollectio
     }
     
     private func reloadFirstCompleted() {
-        guard let firstCompleted = activeAttempts.completedToday.first, let firstSection = adapter?.sectionController(for: firstCompleted) as? ActiveAttemptsSectionController else {
+        guard let firstCompleted = allAttempts.completedToday.first, let firstSection = adapter?.sectionController(for: firstCompleted) as? AllAttemptsSectionController else {
             print("FIRST SECTION NOT FOUND, EXPECTED TO FIND FIRST SECTION")
             return
         }
@@ -107,10 +107,11 @@ class ActiveAttemptsViewController: GenericViewController<ActiveAttemptCollectio
     }
 }
 
-extension ActiveAttemptsViewController: ListAdapterDataSource, ActivateAttemptsSectionControllerDelegate {
+extension AllAttemptsViewController: ListAdapterDataSource, AllAttemptsSectionControllerDelegate {
     func didSelect(_ attempt: Attempt) {
-        let isAlreadyCompleted = activeAttempts.completedToday.filter({ $0.id == attempt.id }).first != nil
-        guard !isAlreadyCompleted else {
+        let isAlreadyCompleted = allAttempts.completedToday.filter({ $0.id == attempt.id }).first != nil
+        let goalIsInDueSoon = allAttempts.dueSoon.filter({ attempt.id == $0.id }).first != nil
+        guard !isAlreadyCompleted, goalIsInDueSoon else {
             presentAttemptCompletedToday()
             return
         }
@@ -134,7 +135,7 @@ extension ActiveAttemptsViewController: ListAdapterDataSource, ActivateAttemptsS
             guard let self = self else { return }
             switch result {
             case .success(let attempt):
-                self.activeAttempts.dueSoon = self.activeAttempts.dueSoon.filter({ $0.id != attempt.id })
+                self.allAttempts.dueSoon = self.allAttempts.dueSoon.filter({ $0.id != attempt.id })
                 self.handleCompleted(attempt)
                 // TODO: alert for completed
             case .failure(let error):
@@ -144,16 +145,24 @@ extension ActiveAttemptsViewController: ListAdapterDataSource, ActivateAttemptsS
     }
     
     private func handleCompleted(_ attempt: Attempt) {
-        let reloadForFirstCompleted = self.activeAttempts.completedToday.count == 0
-        activeAttempts.completedToday.append(attempt)
+        let reloadForFirstCompleted = self.allAttempts.completedToday.count == 0
+        allAttempts.completedToday.append(attempt)
         
         updateCollection(reloadFirstCompleted: reloadForFirstCompleted)
+        
+        if attempt.completed {
+            alert(with: "Congratulations!", messageText: "You have completed this challenge. Keep going and accomplishing more goals!", buttonText: "Keep going", completion: nil)
+        }
     }
     
     func shouldShowHeader(for attempt: Attempt) -> Bool {
-        if let firstCompleted = activeAttempts.completedToday.first, firstCompleted.id == attempt.id {
+        if let firstCompleted = allAttempts.completedToday.first, firstCompleted.id == attempt.id {
             return true
-        } else if let firstNeedsCompletedToday = activeAttempts.dueSoon.first, firstNeedsCompletedToday.id == attempt.id {
+        } else if let firstNeedsCompletedToday = allAttempts.dueSoon.first, firstNeedsCompletedToday.id == attempt.id {
+            return true
+        } else if let firstCompleted = allAttempts.completed.first, firstCompleted.id == attempt.id {
+            return true
+        } else if let firstFailed = allAttempts.failed.first, firstFailed.id == attempt.id {
             return true
         } else {
             return false
@@ -161,19 +170,23 @@ extension ActiveAttemptsViewController: ListAdapterDataSource, ActivateAttemptsS
     }
     
     func getHeaderText(for attempt: Attempt) -> String {
-        if let firstCompleted = activeAttempts.completedToday.first, firstCompleted.id == attempt.id {
+        if let firstCompleted = allAttempts.completedToday.first, firstCompleted.id == attempt.id {
             return "Completed today" // TODO: constants
+        } else if let firstFailed = allAttempts.failed.first, firstFailed.id == attempt.id {
+            return "Failed"
+        } else if let firstCompleted = allAttempts.completed.first, firstCompleted.id == attempt.id {
+            return "Completed"
         } else {
             return "Due by end of day" // TODO: constants
         }
     }
     
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-        return activeAttempts.completedToday + activeAttempts.dueSoon
+        return allAttempts.completedToday + allAttempts.dueSoon + allAttempts.failed + allAttempts.completed
     }
 
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
-        return ActiveAttemptsSectionController(withDelegate: self)
+        return AllAttemptsSectionController(withDelegate: self)
     }
 
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
@@ -189,7 +202,7 @@ extension ActiveAttemptsViewController: ListAdapterDataSource, ActivateAttemptsS
     }
 }
 
-extension ActiveAttemptsViewController: EmptyStateViewDelegate {
+extension AllAttemptsViewController: EmptyStateViewDelegate {
     func didPressButton() {
         loadAttempts()
     }

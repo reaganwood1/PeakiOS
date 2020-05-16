@@ -8,7 +8,7 @@
 
 protocol IGoalService: class {
     func getGoals(completion: @escaping (Result<[Goal], GenericServiceError>) -> Void)
-    func getActiveUserGoalAttemps(userID: Int, completion: @escaping (Result<UserAttemptsResponse, GenericServiceError>) -> Void)
+    func getAllUserGoalAttemps(userID: Int, completion: @escaping (Result<UserAttemptsResponse, GenericServiceError>) -> Void)
     func getGoalChallenges(completion: @escaping (Result<[Challenge], GenericServiceError>) -> Void)
     func getAvailableChallenges(for topic: Goal, completion: @escaping (Result<[Challenge], GenericServiceError>) -> Void)
     func postGoalChallenge(withIDOf challengeId: Int, completion: @escaping (Result<Void, GenericServiceError>) -> Void)
@@ -18,11 +18,15 @@ protocol IGoalService: class {
 public class UserAttemptsResponse: Codable {
     var dueSoon: [Attempt] = []
     var completedToday: [Attempt] = []
+    var failed: [Attempt] = []
+    var completed: [Attempt] = []
     
-    convenience init(dueSoon: [Attempt] = [], completedToday: [Attempt] = []) {
+    convenience init(dueSoon: [Attempt] = [], completedToday: [Attempt] = [], failed: [Attempt] = [], completed: [Attempt] = []) {
         self.init()
         self.dueSoon = dueSoon
         self.completedToday = completedToday
+        self.failed = failed
+        self.completed = completed
     }
 }
 
@@ -114,7 +118,7 @@ public class GoalService: GenericService, IGoalService {
         }
     }
     
-    public func getActiveUserGoalAttemps(userID: Int, completion: @escaping (Result<UserAttemptsResponse, GenericServiceError>) -> Void) {
+    public func getAllUserGoalAttemps(userID: Int, completion: @escaping (Result<UserAttemptsResponse, GenericServiceError>) -> Void) {
         RestClientGoals.GetActiveUserAttempts(userID: userID) { [weak self] (standardRestResponse) in
             guard let self = self else { return }
             let error = self.validate(standardRestResponse)

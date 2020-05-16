@@ -9,8 +9,7 @@
 import UIKit
 import Charts
 
-// TODO: own class
-class ActiveGoalCollectionViewCell: UICollectionViewCell {
+class UserAttemptCollectionViewCell: UICollectionViewCell {
     private let offsetTopAndBottom: CGFloat = 15.0
     private let offsetTitleToContent: CGFloat = 5.0
     private let offsetDescriptionToDifficulty: CGFloat = 10.0
