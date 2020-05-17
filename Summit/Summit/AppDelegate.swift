@@ -24,8 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func presentRootView() {
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = SplashScreenViewController()
-        self.window?.makeKeyAndVisible()
+        DispatchQueue.main.async { [weak self] in
+            self?.window = UIWindow(frame: UIScreen.main.bounds)
+            self?.window?.rootViewController = SplashScreenViewController()
+            self?.window?.makeKeyAndVisible()
+        }
     }
 }
