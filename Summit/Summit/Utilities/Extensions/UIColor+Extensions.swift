@@ -29,56 +29,56 @@ extension UIColor {
     @nonobjc private static var lightModeErrorRed = UIColor(red: 176.0 / 255.0, green: 0.0 / 255.0, blue: 32.0 / 255.0, alpha: 1.0)
     
     // MARK: Public Colors
-    @nonobjc static var textColor: UIColor {
+    @nonobjc public static var textColor: UIColor {
         get {
             return UIColor(light: .black, dark: .darkModeTextColor)
         }
     }
     
-    @nonobjc static var summitPurple: UIColor {
+    @nonobjc public static var summitPurple: UIColor {
         get {
             return UIColor(light: .lightModePurple, dark: .darkModePurple)
         }
     }
     
-    @nonobjc static var summitGreen: UIColor {
+    @nonobjc public static var summitGreen: UIColor {
         get {
             return UIColor(light: .lightModeGreen, dark: .darkModeGreen)
         }
     }
     
-    @nonobjc static var summitObjeckBackground: UIColor {
+    @nonobjc public static var summitObjeckBackground: UIColor {
         get {
             return UIColor(light: .lightModeObjectBackground, dark: .darkModeObjectBlack)
         }
     }
     
-    @nonobjc static var summitBackground: UIColor {
+    @nonobjc public static var summitBackground: UIColor {
         get {
             return UIColor(light: .white, dark: .darkModeBackground)
         }
     }
 
-    @nonobjc static var summitNavBarBackground: UIColor {
+    @nonobjc public static var summitNavBarBackground: UIColor {
         get {
             // TODO: .lightModeNavBarBackground, not sure if I want this or the other background color
             return UIColor(light: .white, dark: .summitObjeckBackground)
         }
     }
     
-    @nonobjc static var summitSecondaryObjectBackground: UIColor {
+    @nonobjc public static var summitSecondaryObjectBackground: UIColor {
         get {
             return UIColor(light: .lightModeSecondaryBackground, dark: .darkModeSecondaryBackground)
         }
     }
     
-    @nonobjc static var summitBlue: UIColor {
+    @nonobjc public static var summitBlue: UIColor {
         get {
             return UIColor(light: .lightModeBlue, dark: .darkModeBlue)
         }
     }
     
-    @nonobjc static var summitErrorRed: UIColor {
+    @nonobjc public static var summitErrorRed: UIColor {
         get {
             return UIColor(light: .lightModeErrorRed, dark: .darkModeErrorRed)
         }

@@ -139,7 +139,7 @@ extension AllAttemptsViewController: ListAdapterDataSource, AllAttemptsSectionCo
                 self.handleCompleted(attempt)
                 // TODO: alert for completed
             case .failure(let error):
-                break // TODO: complete error
+                self.handleGeneric(error)
             }
         }
     }
@@ -151,7 +151,9 @@ extension AllAttemptsViewController: ListAdapterDataSource, AllAttemptsSectionCo
         updateCollection(reloadFirstCompleted: reloadForFirstCompleted)
         
         if attempt.completed {
-            alert(with: "Congratulations!", messageText: "You have completed this challenge. Keep going and accomplishing more goals!", buttonText: "Keep going", completion: nil)
+            createBanner(with: "Congratulations! You completed a goal.").show()
+        } else {
+            createBanner(with: "Great work! Keep it up!").show()
         }
     }
     

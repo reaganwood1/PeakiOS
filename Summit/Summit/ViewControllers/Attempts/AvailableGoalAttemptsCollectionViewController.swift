@@ -22,7 +22,7 @@ class AvailableGoalAttemptsCollectionViewController: GenericViewController<Avail
         self.goalService = goalService
         self.topic = topic
         super.init(nibName: nil, bundle: nil)
-        availableAttemptsSectionController = AvailableGoalAttemptSectionController()
+        availableAttemptsSectionController = AvailableGoalAttemptSectionController(delegate: self)
     }
     
     required init?(coder: NSCoder) {
@@ -49,7 +49,7 @@ class AvailableGoalAttemptsCollectionViewController: GenericViewController<Avail
                 self?.challenges.goalChallenges = challenges
                 self?.reloadCollectionView()
             case .failure(let error):
-                break // TODO: handle the error
+                self?.handleGeneric(error)
             }
         }
     }
@@ -75,7 +75,7 @@ extension AvailableGoalAttemptsCollectionViewController: ListAdapterDataSource {
 
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         guard let availableAttemptsSectionController = availableAttemptsSectionController else {
-            return AvailableGoalAttemptSectionController()
+            return AvailableGoalAttemptSectionController(delegate: self)
         }
         
         return availableAttemptsSectionController
@@ -83,5 +83,15 @@ extension AvailableGoalAttemptsCollectionViewController: ListAdapterDataSource {
 
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
         return nil
+    }
+}
+
+extension AvailableGoalAttemptsCollectionViewController: AvailableGoalAttemptSectionControllerDelegate {
+    func didPost(challengeId: Int) {
+        createBanner(with: "Added - Go to your attempts to get started!").show()
+    }
+    
+    func didReceive(_ error: GenericServiceError) {
+        handleGeneric(error)
     }
 }

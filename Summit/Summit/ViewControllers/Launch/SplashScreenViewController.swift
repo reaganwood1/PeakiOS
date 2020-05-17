@@ -65,13 +65,12 @@ class SplashScreenViewController: GenericViewController<SplashScreenView> {
     private func loginUser() {
         let username = ""
         let password = ""
-        loginService.login(username: username, password: password) { (result) in
+        loginService.login(username: username, password: password) { [weak self] (result) in
             switch result {
             case .success(_):
-                
                 break
-            case .failure(_):
-                break
+            case .failure(let error):
+                self?.handleGeneric(error)
             }
         }
     }

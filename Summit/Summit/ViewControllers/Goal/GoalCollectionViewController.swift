@@ -59,7 +59,7 @@ class GoalCollectionViewController: GenericViewController<GoalCollectionView> {
                 self?.filteredGoals = goals
                 self?.adapter?.performUpdates(animated: true, completion: nil)
             case .failure(let error):
-                break // TODO: handle the error
+                self?.handleGeneric(error)
             }
         }
     }

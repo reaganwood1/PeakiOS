@@ -79,9 +79,9 @@ extension LandingScreenViewController: LoginButtonDelegate, LandingScreenViewDel
             switch result {
             case .success(_):
                 self?.launchRootView()
-            case .failure(_):
+            case .failure(let error):
                 self?.contentView.configureForNetworkComplete()
-                break // TODO: handle error
+                self?.handleGeneric(error)
             }
         }
     }

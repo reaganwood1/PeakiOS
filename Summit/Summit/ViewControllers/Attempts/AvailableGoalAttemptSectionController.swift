@@ -12,6 +12,11 @@ protocol AvailableGoalChallengeDelegate: class {
     func didSelect(_ challengeId: Int, itemAddedCompletion: @escaping (Date) -> Void)
 }
 
+protocol AvailableGoalAttemptSectionControllerDelegate: class {
+    func didReceive(_ error: GenericServiceError)
+    func didPost(challengeId: Int)
+}
+
 class AvailableGoalAttemptSectionController: ListSectionController {
     private var challenges: CollectionChallenges? = nil
     private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
@@ -19,8 +24,11 @@ class AvailableGoalAttemptSectionController: ListSectionController {
     
     private let goalService: IGoalService
     
-    init(goalService: IGoalService = GoalService()) {
+    weak private var delegate: AvailableGoalAttemptSectionControllerDelegate?
+    
+    init(delegate: AvailableGoalAttemptSectionControllerDelegate, goalService: IGoalService = GoalService()) {
         self.goalService = goalService
+        self.delegate = delegate
     }
     
     override func numberOfItems() -> Int {
@@ -65,12 +73,10 @@ extension AvailableGoalAttemptSectionController: AvailableGoalChallengeDelegate 
                 itemAddedCompletion(Date())
                 self?.handleUserAdded(challengeId)
                 self?.postAttemptAdded()
-                // TODO: display alert
-                // TODO: implement banner system
+                self?.delegate?.didPost(challengeId: challengeId)
                 // TODO: show loading indicators
             case .failure(let error):
-                // TODO: handle error
-                break
+                self?.delegate?.didReceive(error)
             }
         }
     }

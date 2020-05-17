@@ -29,13 +29,18 @@ public class SummitNavigationController: UINavigationController {
     }
     
     @objc private func logout() {
-        loginService?.logout(completion: { (result) in
+        loginService?.logout(completion: { [weak self] (result) in
             switch result {
             case .success:
                 let navController = SummitNavigationController(rootViewController: LandingScreenViewController())
                 UIApplication.shared.keyWindow?.replaceRootViewControllerWith(navController, animated: true, completion: nil)
             case .failure(let error):
-                break // TODO: display a banner
+                switch error {
+                case .noNetwork:
+                    self?.creatErrorBanner(with: Strings.General.NoNetwork).show()
+                case .serverError:
+                    self?.creatErrorBanner(with: Strings.General.UnknownErrorTryAgain).show()
+                }
             }
         })
     }

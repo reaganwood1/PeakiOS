@@ -34,14 +34,7 @@ extension SigninViewController: SigninViewDelegate {
             case .success(_):
                 self?.launchRootView()
             case .failure(let error):
-                switch error {
-                case .noNetwork:
-                    break
-                    // TODO: handle no network connect
-                case .serverError:
-                    break
-                    // TODO: handle error
-                }
+                self?.handleGeneric(error)
             }
         }
     }

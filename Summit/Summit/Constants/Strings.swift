@@ -13,4 +13,8 @@ public struct Strings {
         public static var UserId = "UserId"
         public static var FacebookToken = "FacebookToken"
     }
+    public struct General {
+        public static var NoNetwork = "Please check your connection"
+        public static var UnknownErrorTryAgain = "Something went wrong. Please try again."
+    }
 }
