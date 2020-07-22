@@ -23,7 +23,7 @@ class LandingScreenView: GenericView {
     
     private let bannerLabel: UILabel = {
         let bannerLabel = UILabel()
-        bannerLabel.textColor = .textColor
+        bannerLabel.textColor = .summitBackground
         bannerLabel.font = .systemFont(ofSize: 50.0, weight: .bold)
         bannerLabel.text = "Peak."
         bannerLabel.alpha = 0.0
@@ -103,7 +103,7 @@ class LandingScreenView: GenericView {
 //                make.height.equalTo(50)
 //            }
             getStartedButton.snp.makeConstraints { (make) in
-                make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
+                make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(10)
                 make.left.right.equalToSuperview().inset(15)
                 make.height.equalTo(50)
             }
