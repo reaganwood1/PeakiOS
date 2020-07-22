@@ -42,7 +42,7 @@ class RootTabController: UITabBarController {
     private func makeUserAttemptsViewController() -> UIViewController {
         let activeVC = AllAttemptsViewController()
 
-        let vc = SummitNavigationController(rootViewController: activeVC, addLogoutButton: true)
+        let vc = SummitNavigationController(rootViewController: activeVC, buttonType: .logout)
         let tabBarItem = UITabBarItem(title: "Attempts", image: #imageLiteral(resourceName: "imgActiveAttempts"), selectedImage: #imageLiteral(resourceName: "imgActiveAttempts")) // TODO: l10
         tabBarItem.setTitleTextAttributes([
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 11.0, weight: .semibold)

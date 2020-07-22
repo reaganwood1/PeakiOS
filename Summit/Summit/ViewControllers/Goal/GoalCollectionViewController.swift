@@ -43,6 +43,28 @@ class GoalCollectionViewController: GenericViewController<GoalCollectionView> {
         showNavBar() // TODO: make as an extension
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if shouldLaunchDirectionsScreen() {
+            setFirstLaunchComplete()
+            launchDirectionsScreen()
+        }
+    }
+    
+    private func shouldLaunchDirectionsScreen() -> Bool {
+        return !UserDefaults.standard.bool(forKey: "appAlreadyLaunched")
+    }
+    
+    private func setFirstLaunchComplete() {
+        UserDefaults.standard.set(true, forKey: "appAlreadyLaunched")
+    }
+    
+    private func launchDirectionsScreen() {
+        let vc = AppDescriptionController()
+        let navVC = SummitNavigationController(rootViewController: vc, buttonType: .dismiss)
+        present(navVC, animated: true, completion: nil)
+    }
+    
     private func setupCollectionView() {
         let updater = ListAdapterUpdater()
         let adapter = ListAdapter(updater: updater, viewController: self)

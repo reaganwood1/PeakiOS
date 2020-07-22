@@ -11,11 +11,20 @@ import UIKit
 public class SummitNavigationController: UINavigationController {
     private var loginService: ILoginService?
     
-    public convenience init(rootViewController: UIViewController, addLogoutButton: Bool, loginService: ILoginService = LoginService()) {
+    public enum NavButtonType {
+        case dismiss
+        case logout
+    }
+    
+    public convenience init(rootViewController: UIViewController, buttonType: NavButtonType, loginService: ILoginService = LoginService()) {
         self.init(rootViewController: rootViewController)
-        if addLogoutButton {
+        
+        switch buttonType {
+        case .dismiss:
+            addButtonToNavBar(buttonType: buttonType)
+        case .logout:
             self.loginService = loginService
-            addLogoutButtonToNavBar()
+            addButtonToNavBar(buttonType: buttonType)
         }
     }
     
@@ -24,8 +33,17 @@ public class SummitNavigationController: UINavigationController {
         configureNavBar()
     }
     
-    private func addLogoutButtonToNavBar() {
-        navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logout)) // todo: constants
+    private func addButtonToNavBar(buttonType: NavButtonType) {
+        switch buttonType {
+        case .dismiss:
+            navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(title: "Dismiss", style: .done, target: self, action: #selector(dismissPressed)) // todo: constants
+        case .logout:
+            navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logout)) // todo: constants
+        }
+    }
+    
+    @objc private func dismissPressed() {
+        dismiss(animated: true, completion: nil)
     }
     
     @objc private func logout() {

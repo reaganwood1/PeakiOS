@@ -19,6 +19,7 @@
 		135C63DA2421B92F009D6CA7 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135C63D92421B92F009D6CA7 /* UIColor+Extensions.swift */; };
 		135C63DC2421C75C009D6CA7 /* RestClientGoals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135C63DB2421C75C009D6CA7 /* RestClientGoals.swift */; };
 		135C63DE2421CA5C009D6CA7 /* GoalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135C63DD2421CA5C009D6CA7 /* GoalService.swift */; };
+		13696ABA24C8712900E89ACD /* AppDescriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13696AB924C8712900E89ACD /* AppDescriptionController.swift */; };
 		1377C04E2425483100F29658 /* AvailableGoalAttemptsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1377C04D2425483100F29658 /* AvailableGoalAttemptsCollectionViewController.swift */; };
 		1377C0512426A59000F29658 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1377C0502426A59000F29658 /* RoundButton.swift */; };
 		1377C0542426BBD400F29658 /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1377C0532426BBD400F29658 /* PinterestLayout.swift */; };
@@ -110,6 +111,7 @@
 		135C63D92421B92F009D6CA7 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		135C63DB2421C75C009D6CA7 /* RestClientGoals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestClientGoals.swift; sourceTree = "<group>"; };
 		135C63DD2421CA5C009D6CA7 /* GoalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalService.swift; sourceTree = "<group>"; };
+		13696AB924C8712900E89ACD /* AppDescriptionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDescriptionController.swift; sourceTree = "<group>"; };
 		1377C04D2425483100F29658 /* AvailableGoalAttemptsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableGoalAttemptsCollectionViewController.swift; sourceTree = "<group>"; };
 		1377C0502426A59000F29658 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		1377C0532426BBD400F29658 /* PinterestLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestLayout.swift; sourceTree = "<group>"; };
@@ -222,6 +224,14 @@
 				13060A3D2440170A00B38628 /* EmptyStatePresenter.swift */,
 			);
 			path = Generic;
+			sourceTree = "<group>";
+		};
+		13696ABB24C8712F00E89ACD /* Description */ = {
+			isa = PBXGroup;
+			children = (
+				13696AB924C8712900E89ACD /* AppDescriptionController.swift */,
+			);
+			path = Description;
 			sourceTree = "<group>";
 		};
 		1377C04C2425480D00F29658 /* Attempts */ = {
@@ -404,6 +414,7 @@
 		1393BB72241DBE11004703DD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				13696ABB24C8712F00E89ACD /* Description */,
 				138964C7242FFA370051ED33 /* RootTabController */,
 				138964C2242FF3060051ED33 /* NavigationControllers */,
 				1377C05E2426D15C00F29658 /* ActiveGoals */,
@@ -731,6 +742,7 @@
 				1377C06E2429A2A300F29658 /* AllAttemptsSectionController.swift in Sources */,
 				138964C9242FFA490051ED33 /* RootTabController.swift in Sources */,
 				1393BB83241DD530004703DD /* ServiceUtilities.swift in Sources */,
+				13696ABA24C8712900E89ACD /* AppDescriptionController.swift in Sources */,
 				1377C0512426A59000F29658 /* RoundButton.swift in Sources */,
 				13DF593E241E917E00BB1A35 /* UIButton+Extensions.swift in Sources */,
 				1377C0542426BBD400F29658 /* PinterestLayout.swift in Sources */,
