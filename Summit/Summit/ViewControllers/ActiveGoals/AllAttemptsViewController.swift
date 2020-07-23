@@ -72,10 +72,15 @@ class AllAttemptsViewController: GenericViewController<ActiveAttemptCollectionVi
         updateCollection()
         
         if allAttempts.completedToday.count == 0 && allAttempts.dueSoon.count == 0 && allAttempts.failed.count == 0 && allAttempts.completed.count == 0 {
-            addErrorEmptyState()
+            addNoAttemptsEmptyState()
         } else {
             emptyStatePresenter.removeEmptyState(from: contentView)
         }
+    }
+    
+    private func addNoAttemptsEmptyState() {
+        let noAttemptsAttributes = PresenterAttributes(image: #imageLiteral(resourceName: "iconLandscape").recolor(to: .textColor), title: "You don't have any active goals! Add some goals in the Topics section to get started!", buttonText: "Reload") // TODO: constants
+        emptyStatePresenter.present(with: noAttemptsAttributes, on: contentView, with: self)
     }
     
     private func addErrorEmptyState() {
