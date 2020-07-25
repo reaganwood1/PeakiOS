@@ -134,7 +134,7 @@
 		138964C8242FFA490051ED33 /* RootTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabController.swift; sourceTree = "<group>"; };
 		138964CA24300D190051ED33 /* ActiveAttemptCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAttemptCollectionViewHeader.swift; sourceTree = "<group>"; };
 		138964CC243119E00051ED33 /* CompleteAttemptPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteAttemptPresenter.swift; sourceTree = "<group>"; };
-		1393BB26241D60DD004703DD /* Summit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Summit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1393BB26241D60DD004703DD /* Peak - Habit Training.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Peak - Habit Training.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1393BB29241D60DD004703DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1393BB2D241D60DD004703DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1393BB30241D60DD004703DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -312,7 +312,7 @@
 		1393BB27241D60DD004703DD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1393BB26241D60DD004703DD /* Summit.app */,
+				1393BB26241D60DD004703DD /* Peak - Habit Training.app */,
 				1393BB3C241D60DF004703DD /* SummitTests.xctest */,
 				1393BB47241D60DF004703DD /* SummitUITests.xctest */,
 			);
@@ -551,7 +551,7 @@
 			);
 			name = Summit;
 			productName = Summit;
-			productReference = 1393BB26241D60DD004703DD /* Summit.app */;
+			productReference = 1393BB26241D60DD004703DD /* Peak - Habit Training.app */;
 			productType = "com.apple.product-type.application";
 		};
 		1393BB3B241D60DF004703DD /* SummitTests */ = {
@@ -940,6 +940,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 58Y858P6NK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -952,7 +953,7 @@
 				);
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = RWSoftware.Peak;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Peak - Habit Training";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -964,6 +965,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 58Y858P6NK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -977,7 +979,7 @@
 				);
 				OTHER_SWIFT_FLAGS = "\"-D\" \"PRODUCTION\" $(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = RWSoftware.Peak;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Peak - Habit Training";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

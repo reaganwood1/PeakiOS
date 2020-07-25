@@ -31,7 +31,7 @@ class RootTabController: UITabBarController {
         let topicsVC = GoalCollectionViewController()
 
         let vc = SummitNavigationController(rootViewController: topicsVC)
-        let tabBarItem = UITabBarItem(title: "Topics", image: #imageLiteral(resourceName: "imgTopicsTabBarSelected"), selectedImage: #imageLiteral(resourceName: "imgTopicsTabBarSelected")) // TODO: l10
+        let tabBarItem = UITabBarItem(title: "Topics", image: #imageLiteral(resourceName: "imgTopicsTabBarSelected").setAlpha(to: 0.5), selectedImage: #imageLiteral(resourceName: "imgTopicsTabBarSelected")) // TODO: l10
         tabBarItem.setTitleTextAttributes([
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 11.0, weight: .semibold)
             ], for: UIControl.State())
@@ -43,7 +43,7 @@ class RootTabController: UITabBarController {
         let activeVC = AllAttemptsViewController()
 
         let vc = SummitNavigationController(rootViewController: activeVC, buttonType: .logout)
-        let tabBarItem = UITabBarItem(title: "Attempts", image: #imageLiteral(resourceName: "imgActiveAttempts"), selectedImage: #imageLiteral(resourceName: "imgActiveAttempts")) // TODO: l10
+        let tabBarItem = UITabBarItem(title: "Attempts", image: #imageLiteral(resourceName: "imgActiveAttempts").setAlpha(to: 0.5), selectedImage: #imageLiteral(resourceName: "imgActiveAttempts")) // TODO: l10
         tabBarItem.setTitleTextAttributes([
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 11.0, weight: .semibold)
             ], for: UIControl.State())
