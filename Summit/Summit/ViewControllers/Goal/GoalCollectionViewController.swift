@@ -154,7 +154,7 @@ class GoalSectionController: ListSectionController {
     init(withDelegate delegate: GoalSectionControllerDelegate) {
         self.delegate = delegate
         super.init()
-        self.inset = UIEdgeInsets(top: 20.0, left: 0, bottom: 0.0, right: 0.0)
+        self.inset = UIEdgeInsets(top: 12.5, left: 0, bottom: 0.0, right: 0.0)
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
