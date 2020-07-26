@@ -211,6 +211,7 @@ class GoalCollectionView: GenericView {
         UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.summitBackground], for: .normal)
         searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
         searchBar.placeholder = "Search topics..."
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes([NSAttributedString.Key(rawValue: NSAttributedString.Key.foregroundColor.rawValue): UIColor.textColor], for: .normal)
         return searchBar
     }()
     

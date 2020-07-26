@@ -39,7 +39,7 @@ class AvailableGoalAttemptsCollectionViewController: GenericViewController<Avail
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        changeNavBack(to: "Challenges") // TODO: constantsx
+        changeNavBack(to: "Topic - \(topic.title)") // TODO: constants
     }
     
     private func retrieveChallengeAttempts() {
