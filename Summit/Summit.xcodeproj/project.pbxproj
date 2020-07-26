@@ -940,7 +940,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 58Y858P6NK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -952,7 +952,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.01;
+				MARKETING_VERSION = 1.02;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = RWSoftware.Peak;
 				PRODUCT_NAME = "Peak - Habit Training";
@@ -967,7 +967,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 58Y858P6NK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -980,7 +980,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.01;
+				MARKETING_VERSION = 1.02;
 				OTHER_SWIFT_FLAGS = "\"-D\" \"PRODUCTION\" $(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = RWSoftware.Peak;
 				PRODUCT_NAME = "Peak - Habit Training";
