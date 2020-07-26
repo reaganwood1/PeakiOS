@@ -15,7 +15,7 @@ class AppDescriptionView: GenericView {
     private let descriptionLabel: UILabel = {
         let descriptionLabel = UILabel()
         descriptionLabel.textColor = .textColor
-        descriptionLabel.text = "Peak exists to help you reach your goals. This is for helping you learn how to get started. Select a topic and associated challenge you would like to make daily progress towards. For that challenge, come back daily and complete it until it's finished. Good luck!\n\nThis is an app in progress and many things will be updated in the future!"
+        descriptionLabel.text = "Peak exists to help you reach your goals. This is for helping you learn how to get started. Select a topic and associated challenge you would like to make daily progress towards. For that challenge, come back daily and complete it until it's finished. Good luck!\n\nThis is an app in progress and many things will be updated in the future!\n\nTry dark mode too by toggling in the settings!"
         descriptionLabel.numberOfLines = 0
         descriptionLabel.lineBreakMode = .byWordWrapping
         return descriptionLabel
