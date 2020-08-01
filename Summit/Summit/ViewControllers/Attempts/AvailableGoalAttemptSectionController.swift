@@ -44,7 +44,6 @@ class AvailableGoalAttemptSectionController: ListSectionController {
         
         let challenge = challenges.goalChallenges[index]
         cell.set(difficultyTo: challenge.difficulty.rawValue, andSubtitleTo: challenge.title, challengeId: challenge.id, isAdded: challenge.added ?? false, and: self, andTextColorOf: challenge.difficulty.color)
-        
         return cell
     }
     

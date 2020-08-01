@@ -146,5 +146,10 @@ class UserAttemptCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         // TODO: prepare for that reuse
+        lineViewChart.isHidden = false
+    }
+    
+    public func hideGraph() {
+        lineViewChart.isHidden = true
     }
 }

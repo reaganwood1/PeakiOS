@@ -65,6 +65,10 @@ class AllAttemptsSectionController: ListSectionController, ListSupplementaryView
         
         cell.set(attemptDescription: attempt.goalChallenge.title, andDifficultyTo: attempt.goalChallenge.difficulty.rawValue, currentCompleted: attempt.currentCompleted, goalY: attempt.goalChallenge.attemptsToComplete, currentY: attempt.currentCompleted, withCellWidth: getCellWidth(), difficultyColor: attempt.goalChallenge.difficulty.color)
         
+        if attempt.goalChallenge.attemptsToComplete == 1 {
+            cell.hideGraph()
+        }
+        
         return cell
     }
     
