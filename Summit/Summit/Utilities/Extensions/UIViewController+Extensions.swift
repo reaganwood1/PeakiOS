@@ -84,4 +84,15 @@ extension UIViewController {
             creatErrorBanner(with: Strings.General.UnknownErrorTryAgain).show()
         }
     }
+    
+    public func handleAuth(_ error: AuthServiceError) {
+        switch error {
+        case .noNetworkConnection:
+            creatErrorBanner(with: Strings.General.NoNetwork).show()
+        case .serverError:
+            creatErrorBanner(with: Strings.General.UnknownErrorTryAgain).show()
+        case .serverErrorWithMessage(let errorMessage):
+            creatErrorBanner(with: errorMessage).show()
+        }
+    }
 }

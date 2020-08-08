@@ -1,61 +1,23 @@
 //
-//  SigninViewController.swift
+//  SingupView.swift
 //  Summit
 //
-//  Created by Reagan Wood on 3/15/20.
+//  Created by Reagan Wood on 8/8/20.
 //  Copyright © 2020 Reagan Wood. All rights reserved.
 //
 
 import UIKit
 
-class SigninViewController: GenericViewController<SigninView> {
-    private let loginService: ILoginService
-    
-    init(loginService: ILoginService = LoginService()) {
-        self.loginService = loginService
-        super.init(nibName: nil, bundle: nil)
-        contentView.delegate = self
-    }
-    
-    required init?(coder: NSCoder) {
-        return nil
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        changeNavBack(to: "Sign in")
-    }
+protocol SignupViewDelegate: class {
+    func signupPressed(username: String, password: String, email: String)
 }
 
-extension SigninViewController: SigninViewDelegate {
-    func loginPressed(username: String, password: String) {
-        loginService.login(username: username, password: password) { [weak self] (result) in
-            switch result {
-            case .success(_):
-                self?.launchRootView()
-            case .failure(let error):
-                self?.handleAuth(error)
-            }
-        }
-    }
-    
-    private func launchRootView() {
-        let rootVC = RootTabController()
-        rootVC.modalPresentationStyle = .fullScreen
-        present(rootVC, animated: true, completion: nil)
-    }
-}
-
-protocol SigninViewDelegate: class {
-    func loginPressed(username: String, password: String)
-}
-
-class SigninView: GenericView {
-    weak public var delegate: SigninViewDelegate?
+class SignupView: GenericView {
+    weak public var delegate: SignupViewDelegate?
     
     private let viewTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Time to get started!"
+        label.text = "Create an account!"
         label.font = UIFont.systemFont(ofSize: 30.0, weight: .bold)
         label.textColor = .textColor
         return label
@@ -89,7 +51,7 @@ class SigninView: GenericView {
     
     private let passwordTextField: UITextField = {
         let passwordTextField = UITextField()
-        passwordTextField.placeholder = "Enter a password"
+        passwordTextField.placeholder = "Create a password"
         passwordTextField.textColor = .textColor
         passwordTextField.font = .systemFont(ofSize: 14.0)
         passwordTextField.isSecureTextEntry = true
@@ -98,19 +60,37 @@ class SigninView: GenericView {
         return passwordTextField
     }()
     
-    private let loginButton: UIButton = {
+    private let emailTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Email"
+        label.font = UIFont.systemFont(ofSize: 16.0, weight: .bold)
+        label.textColor = .textColor
+        return label
+    }()
+    
+    private let emailField: UITextField = {
+        let usernameField = UITextField()
+        usernameField.placeholder = "Enter an email"
+        usernameField.font = .systemFont(ofSize: 14.0)
+        usernameField.textColor = .textColor
+        usernameField.tintColor = .textColor
+        usernameField.autocapitalizationType = .none
+        return usernameField
+    }()
+    
+    private let signupButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Login", for: .normal)
+        button.setTitle("Signup and continue", for: .normal)
         button.backgroundColor = .summitObjeckBackground
         button.layer.cornerRadius = 10.0
         button.setTitleColor(.textColor, for: .normal)
-        button.addTarget(self, action: #selector(loginPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(signupPressed), for: .touchUpInside)
         return button
     }()
     
     override func initializeUI() {
         setDelegates()
-        addAllSubviews([viewTitleLabel, usernameTitleLabel, usernameTitleLabel, usernameField, passwordTitleLabel, passwordTextField, loginButton])
+        addAllSubviews([viewTitleLabel, usernameTitleLabel, usernameTitleLabel, usernameField, passwordTitleLabel, passwordTextField, signupButton, emailTitleLabel, emailField])
     }
     
     private func setDelegates() {
@@ -125,7 +105,9 @@ class SigninView: GenericView {
         createUsernameFieldConstraints()
         createPasswordTitleLabelConstraints()
         createPasswordTitleFieldConstraints()
-        createLoginButtonConstraints()
+        createEmailTitleLabelConstraints()
+        createEmailFieldConstraints()
+        createSignupButtonConstraints()
     }
     
     private func createViewTitleLabelConstraints() {
@@ -163,19 +145,33 @@ class SigninView: GenericView {
         }
     }
     
-    private func createLoginButtonConstraints() {
-        loginButton.snp.makeConstraints { (make) in
+    private func createEmailTitleLabelConstraints() {
+        emailTitleLabel.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview().inset(15)
             make.top.equalTo(passwordTextField.snp.bottom).offset(15)
+        }
+    }
+    
+    private func createEmailFieldConstraints() {
+        emailField.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview().inset(15)
+            make.top.equalTo(emailTitleLabel.snp.bottom).offset(5)
+        }
+    }
+    
+    private func createSignupButtonConstraints() {
+        signupButton.snp.makeConstraints { (make) in
+            make.top.equalTo(emailField.snp.bottom).offset(15)
             make.left.right.equalToSuperview().inset(15)
             make.height.equalTo(50)
         }
     }
     
-    @objc private func loginPressed() {
-        delegate?.loginPressed(username: usernameField.text ?? "", password: passwordTextField.text ?? "")
+    @objc private func signupPressed() {
+        delegate?.signupPressed(username: usernameField.text ?? "", password: passwordTextField.text ?? "", email: emailField.text ?? "")
     }
 }
 
-extension SigninView: UITextFieldDelegate {
+extension SignupView: UITextFieldDelegate {
 }
 

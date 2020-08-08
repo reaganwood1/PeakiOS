@@ -55,6 +55,10 @@ class LandingScreenViewController: GenericViewController<LandingScreenView> {
 }
 
 extension LandingScreenViewController: LoginButtonDelegate, LandingScreenViewDelegate {
+    func signupPressed() {
+        navigationController?.pushViewController(SignupViewController(), animated: true)
+    }
+    
     func getStartedPressed() {
         navigationController?.pushViewController(SigninViewController(), animated: true)
     }
@@ -81,7 +85,7 @@ extension LandingScreenViewController: LoginButtonDelegate, LandingScreenViewDel
                 self?.launchRootView()
             case .failure(let error):
                 self?.contentView.configureForNetworkComplete()
-                self?.handleGeneric(error)
+                self?.handleAuth(error)
             }
         }
     }

@@ -65,6 +65,8 @@
 		1393BB83241DD530004703DD /* ServiceUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1393BB82241DD530004703DD /* ServiceUtilities.swift */; };
 		1393BB85241DD612004703DD /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1393BB84241DD612004703DD /* SessionManager.swift */; };
 		1393BB87241DD8AD004703DD /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1393BB86241DD8AD004703DD /* Typealiases.swift */; };
+		139B853124DF37EC00C23C34 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139B853024DF37EC00C23C34 /* SignupViewController.swift */; };
+		139B853324DF384900C23C34 /* SingupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139B853224DF384900C23C34 /* SingupView.swift */; };
 		13DF5934241DE10300BB1A35 /* GenericService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DF5933241DE10300BB1A35 /* GenericService.swift */; };
 		13DF5937241E84A500BB1A35 /* LandingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DF5936241E84A500BB1A35 /* LandingScreenViewController.swift */; };
 		13DF5939241E875400BB1A35 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DF5938241E875400BB1A35 /* UIView+Extensions.swift */; };
@@ -163,6 +165,8 @@
 		1393BB82241DD530004703DD /* ServiceUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceUtilities.swift; sourceTree = "<group>"; };
 		1393BB84241DD612004703DD /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		1393BB86241DD8AD004703DD /* Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
+		139B853024DF37EC00C23C34 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		139B853224DF384900C23C34 /* SingupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingupView.swift; sourceTree = "<group>"; };
 		13DF5933241DE10300BB1A35 /* GenericService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericService.swift; sourceTree = "<group>"; };
 		13DF5936241E84A500BB1A35 /* LandingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingScreenViewController.swift; sourceTree = "<group>"; };
 		13DF5938241E875400BB1A35 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIView+Extensions.swift"; path = "../New Group/UIView+Extensions.swift"; sourceTree = "<group>"; };
@@ -481,6 +485,7 @@
 				13DF593F241E928D00BB1A35 /* SigninViewController.swift */,
 				1393BB76241DC0F1004703DD /* SplashScreenViewController.swift */,
 				13DF5936241E84A500BB1A35 /* LandingScreenViewController.swift */,
+				139B853024DF37EC00C23C34 /* SignupViewController.swift */,
 			);
 			path = Launch;
 			sourceTree = "<group>";
@@ -489,6 +494,7 @@
 			isa = PBXGroup;
 			children = (
 				13DF593B241E914200BB1A35 /* LandingScreenView.swift */,
+				139B853224DF384900C23C34 /* SingupView.swift */,
 			);
 			path = Landing;
 			sourceTree = "<group>";
@@ -714,6 +720,7 @@
 			files = (
 				13F80F7D243A48E400F22F53 /* TokenCache.swift in Sources */,
 				13DF593C241E914200BB1A35 /* LandingScreenView.swift in Sources */,
+				139B853124DF37EC00C23C34 /* SignupViewController.swift in Sources */,
 				1393BB2E241D60DD004703DD /* ViewController.swift in Sources */,
 				13F80F83243A966C00F22F53 /* UIWindow+Extensions.swift in Sources */,
 				13060A3E2440170A00B38628 /* EmptyStatePresenter.swift in Sources */,
@@ -723,6 +730,7 @@
 				135C63DC2421C75C009D6CA7 /* RestClientGoals.swift in Sources */,
 				1393BB7E241DD3AF004703DD /* Strings.swift in Sources */,
 				1393BB87241DD8AD004703DD /* Typealiases.swift in Sources */,
+				139B853324DF384900C23C34 /* SingupView.swift in Sources */,
 				1393BB2A241D60DD004703DD /* AppDelegate.swift in Sources */,
 				1393BB77241DC0F1004703DD /* SplashScreenViewController.swift in Sources */,
 				138964CD243119E00051ED33 /* CompleteAttemptPresenter.swift in Sources */,

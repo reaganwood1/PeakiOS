@@ -33,6 +33,7 @@ public struct RestConstants {
         public static var UserId = "user_id"
         public static var Username = "user_name"
         public static var Password = "password"
+        public static var Email = "email"
         public static var User = "user"
         public static var Token = "token"
     }

@@ -70,7 +70,7 @@ class SplashScreenViewController: GenericViewController<SplashScreenView> {
             case .success(_):
                 break
             case .failure(let error):
-                self?.handleGeneric(error)
+                self?.handleAuth(error)
             }
         }
     }

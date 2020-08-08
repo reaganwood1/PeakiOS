@@ -12,6 +12,7 @@ import FBSDKCoreKit
 
 protocol LandingScreenViewDelegate: class {
     func getStartedPressed()
+    func signupPressed()
 }
 
 class LandingScreenView: GenericView {
@@ -55,7 +56,7 @@ class LandingScreenView: GenericView {
     
     private let getStartedButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Get started", for: .normal)
+        button.setTitle("Login", for: .normal)
         button.backgroundColor = .summitBackground
         button.addButtonShadow()
         button.layer.cornerRadius = 10.0
@@ -66,10 +67,23 @@ class LandingScreenView: GenericView {
         return button
     }()
     
+    private let signupButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Signup", for: .normal)
+        button.backgroundColor = .textColor
+        button.addButtonShadow()
+        button.layer.cornerRadius = 10.0
+        button.setTitleColor(.summitBackground, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 16.0, weight: .bold)
+        button.addTarget(self, action: #selector(signupPressed), for: .touchUpInside)
+        button.alpha = 0.0
+        return button
+    }()
+    
     public override func initializeUI() {
         super.initializeUI()
 //        addAllSubviews([backgroundImageView, facebookLoginButton, bannerLabel, bannerSubLabel])
-        addAllSubviews([backgroundImageView, getStartedButton, bannerLabel, bannerSubLabel])
+        addAllSubviews([backgroundImageView, getStartedButton, signupButton, bannerLabel, bannerSubLabel])
         sendSubviewToBack(backgroundImageView)
     }
     
@@ -96,6 +110,10 @@ class LandingScreenView: GenericView {
 //    }
     
     private func createConstraintsForFacebookButton() {
+        let paddingFromSides: CGFloat = 15.0
+        let distanceBetweenButtons: CGFloat = 10.0
+        let smallerButtonWidth: CGFloat = (UIScreen.main.bounds.width - paddingFromSides * 2 - distanceBetweenButtons) / 3.0
+        
         if #available(iOS 11.0, *) {
 //            facebookLoginButton.snp.makeConstraints { (make) in
 //                make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
@@ -104,7 +122,14 @@ class LandingScreenView: GenericView {
 //            }
             getStartedButton.snp.makeConstraints { (make) in
                 make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(10)
-                make.left.right.equalToSuperview().inset(15)
+                make.left.equalToSuperview().inset(paddingFromSides)
+                make.width.equalTo(smallerButtonWidth * 2)
+                make.height.equalTo(50)
+            }
+            signupButton.snp.makeConstraints { (make) in
+                make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(10)
+                make.right.equalToSuperview().inset(paddingFromSides)
+                make.width.equalTo(smallerButtonWidth)
                 make.height.equalTo(50)
             }
         } else {
@@ -115,7 +140,14 @@ class LandingScreenView: GenericView {
 //            }
             getStartedButton.snp.makeConstraints { (make) in
                 make.bottom.equalToSuperview().inset(15)
-                make.left.right.equalToSuperview().inset(15)
+                make.left.equalToSuperview().inset(paddingFromSides)
+                make.width.equalTo(smallerButtonWidth * 2)
+                make.height.equalTo(50)
+            }
+            signupButton.snp.makeConstraints { (make) in
+                make.bottom.equalToSuperview().inset(15)
+                make.right.equalToSuperview().inset(paddingFromSides)
+                make.width.equalTo(smallerButtonWidth)
                 make.height.equalTo(50)
             }
         }
@@ -153,11 +185,16 @@ class LandingScreenView: GenericView {
             self.bannerLabel.alpha = 1.0
             self.bannerSubLabel.alpha = 1.0
             self.getStartedButton.alpha = 1.0
+            self.signupButton.alpha = 1.0
 //            self.facebookLoginButton.alpha = 1.0
         }
     }
     
     @objc private func getStartedPressed() {
         delegate?.getStartedPressed()
+    }
+    
+    @objc private func signupPressed() {
+        delegate?.signupPressed()
     }
 }
