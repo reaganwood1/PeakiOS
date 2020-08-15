@@ -15,6 +15,7 @@ protocol LandingScreenViewDelegate: class {
     func signupPressed()
 }
 
+// TODO: reimpliment FACEBOOK SDK after COVID
 class LandingScreenView: GenericView {
     weak public var delegate: (LoginButtonDelegate & LandingScreenViewDelegate)? {
         didSet {
